@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:dist="http://schemas.android.com/apk/distribution"
+          package="org.nearbyshops.shopkeeperappnew">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
+
+    <dist:module dist:instant="true"/>
+
+    <application
+            android:name=".MyApplication"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:usesCleartextTraffic="true"
+            android:theme="@style/AppTheme">
+
+
+<!--        <activity-->
+<!--                android:name=".MainActivity"-->
+<!--                android:label="@string/app_name">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN"/>-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER"/>-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+
+
+
+
+        <activity
+            android:launchMode="singleTop"
+            android:name="org.nearbyshops.shopkeeperappnew.PickFromShopInventory.PickFromShopInventory"
+            android:label="Pick From Shop Inventory"
+            android:parentActivityName="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome" />
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
+
+
+
+
+        <activity
+            android:launchMode="singleTop"
+            android:name=".HomeDeliveryInventory.HomeDelivery"
+            android:label="Home Delivery Inventory"
+            android:parentActivityName="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome" />
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
+
+
+
+
+
+
+        <activity
+            android:name="org.nearbyshops.shopkeeperappnew.SignUp.ForgotPassword.ForgotPassword"
+            android:label="Forgot Password"
+            android:windowSoftInputMode="adjustResize" />
+
+
+
+        <activity
+            android:label="Sign Up"
+            android:name="org.nearbyshops.shopkeeperappnew.SignUp.SignUp"
+            android:windowSoftInputMode="adjustPan" />
+
+
+        <activity
+            android:name="org.nearbyshops.shopkeeperappnew.Login.Login"
+            android:windowSoftInputMode="adjustPan" />
+
+
+
+
+        <activity android:name="org.nearbyshops.shopkeeperappnew.Home">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+
+
+
+        <activity
+            android:name="org.nearbyshops.shopkeeperappnew.QuickStockEditor.QuickStockEditor"
+            android:label="Quick Stock Editor"
+            android:parentActivityName="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome" />
+        </activity>
+
+
+
+
+        <activity
+            android:name="org.nearbyshops.shopkeeperappnew.OrderDetail.OrderDetail"
+            android:label="Order Details"
+            android:parentActivityName="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome" />
+        </activity>
+
+
+
+
+        <activity
+            android:name="org.nearbyshops.shopkeeperappnew.ItemsByCategoryTypeSimple.ItemsByCatSimple"
+            android:label="Items by Category"
+            android:launchMode="singleTop"
+            android:parentActivityName="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome" />
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
+
+
+
+        <activity
+            android:name="org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.ItemsInShopByCat"
+            android:label="Items In Shop"
+            android:launchMode="singleTop"
+            android:parentActivityName="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome" />
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
+
+
+
+
+        <activity
+            android:name="org.nearbyshops.shopkeeperappnew.ItemsInShop.ItemsInShop"
+            android:label="Items In Shop"
+            android:launchMode="singleTop"
+            android:parentActivityName="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome" />
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
+
+
+
+
+        <activity
+            android:launchMode="singleTop"
+            android:name=".OrderHistoryNew.OrderHistory"
+            android:label="Order History"
+            android:parentActivityName=".ShopHome.ShopHome">
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+        </activity>
+
+
+
+        <activity
+            android:name=".Transactions.Transactions"
+            android:label="Transaction History"
+            android:parentActivityName=".Home">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Home" />
+        </activity>
+
+
+        <activity
+            android:name="org.nearbyshops.shopkeeperappnew.EditProfile.EditProfile"
+            android:label="Edit Profile"
+            android:parentActivityName="org.nearbyshops.shopkeeperappnew.Home">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.nearbyshops.shopkeeperappnew.Home" />
+        </activity>
+
+
+
+        <activity
+            android:name="org.nearbyshops.shopkeeperappnew.EditProfile.ChangeEmail.ChangeEmail"
+            android:label="Change E-mail"
+            android:parentActivityName="org.nearbyshops.shopkeeperappnew.EditProfile.EditProfile">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.nearbyshops.shopkeeperappnew.EditProfile.EditProfile" />
+        </activity>
+
+
+
+
+
+        <activity
+            android:name="org.nearbyshops.shopkeeperappnew.EditProfile.ChangePhone.ChangePhone"
+            android:label="Change Phone"
+            android:parentActivityName="org.nearbyshops.shopkeeperappnew.EditProfile.EditProfile">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.nearbyshops.shopkeeperappnew.EditProfile.EditProfile" />
+        </activity>
+
+
+
+
+        <activity android:name=".MarketDetail.MarketDetail"/>
+
+
+
+        <activity android:name=".Markets.Markets" />
+
+
+
+        <activity
+            android:name="org.nearbyshops.shopkeeperappnew.StaffList.EditProfileStaff.EditProfileStaff"
+            android:label="Edit Profile"
+            android:parentActivityName="org.nearbyshops.shopkeeperappnew.Home">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.nearbyshops.shopkeeperappnew.Home" />
+        </activity>
+
+
+
+        <activity
+            android:name="org.nearbyshops.shopkeeperappnew.StaffList.StaffList"
+            android:label="Staff List"
+            android:parentActivityName="org.nearbyshops.shopkeeperappnew.Home">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.nearbyshops.shopkeeperappnew.Home" />
+        </activity>
+
+
+
+
+        <activity
+            android:name="org.nearbyshops.shopkeeperappnew.StaffListDelivery.EditProfileDelivery.EditProfileDelivery"
+            android:label="Edit Profile Delivery"
+            android:parentActivityName="org.nearbyshops.shopkeeperappnew.Home">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.nearbyshops.shopkeeperappnew.Home" />
+        </activity>
+
+
+
+        <activity
+            android:name="org.nearbyshops.shopkeeperappnew.StaffListDelivery.DeliveryGuyList"
+            android:label="Delivery Guy List"
+            android:parentActivityName="org.nearbyshops.shopkeeperappnew.Home">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.nearbyshops.shopkeeperappnew.Home" />
+        </activity>
+
+
+
+
+
+        <activity android:name="org.nearbyshops.shopkeeperappnew.EditShop.EditShop"
+            android:label="Edit Shop" />
+
+
+
+        <activity
+            android:name="org.nearbyshops.shopkeeperappnew.EditShopImage.EditShopImage"
+            android:label="Edit Shop Image"
+            android:parentActivityName="org.nearbyshops.shopkeeperappnew.Home">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.nearbyshops.shopkeeperappnew.Home" />
+        </activity>
+
+
+        <activity
+            android:name="org.nearbyshops.shopkeeperappnew.ShopImageList.ShopImageList"
+            android:label="Shop Images"
+            android:parentActivityName="org.nearbyshops.shopkeeperappnew.Home">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.nearbyshops.shopkeeperappnew.Home" />
+        </activity>
+
+
+
+        <activity
+            android:name="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome"
+            android:label="Shop Home">
+        </activity>
+
+
+
+
+        <activity
+            android:name="org.nearbyshops.shopkeeperappnew.ShopStaffHome.ShopStaffDashboard"
+            android:label="Edit Profile"
+            android:parentActivityName="org.nearbyshops.shopkeeperappnew.Home">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.nearbyshops.shopkeeperappnew.Home" />
+        </activity>
+
+
+
+        <activity
+            android:name=".PickDeliveryRadiusFromMap.PickDeliveryRange"
+            android:label="Pick Delivery Range" />
+
+
+
+    </application>
+
+</manifest>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    <color name="colorPrimary">#008577</color>-->
+<!--    <color name="colorPrimaryDark">#00574B</color>-->
+<!--    <color name="colorAccent">#D81B60</color>-->
+
+
+    <color name="colorPrimary">#607D8B</color>
+    <color name="colorPrimaryDark">#455A64</color>
+    <color name="colorAccent">#FF9800</color>
+
+
+    <color name="mapboxBlue">#1e8cab</color>
+
+    <color name="light_grey">#22000000</color>
+
+
+
+    <color name="white">#FFFFFF</color>
+    <color name="buttonColor">#037BA3</color>
+    <color name="buttonColorDark">#036a8c</color>
+
+    <color name="orange">#ff6600</color>
+    <color name="itemAvailable">#00897B</color>
+
+
+    <color name="listItemGrey">#22000000</color>
+
+    <color name="teal">#00796B</color>
+    <color name="darkGreen">#2E7D32</color>
+    <color name="orangeDark">#EF6C00</color>
+    <color name="deepOrange900">#BF360C</color>
+    <color name="deepOrange800">#D84315</color>
+    <color name="grey800">#424242</color>
+    <color name="blueGrey800">#37474F</color>
+    <color name="cyan900">#006064</color>
+
+
+    <color name="cyan900Alpha55">#55006064</color>
+    <color name="blueGrey800Alpha55">#AA37474F</color>
+    <color name="carrot">#e67e22</color>
+    <color name="slate_grey">#2F4F4F</color>
+
+
+    <color name="phonographyBlue">#006373</color>
+    <color name="phonographyBlueAlpha">#AA006373</color>
+
+
+    <integer-array name="gplus_colors">
+        <item>@color/gplus_color_1</item>
+        <item>@color/gplus_color_2</item>
+        <item>@color/gplus_color_3</item>
+        <item>@color/gplus_color_4</item>
+    </integer-array>
+
+    <color name="backgroundTinted">#88006064</color>
+
+    <color name="gplus_color_2Dark">#d29b00</color>
+
+    <color name="gplus_color_1">#3e802f</color>
+    <color name="gplus_color_2">#f4b400</color>
+    <color name="gplus_color_3">#427fed</color>
+    <color name="gplus_color_4">#b23424</color>
+    <color name="black">#000000</color>
+
+
+
+
+
+</resources>

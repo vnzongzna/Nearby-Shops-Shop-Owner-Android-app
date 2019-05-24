@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/content_shop_staff_home"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="org.nearbyshops.shopkeeperappnew.ShopStaffHome.ShopStaffHome"
+        tools:showIn="@layout/activity_shop_staff_home">
+
+
+        <!--<TextView-->
+            <!--android:padding="10dp"-->
+            <!--android:background="@color/light_grey"-->
+            <!--android:id="@+id/header"-->
+            <!--app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--app:layout_constraintRight_toRightOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--android:textSize="20sp"-->
+            <!--android:text="Home"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content" />-->
+
+
+        <LinearLayout
+            android:id="@+id/header_strip"
+            android:padding="10dp"
+            android:background="@color/light_grey"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/header"
+                android:textSize="20sp"
+                android:text="Home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:background="@color/blueGrey800"
+                android:layout_width="1dp"
+                android:layout_height="match_parent" />
+
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:id="@+id/logout"
+                android:textSize="20sp"
+                android:text="Log Out"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:padding="5dp"
+            android:background="#cd201f"
+            android:layout_marginTop="10dp"
+            android:id="@+id/notice"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="Message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+
+
+
+        <TextView
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_strip"
+            android:background="#88000000"
+            android:layout_marginTop="10dp"
+            android:id="@+id/border_header"
+            android:layout_width="0dp"
+            android:layout_height="1dp" />
+
+
+
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vertical_guide"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+
+
+
+
+
+
+
+        <ImageView
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:paddingBottom="60dp"
+            android:background="@color/phonographyBlue"
+            android:id="@+id/edit_profile"
+            android:layout_marginTop="10dp"
+            app:layout_constraintRight_toLeftOf="@id/vertical_guide"
+            app:layout_constraintTop_toBottomOf="@id/border_header"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:srcCompat="@drawable/ic_face_black_24px"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/menu_item_width" />
+
+
+        <TextView
+            app:layout_constraintLeft_toLeftOf="@id/edit_profile"
+            app:layout_constraintRight_toRightOf="@id/edit_profile"
+            app:layout_constraintBottom_toBottomOf="@id/edit_profile"
+            android:padding="10dp"
+            android:id="@+id/text_add_items"
+            android:textSize="@dimen/menu_item_text_size"
+            android:textColor="#ffffff"
+            android:text="Edit Profile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+
+
+        <ImageView
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:paddingBottom="60dp"
+            android:background="@color/gplus_color_2"
+            android:id="@+id/dashboard"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toRightOf="@id/vertical_guide"
+            app:layout_constraintTop_toBottomOf="@id/border_header"
+            app:layout_constraintRight_toRightOf="parent"
+            app:srcCompat="@drawable/ic_dashboard_white_24px"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/menu_item_width" />
+
+
+        <TextView
+            app:layout_constraintLeft_toLeftOf="@id/dashboard"
+            app:layout_constraintRight_toRightOf="@id/dashboard"
+            app:layout_constraintBottom_toBottomOf="@id/dashboard"
+            android:padding="10dp"
+            android:id="@+id/text_dashboard"
+            android:textSize="@dimen/menu_item_text_size"
+            android:textColor="#ffffff"
+            android:text="Dashboard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
