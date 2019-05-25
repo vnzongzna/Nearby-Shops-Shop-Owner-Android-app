@@ -32,9 +32,10 @@ import org.nearbyshops.shopkeeperappnew.Markets.ViewModels.MarketViewModel;
 import org.nearbyshops.shopkeeperappnew.OneSignal.UpdateOneSignalID;
 import org.nearbyshops.shopkeeperappnew.OrderDetail.FragmentOrderDetail;
 import org.nearbyshops.shopkeeperappnew.OrderHistoryNew.OrderHistoryFragmentNew;
-import org.nearbyshops.shopkeeperappnew.PickFromShopInventory.FragmentPFS.PickFromShopFragment;
+import org.nearbyshops.shopkeeperappnew.PickFromShopInventory.Fragment.OrdersInventoryFragment;
 import org.nearbyshops.shopkeeperappnew.QuickStockEditor.FragmentShopItem;
 import org.nearbyshops.shopkeeperappnew.QuickStockEditor.ViewHolders.ViewHolderShopItem;
+import org.nearbyshops.shopkeeperappnew.SelectDeliveryGuy.SelectDeliveryFragment;
 import org.nearbyshops.shopkeeperappnew.ShopAdminHome.ShopAdminHomeFragment;
 import org.nearbyshops.shopkeeperappnew.ShopImageList.ShopImageListFragment;
 import org.nearbyshops.shopkeeperappnew.ShopStaffHome.ShopStaffHomeFragment;
@@ -152,7 +153,9 @@ public interface NetComponent {
 
     void Inject(AdapterMarkets adapterMarkets);
 
-    void Inject(PickFromShopFragment pickFromShopFragment);
+    void Inject(OrdersInventoryFragment ordersInventoryFragment);
 
     void Inject(HomeDeliveryInventoryFragment homeDeliveryInventoryFragment);
+
+    void Inject(SelectDeliveryFragment selectDeliveryFragment);
 }

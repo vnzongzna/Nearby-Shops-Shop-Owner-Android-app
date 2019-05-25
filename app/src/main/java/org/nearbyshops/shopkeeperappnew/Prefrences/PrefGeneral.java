@@ -23,11 +23,8 @@ public class PrefGeneral {
 
 
 
+
     public static final String SERVICE_URL = null;
-
-
-
-
 
 
     public static String getServiceURL(Context context) {

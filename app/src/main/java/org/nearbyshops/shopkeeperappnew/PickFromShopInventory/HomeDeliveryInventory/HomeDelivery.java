@@ -1,4 +1,4 @@
-package org.nearbyshops.shopkeeperappnew.HomeDeliveryInventory;
+package org.nearbyshops.shopkeeperappnew.PickFromShopInventory.HomeDeliveryInventory;
 
 import android.app.SearchManager;
 import android.content.Intent;
@@ -151,34 +151,6 @@ public class HomeDelivery extends AppCompatActivity implements NotifyTitleChange
 
 
 
-
-    @BindView(R.id.confirmItems)
-    TextView confirmItemsButton;
-
-    @OnClick(R.id.confirmItems)
-    void confirmButtonClick()
-    {
-
-
-
-//        Fragment fragment = getSupportFragmentManager()
-//                .findFragmentByTag(makeFragmentName(mViewPager.getId(),2));
-//
-//        if(fragment instanceof ConfirmOrdersClicked)
-//        {
-//            ((ConfirmOrdersClicked)fragment).confirmOrdersClicked();
-//        }
-//
-
-
-//        FragmentManager fm = getSupportFragmentManager();
-//        DeliveryGuyListDialog dialog = new DeliveryGuyListDialog();
-
-//        dialog.show(fm, "rate");
-
-    }
-
-
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -187,15 +159,23 @@ public class HomeDelivery extends AppCompatActivity implements NotifyTitleChange
     @Override
     public void onPageSelected(int position) {
 
-        if(position==2||position==6)
+        if(position==2||position==6||position==3)
         {
-//            confirmItemsButton.setVisibility(View.VISIBLE);
+            confirmItemsButton.setVisibility(View.VISIBLE);
+
+            if(position==3)
+            {
+                confirmItemsButton.setText("Filter\nby Delivery");
+            }
+            else
+            {
+                confirmItemsButton.setText("Handover\nto Delivery");
+            }
         }
         else
         {
-//            confirmItemsButton.setVisibility(View.GONE);
+            confirmItemsButton.setVisibility(View.GONE);
         }
-
 
     }
 
@@ -303,4 +283,43 @@ public class HomeDelivery extends AppCompatActivity implements NotifyTitleChange
             ((NotifySort)fragment).notifySortChanged();
         }
     }
+
+
+
+
+    public interface HandoverClicked
+    {
+        void handoverClicked();
+    }
+
+
+
+
+
+
+    @BindView(R.id.handover_button)
+    TextView confirmItemsButton;
+
+    @OnClick(R.id.handover_button)
+    void handoverClick()
+    {
+
+        Fragment fragment = getSupportFragmentManager()
+                .findFragmentByTag(makeFragmentName(mViewPager.getId(),mViewPager.getCurrentItem()));
+
+        if(fragment instanceof HandoverClicked)
+        {
+            ((HandoverClicked)fragment).handoverClicked();
+        }
+
+
+
+//        FragmentManager fm = getSupportFragmentManager();
+//        DeliveryGuyListDialog dialog = new DeliveryGuyListDialog();
+
+//        dialog.show(fm, "rate");
+
+    }
+
+
 }

@@ -92,8 +92,8 @@ public class FragmentEditProfileStaff extends Fragment {
 
 
     // flag for knowing whether the image is changed or not
-    boolean isImageChanged = false;
-    boolean isImageRemoved = false;
+    private boolean isImageChanged = false;
+    private boolean isImageRemoved = false;
 
 
     // bind views
@@ -1042,6 +1042,7 @@ public class FragmentEditProfileStaff extends Fragment {
         // this function takes the file from the source URI and saves in into the destination URI location.
         UCrop.of(sourceUri, destinationUri)
                 .withOptions(options)
+                .withMaxResultSize(900,900)
                 .start(context,this);
 
         //.withMaxResultSize(400,300)
@@ -1228,6 +1229,10 @@ public class FragmentEditProfileStaff extends Fragment {
 
 
 
+
+
+
+
     void deleteImage(String filename)
     {
 
@@ -1252,12 +1257,6 @@ public class FragmentEditProfileStaff extends Fragment {
 //                        showToastMessage("Image Delete failed");
                     }
 
-
-
-                saveButton.setVisibility(View.VISIBLE);
-                progressBar.setVisibility(View.INVISIBLE);
-
-
             }
 
             @Override
@@ -1265,9 +1264,6 @@ public class FragmentEditProfileStaff extends Fragment {
 
 //                showToastMessage("Image Delete failed");
 
-
-                saveButton.setVisibility(View.VISIBLE);
-                progressBar.setVisibility(View.INVISIBLE);
 
             }
         });

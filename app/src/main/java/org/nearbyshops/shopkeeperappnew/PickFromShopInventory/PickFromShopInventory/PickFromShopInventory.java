@@ -1,4 +1,4 @@
-package org.nearbyshops.shopkeeperappnew.PickFromShopInventory;
+package org.nearbyshops.shopkeeperappnew.PickFromShopInventory.PickFromShopInventory;
 
 import android.app.SearchManager;
 import android.content.Intent;

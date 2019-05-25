@@ -35,9 +35,25 @@
 
 
 
+
+
+        <activity
+            android:name="org.nearbyshops.shopkeeperappnew.SelectDeliveryGuy.SelectDeliveryGuy"
+            android:label="Select Delivery Guy"
+            android:parentActivityName="org.nearbyshops.shopkeeperappnew.Home">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.nearbyshops.shopkeeperappnew.Home" />
+        </activity>
+
+
+
+
+
         <activity
             android:launchMode="singleTop"
-            android:name="org.nearbyshops.shopkeeperappnew.PickFromShopInventory.PickFromShopInventory"
+            android:name="org.nearbyshops.shopkeeperappnew.PickFromShopInventory.PickFromShopInventory.PickFromShopInventory"
             android:label="Pick From Shop Inventory"
             android:parentActivityName="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome">
             <meta-data
@@ -58,7 +74,7 @@
 
         <activity
             android:launchMode="singleTop"
-            android:name=".HomeDeliveryInventory.HomeDelivery"
+            android:name=".PickFromShopInventory.HomeDeliveryInventory.HomeDelivery"
             android:label="Home Delivery Inventory"
             android:parentActivityName="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome">
             <meta-data

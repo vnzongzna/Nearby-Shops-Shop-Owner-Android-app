@@ -1,18 +1,23 @@
-package org.nearbyshops.shopkeeperappnew.PickFromShopInventory.FragmentPFS;
+package org.nearbyshops.shopkeeperappnew.PickFromShopInventory.Fragment;
 
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import org.nearbyshops.shopkeeperappnew.Model.Order;
+import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery;
 import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusPickFromShop;
 import org.nearbyshops.shopkeeperappnew.OrderHistoryNew.ViewHolders.ViewHolderOrder;
 import org.nearbyshops.shopkeeperappnew.PickFromShopInventory.ViewHolders.ViewHolderOrderButtonSingle;
+import org.nearbyshops.shopkeeperappnew.PickFromShopInventory.ViewHolders.ViewHolderOrderSelectable;
+import org.nearbyshops.shopkeeperappnew.PickFromShopInventory.ViewHolders.ViewHolderOrderWithDeliveryProfile;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.LoadingViewHolder;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreenNew;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by sumeet on 13/6/16.
@@ -23,11 +28,14 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     public static final int VIEW_TYPE_ORDER = 1;
     public static final int VIEW_TYPE_ORDER_WITH_BUTTON = 2;
+    public static final int VIEW_TYPE_ORDER_SELECTABLE = 3;
+    public static final int VIEW_TYPE_ORDER_DELIVERY_PROFILE = 4;
 
-    public static final int VIEW_TYPE_SCROLL_PROGRESS_BAR = 3;
-    public static final int VIEW_TYPE_EMPTY_SCREEN = 4;
+    public static final int VIEW_TYPE_SCROLL_PROGRESS_BAR = 5;
+    public static final int VIEW_TYPE_EMPTY_SCREEN = 6;
 
 
+    private Map<Integer,Order> selectedOrders = new HashMap<>();
     private Fragment fragment;
 
     private boolean loadMore;
@@ -37,6 +45,7 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     Adapter(List<Object> dataset, Fragment fragment) {
         this.dataset = dataset;
         this.fragment = fragment;
+        selectedOrders.clear();
     }
 
 
@@ -52,6 +61,14 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         else if(viewType == VIEW_TYPE_ORDER_WITH_BUTTON)
         {
             return ViewHolderOrderButtonSingle.create(parent,parent.getContext(),fragment);
+        }
+        else if(viewType == VIEW_TYPE_ORDER_SELECTABLE)
+        {
+            return ViewHolderOrderSelectable.create(parent,parent.getContext(),fragment,selectedOrders,this);
+        }
+        else if(viewType == VIEW_TYPE_ORDER_DELIVERY_PROFILE)
+        {
+            return ViewHolderOrderWithDeliveryProfile.create(parent,parent.getContext(),fragment);
         }
         else if (viewType == VIEW_TYPE_SCROLL_PROGRESS_BAR) {
 
@@ -80,13 +97,34 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         }
         else if(dataset.get(position) instanceof Order)
         {
-            if(((Order) dataset.get(position)).getStatusPickFromShop()== OrderStatusPickFromShop.DELIVERED)
+
+            if(((Order) dataset.get(position)).isPickFromShop())
             {
-                return VIEW_TYPE_ORDER;
+                if(((Order) dataset.get(position)).getStatusPickFromShop()== OrderStatusPickFromShop.DELIVERED)
+                {
+                    return VIEW_TYPE_ORDER;
+                }
+                else
+                {
+                    return VIEW_TYPE_ORDER_WITH_BUTTON;
+                }
+
             }
             else
             {
-                return VIEW_TYPE_ORDER_WITH_BUTTON;
+                if(((Order) dataset.get(position)).getStatusHomeDelivery()== OrderStatusHomeDelivery.ORDER_PACKED)
+                {
+                    return VIEW_TYPE_ORDER_SELECTABLE;
+                }
+                else if(((Order) dataset.get(position)).getStatusHomeDelivery()==OrderStatusHomeDelivery.HANDOVER_REQUESTED)
+                {
+
+                    return VIEW_TYPE_ORDER_DELIVERY_PROFILE;
+                }
+                else
+                {
+                    return VIEW_TYPE_ORDER_WITH_BUTTON;
+                }
             }
 
         }
@@ -117,6 +155,15 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         {
             ((ViewHolderOrder) holder).setItem((Order) dataset.get(position));
         }
+        else if(holder instanceof ViewHolderOrderSelectable)
+        {
+
+            ((ViewHolderOrderSelectable)holder).setItem((Order) dataset.get(position));
+        }
+        else if(holder instanceof ViewHolderOrderWithDeliveryProfile)
+        {
+            ((ViewHolderOrderWithDeliveryProfile)holder).setItem((Order) dataset.get(position));
+        }
         else if (holder instanceof LoadingViewHolder) {
 
             ((LoadingViewHolder) holder).setLoading(loadMore);
@@ -145,6 +192,10 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         this.loadMore = loadMore;
     }
 
+
+        Map<Integer, Order> getSelectedOrders() {
+        return selectedOrders;
+    }
 
 
 }

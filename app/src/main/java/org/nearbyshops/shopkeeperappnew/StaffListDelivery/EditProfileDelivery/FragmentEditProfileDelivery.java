@@ -984,6 +984,7 @@ public class FragmentEditProfileDelivery extends Fragment {
         // this function takes the file from the source URI and saves in into the destination URI location.
         UCrop.of(sourceUri, destinationUri)
                 .withOptions(options)
+                .withMaxResultSize(900,900)
                 .start(context,this);
 
         //.withMaxResultSize(400,300)
@@ -1196,8 +1197,8 @@ public class FragmentEditProfileDelivery extends Fragment {
 
 
 
-                saveButton.setVisibility(View.VISIBLE);
-                progressBar.setVisibility(View.INVISIBLE);
+//                saveButton.setVisibility(View.VISIBLE);
+//                progressBar.setVisibility(View.INVISIBLE);
 
 
             }
@@ -1208,8 +1209,8 @@ public class FragmentEditProfileDelivery extends Fragment {
 //                showToastMessage("Image Delete failed");
 
 
-                saveButton.setVisibility(View.VISIBLE);
-                progressBar.setVisibility(View.INVISIBLE);
+//                saveButton.setVisibility(View.VISIBLE);
+//                progressBar.setVisibility(View.INVISIBLE);
 
             }
         });

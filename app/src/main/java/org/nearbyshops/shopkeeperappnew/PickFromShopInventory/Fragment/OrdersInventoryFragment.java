@@ -1,4 +1,4 @@
-package org.nearbyshops.shopkeeperappnew.PickFromShopInventory.FragmentPFS;
+package org.nearbyshops.shopkeeperappnew.PickFromShopInventory.Fragment;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -17,17 +17,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import okhttp3.ResponseBody;
 import org.nearbyshops.shopkeeperappnew.API.OrderServiceShopStaff;
+import org.nearbyshops.shopkeeperappnew.ApplicationState.ApplicationState;
 import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
+import org.nearbyshops.shopkeeperappnew.PickFromShopInventory.HomeDeliveryInventory.HomeDelivery;
 import org.nearbyshops.shopkeeperappnew.Interfaces.*;
 import org.nearbyshops.shopkeeperappnew.Model.Order;
 import org.nearbyshops.shopkeeperappnew.ModelEndpoints.OrderEndPoint;
+import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery;
 import org.nearbyshops.shopkeeperappnew.OrderDetail.OrderDetail;
 import org.nearbyshops.shopkeeperappnew.OrderDetail.PrefOrderDetail;
 import org.nearbyshops.shopkeeperappnew.OrderHistoryNew.SlidingLayerSort.PrefSortOrders;
 import org.nearbyshops.shopkeeperappnew.OrderHistoryNew.ViewHolders.ViewHolderOrder;
 import org.nearbyshops.shopkeeperappnew.PickFromShopInventory.ViewHolders.ViewHolderOrderButtonSingle;
+import org.nearbyshops.shopkeeperappnew.PickFromShopInventory.ViewHolders.ViewHolderOrderSelectable;
+import org.nearbyshops.shopkeeperappnew.PickFromShopInventory.ViewHolders.ViewHolderOrderWithDeliveryProfile;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.R;
+import org.nearbyshops.shopkeeperappnew.SelectDeliveryGuy.SelectDeliveryGuy;
+import org.nearbyshops.shopkeeperappnew.StaffListDelivery.DeliveryGuyList;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,9 +43,17 @@ import retrofit2.Response;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
-public class PickFromShopFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, ViewHolderOrderButtonSingle.ListItemClick, ViewHolderOrder.ListItemClick, NotifySort, NotifySearch, RefreshFragment {
+
+
+public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener,
+        ViewHolderOrderButtonSingle.ListItemClick, ViewHolderOrder.ListItemClick,
+        ViewHolderOrderWithDeliveryProfile.ListItemClick,
+        NotifySort, NotifySearch, RefreshFragment,
+        ViewHolderOrderSelectable.ListItemClick,
+        HomeDelivery.HandoverClicked {
 
 
 //    @Inject
@@ -64,7 +79,7 @@ public class PickFromShopFragment extends Fragment implements SwipeRefreshLayout
 
 
 
-    public PickFromShopFragment() {
+    public OrdersInventoryFragment() {
 
         DaggerComponentBuilder.getInstance()
                 .getNetComponent()
@@ -73,8 +88,8 @@ public class PickFromShopFragment extends Fragment implements SwipeRefreshLayout
     }
 
 
-    public static PickFromShopFragment newInstance(int orderStatus,boolean isPickFromShop) {
-        PickFromShopFragment fragment = new PickFromShopFragment();
+    public static OrdersInventoryFragment newInstance(int orderStatus, boolean isPickFromShop) {
+        OrdersInventoryFragment fragment = new OrdersInventoryFragment();
         Bundle args = new Bundle();
         args.putInt("order_status",orderStatus);
         args.putBoolean("is_pick_from_shop",isPickFromShop);
@@ -250,7 +265,7 @@ public class PickFromShopFragment extends Fragment implements SwipeRefreshLayout
                     PrefLogin.getAuthorizationHeaders(getActivity()),
                     null,null,
                     isPickFromShop,orderStatusHD,
-                    orderStatusPFS,null,
+                    orderStatusPFS,deliveryGuyID,
                     null,null,
                     null,null,null,
                     searchQuery,
@@ -286,6 +301,18 @@ public class PickFromShopFragment extends Fragment implements SwipeRefreshLayout
 
 //                    adapter.notifyDataSetChanged();
                     notifyTitleChanged();
+
+
+
+                    if(offset+limit >= item_count)
+                    {
+                        adapter.setLoadMore(false);
+                    }
+                    else
+                    {
+                        adapter.setLoadMore(true);
+                    }
+
 
                 }
 
@@ -440,6 +467,18 @@ public class PickFromShopFragment extends Fragment implements SwipeRefreshLayout
                 })
                 .show();
     }
+
+
+    @Override
+    public void selectionStarted() {
+
+    }
+
+    @Override
+    public void selectedStopped() {
+
+    }
+
 
 
 
@@ -786,11 +825,6 @@ public class PickFromShopFragment extends Fragment implements SwipeRefreshLayout
 
 
 
-
-
-
-
-
     @Override
     public void confirmOrderHD(Order order, int position, TextView button, ProgressBar progressBar) {
 
@@ -957,6 +991,92 @@ public class PickFromShopFragment extends Fragment implements SwipeRefreshLayout
     }
 
 
+
+    @Override
+    public void cancelHandoverHD(Order order, int position, TextView button, ProgressBar progressBar) {
+
+        button.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
+
+
+        Call<ResponseBody> call = orderServiceShopStaff.undoHandover(
+                PrefLogin.getAuthorizationHeaders(getActivity()),
+                order.getOrderID());
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+
+                if(!isVisible())
+                {
+                    return;
+                }
+
+                button.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.INVISIBLE);
+
+
+
+                if(response.code()==200)
+                {
+                    showToastMessage("Handover reversed !");
+
+                    refreshConfirmedFragment();
+                    dataset.remove(order);
+                    item_count = item_count - 1;
+                    adapter.notifyItemRemoved(position);
+                    notifyTitleChanged();
+
+                }
+                else if(response.code() == 401 || response.code() == 403)
+                {
+                    showToastMessage("Not permitted !");
+                }
+                else
+                {
+                    showToastMessage("Failed with Error Code : " + String.valueOf(response.code()));
+                }
+
+
+
+                if(item_count==0)
+                {
+                    dataset.add(EmptyScreenData.emptyScreenPFSINventory());
+                    adapter.notifyDataSetChanged();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+
+
+                if(!isVisible())
+                {
+                    return;
+                }
+
+                button.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.INVISIBLE);
+
+//                showToastMessage("Network request failed. Check your connection !");
+
+
+                dataset.clear();
+                dataset.add(EmptyScreenData.getOffline());
+                adapter.notifyDataSetChanged();
+
+            }
+        });
+    }
+
+
+
+
+
     private void cancelOrder(final Order order, final int position) {
 
 
@@ -1013,7 +1133,8 @@ public class PickFromShopFragment extends Fragment implements SwipeRefreshLayout
 
 
 
-    String searchQuery = null;
+
+    private String searchQuery = null;
 
     @Override
     public void search(final String searchString) {
@@ -1032,4 +1153,159 @@ public class PickFromShopFragment extends Fragment implements SwipeRefreshLayout
     public void refreshFragment() {
         makeRefreshNetworkCall();
     }
+
+
+
+
+
+
+
+    private int selectedDeliveryGuy = 0;
+    private ArrayList<Order> selected = new ArrayList<>();
+
+
+
+    private void handoverToDeliveryStart()
+    {
+
+
+        if(adapter.getSelectedOrders().size()==0)
+        {
+            showToastMessage("No Orders Selected !");
+
+            return;
+        }
+
+
+        selected = new ArrayList<>();
+
+        for (Map.Entry<Integer, Order> entry : adapter.getSelectedOrders().entrySet())
+        {
+//            System.out.println(entry.getKey() + "/" + entry.getValue());
+
+            selected.add(entry.getValue());
+
+        }
+
+        //intent.putExtra("selected",selected);
+
+        ApplicationState.getInstance().getSelectedOrdersForDelivery().clear();
+        ApplicationState.getInstance().getSelectedOrdersForDelivery().addAll(selected);
+
+
+//        Intent intent = new Intent(getActivity(), ConfirmItemsForDelivery.class);
+//        getActivity().startActivity(intent);
+
+
+
+
+        Intent intent = new Intent(getActivity(), DeliveryGuyList.class);
+        intent.putExtra("select_delivery_guy",true);
+
+        startActivityForResult(intent,123);
+
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==123 && resultCode==456)
+        {
+            selectedDeliveryGuy = data.getIntExtra("delivery_guy_id",0);
+            handoverTODelivery();
+        }
+        else if(requestCode==562 && resultCode==458)
+        {
+
+            deliveryGuyID=data.getIntExtra("delivery_guy_id",-1);
+
+            if(deliveryGuyID==-1)
+            {
+                deliveryGuyID=null;
+            }
+
+
+            makeRefreshNetworkCall();
+        }
+    }
+
+
+
+
+
+    private void handoverTODelivery()
+    {
+
+        Call<ResponseBody> call
+                = orderServiceShopStaff.handoverToDelivery(
+                PrefLogin.getAuthorizationHeaders(getActivity()),
+                selectedDeliveryGuy,
+                selected);
+
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+
+                if(response.code() == 200)
+                {
+                    showToastMessage("Handover Successful !");
+                    adapter.getSelectedOrders().clear();
+
+                    makeRefreshNetworkCall();
+                }
+                else
+                {
+                    showToastMessage("Error Code : " + String.valueOf(response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                showToastMessage("Network Request failed. Try again !");
+            }
+        });
+
+    }
+
+
+    @Override
+    public void handoverClicked() {
+
+        int orderStatus = getArguments().getInt("order_status");
+        boolean isPickFromShop = getArguments().getBoolean("is_pick_from_shop");
+
+
+        if(!isPickFromShop && orderStatus == OrderStatusHomeDelivery.ORDER_PACKED)
+        {
+            handoverToDeliveryStart();
+        }
+        else if(!isPickFromShop && orderStatus==OrderStatusHomeDelivery.HANDOVER_REQUESTED)
+        {
+            selectDeliveryGuy();
+        }
+
+    }
+
+
+
+
+
+
+
+    private Integer deliveryGuyID = null;
+
+
+
+    private void selectDeliveryGuy()
+    {
+        Intent intent = new Intent(getActivity(), SelectDeliveryGuy.class);
+        intent.putExtra("order_status",OrderStatusHomeDelivery.HANDOVER_REQUESTED);
+        startActivityForResult(intent,562);
+    }
+
 }

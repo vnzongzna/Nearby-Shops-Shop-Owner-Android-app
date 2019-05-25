@@ -1,10 +1,10 @@
-package org.nearbyshops.shopkeeperappnew.PickFromShopInventory;
+package org.nearbyshops.shopkeeperappnew.PickFromShopInventory.PickFromShopInventory;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusPickFromShop;
-import org.nearbyshops.shopkeeperappnew.PickFromShopInventory.FragmentPFS.PickFromShopFragment;
+import org.nearbyshops.shopkeeperappnew.PickFromShopInventory.Fragment.OrdersInventoryFragment;
 
 /**
  * Created by sumeet on 23/12/16.
@@ -26,28 +26,28 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
         if(position==0)
         {
-            return PickFromShopFragment.newInstance(OrderStatusPickFromShop.ORDER_PLACED,true);
+            return OrdersInventoryFragment.newInstance(OrderStatusPickFromShop.ORDER_PLACED,true);
         }
         else if(position==1)
         {
-            return PickFromShopFragment.newInstance(OrderStatusPickFromShop.ORDER_CONFIRMED,true);
+            return OrdersInventoryFragment.newInstance(OrderStatusPickFromShop.ORDER_CONFIRMED,true);
         }
         else if(position==2)
         {
-            return PickFromShopFragment.newInstance(OrderStatusPickFromShop.ORDER_PACKED,true);
+            return OrdersInventoryFragment.newInstance(OrderStatusPickFromShop.ORDER_PACKED,true);
         }
         else if(position==3)
         {
-            return PickFromShopFragment.newInstance(OrderStatusPickFromShop.ORDER_READY_FOR_PICKUP,true);
+            return OrdersInventoryFragment.newInstance(OrderStatusPickFromShop.ORDER_READY_FOR_PICKUP,true);
         }
         else if(position==4)
         {
-            return PickFromShopFragment.newInstance(OrderStatusPickFromShop.DELIVERED,true);
+            return OrdersInventoryFragment.newInstance(OrderStatusPickFromShop.DELIVERED,true);
         }
 
 
 
-        return PickFromShopFragment.newInstance(OrderStatusPickFromShop.ORDER_PLACED,true);
+        return OrdersInventoryFragment.newInstance(OrderStatusPickFromShop.ORDER_PLACED,true);
     }
 
     @Override

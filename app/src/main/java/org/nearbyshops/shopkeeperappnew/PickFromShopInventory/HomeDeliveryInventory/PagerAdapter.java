@@ -1,10 +1,10 @@
-package org.nearbyshops.shopkeeperappnew.HomeDeliveryInventory;
+package org.nearbyshops.shopkeeperappnew.PickFromShopInventory.HomeDeliveryInventory;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery;
-import org.nearbyshops.shopkeeperappnew.PickFromShopInventory.FragmentPFS.PickFromShopFragment;
+import org.nearbyshops.shopkeeperappnew.PickFromShopInventory.Fragment.OrdersInventoryFragment;
 
 /**
  * Created by sumeet on 13/6/16.
@@ -17,9 +17,13 @@ import org.nearbyshops.shopkeeperappnew.PickFromShopInventory.FragmentPFS.PickFr
 public class PagerAdapter extends FragmentPagerAdapter {
 
 
+
+
     public PagerAdapter(FragmentManager fm) {
         super(fm);
     }
+
+
 
     @Override
     public Fragment getItem(int position) {
@@ -27,12 +31,21 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
         if(position==0)
         {
-            return PickFromShopFragment.newInstance(OrderStatusHomeDelivery.ORDER_PLACED,false);
+            return OrdersInventoryFragment.newInstance(OrderStatusHomeDelivery.ORDER_PLACED,false);
         }
         else if(position==1)
         {
-            return PickFromShopFragment.newInstance(OrderStatusHomeDelivery.ORDER_CONFIRMED,false);
+            return OrdersInventoryFragment.newInstance(OrderStatusHomeDelivery.ORDER_CONFIRMED,false);
         }
+        else if(position==2)
+        {
+            return OrdersInventoryFragment.newInstance(OrderStatusHomeDelivery.ORDER_PACKED,false);
+        }
+        else if(position==3)
+        {
+            return OrdersInventoryFragment.newInstance(OrderStatusHomeDelivery.HANDOVER_REQUESTED,false);
+        }
+
 
         return null;
     }
@@ -41,12 +54,10 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
 
 
-
-
     @Override
     public int getCount() {
         // Show 3 total pages.
-        return 2;
+        return 4;
 
 //        return 9;
     }

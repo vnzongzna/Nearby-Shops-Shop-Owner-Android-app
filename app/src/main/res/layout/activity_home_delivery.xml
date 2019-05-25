@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="org.nearbyshops.shopkeeperappnew.HomeDeliveryInventory.HomeDelivery">
+    tools:context="org.nearbyshops.shopkeeperappnew.PickFromShopInventory.HomeDeliveryInventory.HomeDelivery">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -100,14 +100,15 @@
 
 
     <TextView
+        android:visibility="gone"
         android:layout_gravity="bottom|end"
         android:background="@color/blueGrey800"
         android:textColor="#ffffff"
-        android:gravity="center"
+        android:gravity="start"
         android:textSize="20sp"
         android:padding="10dp"
         android:layout_margin="10dp"
-        android:id="@+id/confirmItems"
+        android:id="@+id/handover_button"
         android:text="Handover\nto Delivery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
