@@ -221,4 +221,15 @@ public class NetModule {
         return retrofit.create(ServiceConfigurationService.class);
     }
 
+
+
+
+    @Provides
+    OrderServiceDeliveryPersonSelf provideOrderServiceDeliveryPerson(Retrofit retrofit)
+    {
+        return retrofit.create(OrderServiceDeliveryPersonSelf.class);
+    }
+
+
+
 }

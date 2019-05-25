@@ -37,6 +37,9 @@ public class ViewHolderOrderSelectable extends ViewHolderOrder {
     private Map<Integer,Order> selectedOrders;
 
 
+    @BindView(R.id.button_single) TextView buttonSingle;
+    @BindView(R.id.progress_bar) ProgressBar progressBar;
+
 
 
 
@@ -47,7 +50,7 @@ public class ViewHolderOrderSelectable extends ViewHolderOrder {
     {
 
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item_order,parent,false);
+                .inflate(R.layout.list_item_order_button_single,parent,false);
 
         return new ViewHolderOrderSelectable(view,context,fragment,selectedOrders, adapter);
     }
@@ -145,6 +148,18 @@ public class ViewHolderOrderSelectable extends ViewHolderOrder {
         super.setItem(order);
         this.order = order;
 
+
+        if(order.getStatusHomeDelivery()==OrderStatusHomeDelivery.RETURNED_ORDERS)
+        {
+            buttonSingle.setVisibility(View.VISIBLE);
+            buttonSingle.setText(" Unpack Order ");
+        }
+        else
+        {
+            buttonSingle.setVisibility(View.GONE);
+        }
+
+
         bindOrder();
     }
 
@@ -158,10 +173,31 @@ public class ViewHolderOrderSelectable extends ViewHolderOrder {
         }
         else
         {
-            listItem.setBackgroundResource(R.color.listItemGrey);
+            listItem.setBackgroundResource(R.color.white);
         }
     }
 
+
+
+
+
+    @OnClick(R.id.button_single)
+    void leftButtonClick()
+    {
+
+        if(fragment instanceof ListItemClick)
+        {
+
+            if(!order.isPickFromShop())
+            {
+                if(order.getStatusHomeDelivery()==OrderStatusHomeDelivery.RETURNED_ORDERS)
+                {
+                    ((ListItemClick) fragment).unpackOrderHD(order,getAdapterPosition(),buttonSingle,progressBar);
+                }
+
+            }
+        }
+    }
 
 
 
@@ -174,6 +210,7 @@ public class ViewHolderOrderSelectable extends ViewHolderOrder {
 
         void selectionStarted();
         void selectedStopped();
+        void unpackOrderHD(Order order, int position, TextView button, ProgressBar progressBar);
     }
 
 

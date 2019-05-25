@@ -29,16 +29,17 @@ public class ViewHolderOrderButtonSingle extends ViewHolderOrder {
     private Context context;
     private Order order;
     private Fragment fragment;
+    private boolean isModeDelivery;
 
 
 
-    public static ViewHolderOrderButtonSingle create(ViewGroup parent, Context context, Fragment fragment)
+    public static ViewHolderOrderButtonSingle create(ViewGroup parent, Context context, Fragment fragment, boolean isModeDelivery)
     {
 
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item_order_button_single,parent,false);
 
-        return new ViewHolderOrderButtonSingle(view,context,fragment);
+        return new ViewHolderOrderButtonSingle(view,context,fragment,isModeDelivery);
     }
 
 
@@ -47,12 +48,13 @@ public class ViewHolderOrderButtonSingle extends ViewHolderOrder {
 
 
 
-    public ViewHolderOrderButtonSingle(View itemView, Context context, Fragment fragment) {
+    public ViewHolderOrderButtonSingle(View itemView, Context context, Fragment fragment, boolean isModeDelivery) {
         super(itemView,context,fragment);
 
         ButterKnife.bind(this, itemView);
         this.context = context;
         this.fragment = fragment;
+        this.isModeDelivery = isModeDelivery;
     }
 
 
@@ -120,8 +122,17 @@ public class ViewHolderOrderButtonSingle extends ViewHolderOrder {
             {
                 buttonSingle.setText(" Packed ");
             }
-
-
+            else if(order.getStatusHomeDelivery()==OrderStatusHomeDelivery.RETURNED_ORDERS)
+            {
+                buttonSingle.setText(" Unpack Order ");
+            }
+            else if(order.getStatusHomeDelivery()==OrderStatusHomeDelivery.HANDOVER_REQUESTED)
+            {
+                if(isModeDelivery)
+                {
+                    buttonSingle.setText(" Accept Handover ");
+                }
+            }
 
         }
 
@@ -175,6 +186,15 @@ public class ViewHolderOrderButtonSingle extends ViewHolderOrder {
                 {
                     ((ListItemClick) fragment).setOrderPackedHD(order,getAdapterPosition(),buttonSingle,progressBar);
                 }
+                else if(order.getStatusHomeDelivery()==OrderStatusHomeDelivery.HANDOVER_REQUESTED)
+                {
+
+                    if(isModeDelivery)
+                    {
+                        ((ListItemClick) fragment).acceptHandover(order,getAdapterPosition(),buttonSingle,progressBar);
+                    }
+                }
+
 
             }
         }
@@ -202,6 +222,9 @@ public class ViewHolderOrderButtonSingle extends ViewHolderOrder {
 
         void confirmOrderHD(Order order, int position, TextView button, ProgressBar progressBar);
         void setOrderPackedHD(Order order, int position, TextView button, ProgressBar progressBar);
+
+
+        void acceptHandover(Order order, int position, TextView button, ProgressBar progressBar);
 
     }
 

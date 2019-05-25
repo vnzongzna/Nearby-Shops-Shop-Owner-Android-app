@@ -38,6 +38,27 @@
 
 
         <activity
+            android:launchMode="singleTop"
+            android:name=".DeliveryPersonInventory.DeliveryGuyDashboard"
+            android:label="Delivery Inventory"
+            android:parentActivityName=".Home">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Home" />
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
+
+
+
+
+        <activity
             android:name="org.nearbyshops.shopkeeperappnew.SelectDeliveryGuy.SelectDeliveryGuy"
             android:label="Select Delivery Guy"
             android:parentActivityName="org.nearbyshops.shopkeeperappnew.Home">

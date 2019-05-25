@@ -3,6 +3,7 @@ package org.nearbyshops.shopkeeperappnew.DaggerComponents;
 import dagger.Component;
 import org.nearbyshops.shopkeeperappnew.DaggerModules.AppModule;
 import org.nearbyshops.shopkeeperappnew.DaggerModules.NetModule;
+import org.nearbyshops.shopkeeperappnew.DeliveryPersonInventory.FragmentNew.DeliveryInventoryFragment;
 import org.nearbyshops.shopkeeperappnew.EditProfile.ChangeEmail.FragmentChangeEmail;
 import org.nearbyshops.shopkeeperappnew.EditProfile.ChangeEmail.FragmentVerifyEmailChange;
 import org.nearbyshops.shopkeeperappnew.EditProfile.ChangePassword.FragmentChangePassword;
@@ -11,7 +12,6 @@ import org.nearbyshops.shopkeeperappnew.EditProfile.ChangePhone.FragmentVerifyPh
 import org.nearbyshops.shopkeeperappnew.EditProfile.FragmentEditProfile;
 import org.nearbyshops.shopkeeperappnew.EditShop.EditShopFragment;
 import org.nearbyshops.shopkeeperappnew.EditShopImage.EditShopImageFragment;
-import org.nearbyshops.shopkeeperappnew.HomeDeliveryInventory.Fragment.HomeDeliveryInventoryFragment;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategoryTypeSimple.ItemsByCatFragmentSimple;
 import org.nearbyshops.shopkeeperappnew.ItemsInShop.AdapterItemsInShop;
 import org.nearbyshops.shopkeeperappnew.ItemsInShop.ItemsInShopFragment;
@@ -155,7 +155,7 @@ public interface NetComponent {
 
     void Inject(OrdersInventoryFragment ordersInventoryFragment);
 
-    void Inject(HomeDeliveryInventoryFragment homeDeliveryInventoryFragment);
-
     void Inject(SelectDeliveryFragment selectDeliveryFragment);
+
+    void Inject(DeliveryInventoryFragment deliveryInventoryFragment);
 }

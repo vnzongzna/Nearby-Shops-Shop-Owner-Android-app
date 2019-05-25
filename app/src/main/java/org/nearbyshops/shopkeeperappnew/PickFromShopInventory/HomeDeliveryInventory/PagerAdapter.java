@@ -17,8 +17,6 @@ import org.nearbyshops.shopkeeperappnew.PickFromShopInventory.Fragment.OrdersInv
 public class PagerAdapter extends FragmentPagerAdapter {
 
 
-
-
     public PagerAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -45,7 +43,26 @@ public class PagerAdapter extends FragmentPagerAdapter {
         {
             return OrdersInventoryFragment.newInstance(OrderStatusHomeDelivery.HANDOVER_REQUESTED,false);
         }
-
+        else if(position==4)
+        {
+            return OrdersInventoryFragment.newInstance(OrderStatusHomeDelivery.OUT_FOR_DELIVERY,false);
+        }
+        else if(position==5)
+        {
+            return OrdersInventoryFragment.newInstance(OrderStatusHomeDelivery.RETURN_REQUESTED,false);
+        }
+        else if(position==6)
+        {
+            return OrdersInventoryFragment.newInstance(OrderStatusHomeDelivery.RETURNED_ORDERS,false);
+        }
+        else if(position==7)
+        {
+            return OrdersInventoryFragment.newInstance(OrderStatusHomeDelivery.DELIVERED,false);
+        }
+        else if(position==8)
+        {
+            return OrdersInventoryFragment.newInstance(OrderStatusHomeDelivery.PAYMENT_RECEIVED,false);
+        }
 
         return null;
     }
@@ -54,10 +71,11 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
 
 
+
     @Override
     public int getCount() {
         // Show 3 total pages.
-        return 4;
+        return 9;
 
 //        return 9;
     }

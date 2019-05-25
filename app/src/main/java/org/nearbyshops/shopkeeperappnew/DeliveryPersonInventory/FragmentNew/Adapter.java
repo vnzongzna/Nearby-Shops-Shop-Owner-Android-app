@@ -1,9 +1,10 @@
-package org.nearbyshops.shopkeeperappnew.PickFromShopInventory.Fragment;
+package org.nearbyshops.shopkeeperappnew.DeliveryPersonInventory.FragmentNew;
 
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+import org.nearbyshops.shopkeeperappnew.DeliveryPersonInventory.ViewHolders.ViewHolderOrderButtonDouble;
 import org.nearbyshops.shopkeeperappnew.Model.Order;
 import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery;
 import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusPickFromShop;
@@ -28,14 +29,14 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     public static final int VIEW_TYPE_ORDER = 1;
     public static final int VIEW_TYPE_ORDER_WITH_BUTTON = 2;
-    public static final int VIEW_TYPE_ORDER_SELECTABLE = 3;
-    public static final int VIEW_TYPE_ORDER_DELIVERY_PROFILE = 4;
+    public static final int VIEW_TYPE_ORDER_BUTTON_DOUBLE = 3;
+
 
     public static final int VIEW_TYPE_SCROLL_PROGRESS_BAR = 5;
     public static final int VIEW_TYPE_EMPTY_SCREEN = 6;
 
 
-    private Map<Integer,Order> selectedOrders = new HashMap<>();
+//    private Map<Integer,Order> selectedOrders = new HashMap<>();
     private Fragment fragment;
 
     private boolean loadMore;
@@ -45,7 +46,7 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     Adapter(List<Object> dataset, Fragment fragment) {
         this.dataset = dataset;
         this.fragment = fragment;
-        selectedOrders.clear();
+//        selectedOrders.clear();
     }
 
 
@@ -54,22 +55,17 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         View view = null;
 
-
         if(viewType==VIEW_TYPE_ORDER)
         {
             return ViewHolderOrder.create(parent,parent.getContext(),fragment);
         }
         else if(viewType == VIEW_TYPE_ORDER_WITH_BUTTON)
         {
-            return ViewHolderOrderButtonSingle.create(parent,parent.getContext(),fragment,false);
+            return ViewHolderOrderButtonSingle.create(parent,parent.getContext(),fragment,true);
         }
-        else if(viewType == VIEW_TYPE_ORDER_SELECTABLE)
+        else if(viewType == VIEW_TYPE_ORDER_BUTTON_DOUBLE)
         {
-            return ViewHolderOrderSelectable.create(parent,parent.getContext(),fragment,selectedOrders,this);
-        }
-        else if(viewType == VIEW_TYPE_ORDER_DELIVERY_PROFILE)
-        {
-            return ViewHolderOrderWithDeliveryProfile.create(parent,parent.getContext(),fragment);
+            return ViewHolderOrderButtonDouble.create(parent,parent.getContext(),fragment);
         }
         else if (viewType == VIEW_TYPE_SCROLL_PROGRESS_BAR) {
 
@@ -99,50 +95,26 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         else if(dataset.get(position) instanceof Order)
         {
 
-            if(((Order) dataset.get(position)).isPickFromShop())
+            if(!((Order) dataset.get(position)).isPickFromShop())
             {
-                if(((Order) dataset.get(position)).getStatusPickFromShop()== OrderStatusPickFromShop.DELIVERED)
+
+
+                if(((Order) dataset.get(position)).getStatusHomeDelivery()==OrderStatusHomeDelivery.HANDOVER_REQUESTED)
                 {
-                    return VIEW_TYPE_ORDER;
-                }
-                else
-                {
+
                     return VIEW_TYPE_ORDER_WITH_BUTTON;
-                }
-
-            }
-            else
-            {
-                if(((Order) dataset.get(position)).getStatusHomeDelivery()== OrderStatusHomeDelivery.ORDER_PACKED)
-                {
-                    return VIEW_TYPE_ORDER_SELECTABLE;
-                }
-                else if(((Order) dataset.get(position)).getStatusHomeDelivery()==OrderStatusHomeDelivery.HANDOVER_REQUESTED)
-                {
-
-                    return VIEW_TYPE_ORDER_DELIVERY_PROFILE;
                 }
                 else if(((Order) dataset.get(position)).getStatusHomeDelivery()==OrderStatusHomeDelivery.OUT_FOR_DELIVERY)
                 {
 
-                    return VIEW_TYPE_ORDER_DELIVERY_PROFILE;
+                    return VIEW_TYPE_ORDER_BUTTON_DOUBLE;
                 }
                 else if(((Order) dataset.get(position)).getStatusHomeDelivery()==OrderStatusHomeDelivery.RETURN_REQUESTED)
                 {
 
-                    return VIEW_TYPE_ORDER_DELIVERY_PROFILE;
-                }
-                else if(((Order) dataset.get(position)).getStatusHomeDelivery()==OrderStatusHomeDelivery.RETURNED_ORDERS)
-                {
-
-                    return VIEW_TYPE_ORDER_SELECTABLE;
+                    return VIEW_TYPE_ORDER;
                 }
                 else if(((Order) dataset.get(position)).getStatusHomeDelivery()==OrderStatusHomeDelivery.DELIVERED)
-                {
-
-                    return VIEW_TYPE_ORDER_DELIVERY_PROFILE;
-                }
-                else if(((Order) dataset.get(position)).getStatusHomeDelivery()==OrderStatusHomeDelivery.PAYMENT_RECEIVED)
                 {
 
                     return VIEW_TYPE_ORDER;
@@ -182,14 +154,9 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         {
             ((ViewHolderOrder) holder).setItem((Order) dataset.get(position));
         }
-        else if(holder instanceof ViewHolderOrderSelectable)
+        else if(holder instanceof ViewHolderOrderButtonDouble)
         {
-
-            ((ViewHolderOrderSelectable)holder).setItem((Order) dataset.get(position));
-        }
-        else if(holder instanceof ViewHolderOrderWithDeliveryProfile)
-        {
-            ((ViewHolderOrderWithDeliveryProfile)holder).setItem((Order) dataset.get(position));
+            ((ViewHolderOrder) holder).setItem((Order) dataset.get(position));
         }
         else if (holder instanceof LoadingViewHolder) {
 
@@ -225,9 +192,9 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
 
 
-    Map<Integer, Order> getSelectedOrders() {
-        return selectedOrders;
-    }
+//    Map<Integer, Order> getSelectedOrders() {
+//        return selectedOrders;
+//    }
 
 
 }

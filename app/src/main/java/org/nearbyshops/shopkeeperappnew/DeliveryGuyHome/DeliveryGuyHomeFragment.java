@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import org.nearbyshops.shopkeeperappnew.DeliveryPersonInventory.DeliveryGuyDashboard;
 import org.nearbyshops.shopkeeperappnew.EditProfile.EditProfile;
 import org.nearbyshops.shopkeeperappnew.EditProfile.FragmentEditProfile;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifyAboutLogin;
@@ -62,11 +63,10 @@ public class DeliveryGuyHomeFragment extends Fragment {
     {
         User user = PrefLogin.getUser(getActivity());
 
+        Intent deliveryGuyDashboard = new Intent(getActivity(), DeliveryGuyDashboard.class);
+        deliveryGuyDashboard.putExtra("delivery_guy_id",user.getUserID());
 
-//        Intent deliveryGuyDashboard = new Intent(getActivity(),DeliveryGuyDashboard.class);
-//        deliveryGuyDashboard.putExtra("delivery_guy_id",user.getUserID());
-
-//        startActivity(deliveryGuyDashboard);
+        startActivity(deliveryGuyDashboard);
 
     }
 

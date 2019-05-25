@@ -102,10 +102,24 @@ public class ViewHolderOrderWithDeliveryProfile extends ViewHolderOrder {
         this.order = order;
 
 
-
         if(order.getStatusHomeDelivery()==OrderStatusHomeDelivery.HANDOVER_REQUESTED)
         {
             buttonSingle.setText(" Cancel / Undo Handover");
+            buttonSingle.setVisibility(View.VISIBLE);
+        }
+        else if(order.getStatusHomeDelivery()==OrderStatusHomeDelivery.OUT_FOR_DELIVERY)
+        {
+            buttonSingle.setVisibility(View.GONE);
+        }
+        else if(order.getStatusHomeDelivery()==OrderStatusHomeDelivery.RETURN_REQUESTED)
+        {
+            buttonSingle.setText(" Accept Return ");
+            buttonSingle.setVisibility(View.VISIBLE);
+        }
+        else if(order.getStatusHomeDelivery()==OrderStatusHomeDelivery.DELIVERED)
+        {
+            buttonSingle.setText(" Payment Received ");
+            buttonSingle.setVisibility(View.VISIBLE);
         }
 
 
@@ -114,7 +128,7 @@ public class ViewHolderOrderWithDeliveryProfile extends ViewHolderOrder {
 
 
 
-    void bindDeliveryProfile()
+    private void bindDeliveryProfile()
     {
         User user = order.getRt_delivery_guy_profile();
 
@@ -147,8 +161,16 @@ public class ViewHolderOrderWithDeliveryProfile extends ViewHolderOrder {
             {
                 ((ListItemClick) fragment).cancelHandoverHD(order,getAdapterPosition(),buttonSingle,progressBar);
             }
-
+            else if(order.getStatusHomeDelivery()== OrderStatusHomeDelivery.RETURN_REQUESTED)
+            {
+                ((ListItemClick) fragment).acceptReturnHD(order,getAdapterPosition(),buttonSingle,progressBar);
+            }
+            else if(order.getStatusHomeDelivery()== OrderStatusHomeDelivery.DELIVERED)
+            {
+                ((ListItemClick) fragment).paymentReceivedHD(order,getAdapterPosition(),buttonSingle,progressBar);
+            }
         }
+
     }
 
 
@@ -161,6 +183,8 @@ public class ViewHolderOrderWithDeliveryProfile extends ViewHolderOrder {
         void notifyCancelOrder(Order order, int position);
 
         void cancelHandoverHD(Order order, int position, TextView button, ProgressBar progressBar);
+        void acceptReturnHD(Order order, int position, TextView button, ProgressBar progressBar);
+        void paymentReceivedHD(Order order, int position, TextView button, ProgressBar progressBar);
     }
 
 

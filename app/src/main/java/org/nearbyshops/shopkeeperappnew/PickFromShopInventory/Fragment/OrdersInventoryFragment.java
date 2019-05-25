@@ -62,20 +62,21 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
     @Inject
     OrderServiceShopStaff orderServiceShopStaff;
 
-    RecyclerView recyclerView;
-    Adapter adapter;
+    private RecyclerView recyclerView;
+    private Adapter adapter;
 
     public List<Object> dataset = new ArrayList<>();
 
-    GridLayoutManager layoutManager;
-    SwipeRefreshLayout swipeContainer;
+    private GridLayoutManager layoutManager;
+    private SwipeRefreshLayout swipeContainer;
 
 
     final private int limit = 5;
-    int offset = 0;
-    int item_count = 0;
+    private int offset = 0;
+    private int item_count = 0;
 
-    boolean isDestroyed;
+
+    private boolean isDestroyed;
 
 
 
@@ -217,7 +218,9 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
     }
 
 
-    void makeRefreshNetworkCall()
+
+
+    private void makeRefreshNetworkCall()
     {
         swipeContainer.post(new Runnable() {
             @Override
@@ -232,7 +235,8 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
 
 
-    void makeNetworkCall(final boolean clearDataset)
+
+    private void makeNetworkCall(final boolean clearDataset)
     {
 
 //            Shop currentShop = UtilityShopHome.getShop(getContext());
@@ -261,15 +265,19 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
 
 
+
+
+
         Call<OrderEndPoint> call = orderServiceShopStaff.getOrders(
                     PrefLogin.getAuthorizationHeaders(getActivity()),
                     null,null,
-                    isPickFromShop,orderStatusHD,
-                    orderStatusPFS,deliveryGuyID,
+                    isPickFromShop,
+                    orderStatusHD, orderStatusPFS, deliveryGuyID,
                     null,null,
                     null,null,null,
-                    searchQuery,
-                    current_sort,limit,offset,null);
+                    searchQuery, current_sort,limit,offset,null);
+
+
 
 
 
@@ -409,7 +417,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
 
 
-    void refreshConfirmedFragment()
+    private void refreshConfirmedFragment()
     {
         Fragment fragment = getActivity().getSupportFragmentManager()
                 .findFragmentByTag(makeFragmentName(R.id.container,2));
@@ -568,8 +576,6 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
     }
 
 
-
-
     @Override
     public void setOrderPackedPFS(Order order, int position, TextView button, ProgressBar progressBar) {
 
@@ -651,8 +657,6 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
             }
         });
     }
-
-
 
 
     @Override
@@ -740,7 +744,6 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
     }
 
 
-
     @Override
     public void paymentReceivedPFS(Order order, int position, TextView button, ProgressBar progressBar) {
 
@@ -822,7 +825,6 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
             }
         });
     }
-
 
 
     @Override
@@ -908,7 +910,6 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
     }
 
 
-
     @Override
     public void setOrderPackedHD(Order order, int position, TextView button, ProgressBar progressBar) {
 
@@ -990,6 +991,10 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
         });
     }
 
+    @Override
+    public void acceptHandover(Order order, int position, TextView button, ProgressBar progressBar) {
+
+    }
 
 
     @Override
@@ -1074,6 +1079,252 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
     }
 
 
+    @Override
+    public void acceptReturnHD(Order order, int position, TextView button, ProgressBar progressBar) {
+
+        button.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
+
+
+        Call<ResponseBody> call = orderServiceShopStaff.acceptReturn(
+                PrefLogin.getAuthorizationHeaders(getActivity()),
+                order.getOrderID());
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+
+                if(!isVisible())
+                {
+                    return;
+                }
+
+                button.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.INVISIBLE);
+
+
+
+                if(response.code()==200)
+                {
+                    showToastMessage("Return Accepted !");
+
+                    refreshConfirmedFragment();
+                    dataset.remove(order);
+                    item_count = item_count - 1;
+                    adapter.notifyItemRemoved(position);
+                    notifyTitleChanged();
+
+                }
+                else if(response.code() == 401 || response.code() == 403)
+                {
+                    showToastMessage("Not permitted !");
+                }
+                else
+                {
+                    showToastMessage("Failed with Error Code : " + String.valueOf(response.code()));
+                }
+
+
+
+                if(item_count==0)
+                {
+                    dataset.add(EmptyScreenData.emptyScreenPFSINventory());
+                    adapter.notifyDataSetChanged();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+
+
+                if(!isVisible())
+                {
+                    return;
+                }
+
+                button.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.INVISIBLE);
+
+//                showToastMessage("Network request failed. Check your connection !");
+
+
+                dataset.clear();
+                dataset.add(EmptyScreenData.getOffline());
+                adapter.notifyDataSetChanged();
+
+            }
+        });
+    }
+
+
+    @Override
+    public void unpackOrderHD(Order order, int position, TextView button, ProgressBar progressBar) {
+
+
+        button.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
+
+
+
+        Call<ResponseBody> call = orderServiceShopStaff.unpackOrder(
+                PrefLogin.getAuthorizationHeaders(getActivity()),
+                order.getOrderID());
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+
+                if(!isVisible())
+                {
+                    return;
+                }
+
+                button.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.INVISIBLE);
+
+
+
+                if(response.code()==200)
+                {
+                    showToastMessage("Order Deleted !");
+
+                    refreshConfirmedFragment();
+                    dataset.remove(order);
+                    item_count = item_count - 1;
+                    adapter.notifyItemRemoved(position);
+                    notifyTitleChanged();
+
+                }
+                else if(response.code() == 401 || response.code() == 403)
+                {
+                    showToastMessage("Not permitted !");
+                }
+                else
+                {
+                    showToastMessage("Failed with Error Code : " + String.valueOf(response.code()));
+                }
+
+
+
+                if(item_count==0)
+                {
+                    dataset.add(EmptyScreenData.emptyScreenPFSINventory());
+                    adapter.notifyDataSetChanged();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+
+
+                if(!isVisible())
+                {
+                    return;
+                }
+
+                button.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.INVISIBLE);
+
+//                showToastMessage("Network request failed. Check your connection !");
+
+
+                dataset.clear();
+                dataset.add(EmptyScreenData.getOffline());
+                adapter.notifyDataSetChanged();
+
+            }
+        });
+    }
+
+
+    @Override
+    public void paymentReceivedHD(Order order, int position, TextView button, ProgressBar progressBar) {
+
+        button.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
+
+
+        Call<ResponseBody> call = orderServiceShopStaff.paymentReceived(
+                PrefLogin.getAuthorizationHeaders(getActivity()),
+                order.getOrderID());
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+
+                if(!isVisible())
+                {
+                    return;
+                }
+
+                button.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.INVISIBLE);
+
+
+
+                if(response.code()==200)
+                {
+                    showToastMessage("Done !");
+
+                    refreshConfirmedFragment();
+                    dataset.remove(order);
+                    item_count = item_count - 1;
+                    adapter.notifyItemRemoved(position);
+                    notifyTitleChanged();
+
+                }
+                else if(response.code() == 401 || response.code() == 403)
+                {
+                    showToastMessage("Not permitted !");
+                }
+                else
+                {
+                    showToastMessage("Failed with Error Code : " + String.valueOf(response.code()));
+                }
+
+
+
+                if(item_count==0)
+                {
+                    dataset.add(EmptyScreenData.emptyScreenPFSINventory());
+                    adapter.notifyDataSetChanged();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+
+
+                if(!isVisible())
+                {
+                    return;
+                }
+
+                button.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.INVISIBLE);
+
+//                showToastMessage("Network request failed. Check your connection !");
+
+
+                dataset.clear();
+                dataset.add(EmptyScreenData.getOffline());
+                adapter.notifyDataSetChanged();
+
+            }
+        });
+    }
 
 
 
@@ -1273,6 +1524,9 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
     }
 
 
+
+
+
     @Override
     public void handoverClicked() {
 
@@ -1288,6 +1542,19 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
         {
             selectDeliveryGuy();
         }
+        else if(!isPickFromShop && orderStatus==OrderStatusHomeDelivery.OUT_FOR_DELIVERY)
+        {
+            selectDeliveryGuy();
+        }
+        else if(!isPickFromShop && orderStatus==OrderStatusHomeDelivery.RETURN_REQUESTED)
+        {
+            selectDeliveryGuy();
+        }
+        else if(!isPickFromShop && orderStatus==OrderStatusHomeDelivery.RETURNED_ORDERS)
+        {
+            handoverToDeliveryStart();
+        }
+
 
     }
 
@@ -1303,8 +1570,12 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
     private void selectDeliveryGuy()
     {
+
+        int orderStatus = getArguments().getInt("order_status");
+
+
         Intent intent = new Intent(getActivity(), SelectDeliveryGuy.class);
-        intent.putExtra("order_status",OrderStatusHomeDelivery.HANDOVER_REQUESTED);
+        intent.putExtra("order_status",orderStatus);
         startActivityForResult(intent,562);
     }
 

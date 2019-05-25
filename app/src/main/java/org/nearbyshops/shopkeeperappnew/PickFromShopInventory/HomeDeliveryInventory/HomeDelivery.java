@@ -156,25 +156,30 @@ public class HomeDelivery extends AppCompatActivity implements NotifyTitleChange
 
     }
 
+
+
+
     @Override
     public void onPageSelected(int position) {
 
-        if(position==2||position==6||position==3)
+        if(position==2||position==3||position==4 || position==5 || position==6)
         {
-            confirmItemsButton.setVisibility(View.VISIBLE);
+            handoverButton.setVisibility(View.VISIBLE);
 
-            if(position==3)
+
+            if(position==3 || position==4  || position==5)
             {
-                confirmItemsButton.setText("Filter\nby Delivery");
+                handoverButton.setText("Filter\nby Delivery");
             }
             else
             {
-                confirmItemsButton.setText("Handover\nto Delivery");
+                handoverButton.setText("Handover\nto Delivery");
             }
+
         }
         else
         {
-            confirmItemsButton.setVisibility(View.GONE);
+            handoverButton.setVisibility(View.GONE);
         }
 
     }
@@ -298,7 +303,7 @@ public class HomeDelivery extends AppCompatActivity implements NotifyTitleChange
 
 
     @BindView(R.id.handover_button)
-    TextView confirmItemsButton;
+    TextView handoverButton;
 
     @OnClick(R.id.handover_button)
     void handoverClick()

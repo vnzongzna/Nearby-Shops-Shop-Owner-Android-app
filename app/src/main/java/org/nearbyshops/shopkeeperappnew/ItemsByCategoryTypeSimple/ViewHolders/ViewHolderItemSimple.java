@@ -33,8 +33,8 @@ public class ViewHolderItemSimple extends RecyclerView.ViewHolder implements Pop
     @BindView(R.id.in_shop_text) TextView inShopText;
     @BindView(R.id.itemName) TextView categoryName;
 
-    @BindView(R.id.items_list_item)
-    CardView itemCategoryListItem;
+
+    @BindView(R.id.items_list_item) CardView itemCategoryListItem;
     @BindView(R.id.itemImage) ImageView categoryImage;
     @BindView(R.id.price_range) TextView priceRange;
     @BindView(R.id.price_average) TextView priceAverage;
