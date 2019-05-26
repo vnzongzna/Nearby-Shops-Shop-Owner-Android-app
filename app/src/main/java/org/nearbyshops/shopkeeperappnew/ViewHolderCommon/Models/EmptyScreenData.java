@@ -89,6 +89,38 @@ public class EmptyScreenData {
 
 
 
+    public static EmptyScreenData emptyScreenStaffList()
+    {
+        EmptyScreenData data = new EmptyScreenData();
+        data.setTitle("You have not added any Staff Members !");
+        data.setShowDesignedByFreepik(false);
+        data.setMessage("To add staff members to your shop press the Plus Button ( + ) given below !");
+        data.setDrawableResource(R.drawable.ic_account_box_black_24px);
+
+        return data;
+    }
+
+
+
+
+
+    public static EmptyScreenData emptyScreenDeliveryStaff()
+    {
+        EmptyScreenData data = new EmptyScreenData();
+        data.setTitle("You have not added any Delivery Staff !");
+        data.setShowDesignedByFreepik(false);
+        data.setMessage("To add delivery staff to your shop press the Plus Button ( + ) given below !");
+        data.setDrawableResource(R.drawable.ic_person_pin_circle_black_24px);
+
+        return data;
+    }
+
+
+
+
+
+
+
 
     public static EmptyScreenData emptyScreenPFSINventory()
     {

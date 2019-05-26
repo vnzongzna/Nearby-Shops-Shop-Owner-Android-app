@@ -27,6 +27,7 @@ import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.StaffList.EditProfileStaff.EditProfileStaff;
 import org.nearbyshops.shopkeeperappnew.StaffList.EditProfileStaff.FragmentEditProfileStaff;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,12 +42,13 @@ import java.util.ArrayList;
 
 public class StaffListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, ViewHolderShopStaff.ListItemClick{
 
-    boolean isDestroyed = false;
 
-    @BindView(R.id.swipe_container)
-    SwipeRefreshLayout swipeContainer;
-    @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
+
+
+    private boolean isDestroyed = false;
+
+    @BindView(R.id.swipe_container) SwipeRefreshLayout swipeContainer;
+    @BindView(R.id.recycler_view) RecyclerView recyclerView;
 
 
     @Inject
@@ -55,22 +57,22 @@ public class StaffListFragment extends Fragment implements SwipeRefreshLayout.On
     @Inject
     ShopStaffLoginService service;
 
-    GridLayoutManager layoutManager;
-    Adapter listAdapter;
-
-    ArrayList<Object> dataset = new ArrayList<>();
+    private GridLayoutManager layoutManager;
+    private Adapter listAdapter;
+    private ArrayList<Object> dataset = new ArrayList<>();
 
 
     // flags
-    boolean clearDataset = false;
+    private boolean clearDataset = false;
 
-    boolean getRowCountVehicle = false;
-    boolean resetOffsetVehicle = false;
+//    boolean getRowCountVehicle = false;
+//    boolean resetOffsetVehicle = false;
 
 
-    private int limit_vehicle = 10;
-    int offset_vehicle = 0;
-    public int item_count_vehicle = 0;
+
+    private int limit = 10;
+    private int offset = 0;
+    private int item_count = 0;
 
 
 //    @BindView(R.id.drivers_count) TextView driversCount;
@@ -161,7 +163,7 @@ public class StaffListFragment extends Fragment implements SwipeRefreshLayout.On
                 if(layoutManager.findLastVisibleItemPosition()==dataset.size())
                 {
 
-                    if(offset_vehicle + limit_vehicle > layoutManager.findLastVisibleItemPosition())
+                    if(offset + limit > layoutManager.findLastVisibleItemPosition())
                     {
                         return;
                     }
@@ -169,11 +171,11 @@ public class StaffListFragment extends Fragment implements SwipeRefreshLayout.On
 
                     // trigger fetch next page
 
-                    if((offset_vehicle + limit_vehicle)<= item_count_vehicle)
+                    if((offset + limit)<= item_count)
                     {
-                        offset_vehicle = offset_vehicle + limit_vehicle;
+                        offset = offset + limit;
 
-                        getTripHistory();
+                        getStaffProfiles();
                     }
 
 
@@ -218,10 +220,10 @@ public class StaffListFragment extends Fragment implements SwipeRefreshLayout.On
     public void onRefresh() {
 
         clearDataset = true;
-        getRowCountVehicle = true;
-        resetOffsetVehicle = true;
+//        getRowCountVehicle = true;
+//        resetOffsetVehicle = true;
 
-        getTripHistory();
+        getStaffProfiles();
     }
 
 
@@ -229,29 +231,14 @@ public class StaffListFragment extends Fragment implements SwipeRefreshLayout.On
 
 
 
-    /* Token renewal variables : BEGIN */
-
-    // constants - request codes for token renewal
-    public static final int REQUEST_CODE_GET_REQUESTS = 1;
-    private static final int REQUEST_CODE_GET_CURRENT_TRIP = 2;
-
-    // housekeeping for token renewal
-    int token_renewal_attempts = 0;  // variable to keep record of renewal attempts
-    int token_renewal_request_code = -1; // variable to store the request code;
-
-    /* Token renewal variables : END */
 
 
-
-
-
-    void getTripHistory()
+    void getStaffProfiles()
     {
 
-        if(resetOffsetVehicle)
+        if(clearDataset)
         {
-            offset_vehicle = 0;
-            resetOffsetVehicle = false;
+            offset = 0;
         }
 
 
@@ -270,8 +257,8 @@ public class StaffListFragment extends Fragment implements SwipeRefreshLayout.On
                 (double) PrefLocation.getLatitude(getActivity()),(double)PrefLocation.getLongitude(getActivity()),
                 null,null,
                 null,null,
-                limit_vehicle,offset_vehicle,
-                getRowCountVehicle,false
+                limit, offset,
+                clearDataset,false
         );
 
 
@@ -293,19 +280,16 @@ public class StaffListFragment extends Fragment implements SwipeRefreshLayout.On
                         dataset.clear();
                         clearDataset = false;
 
-//                        dataset.add(new FilterSubmissions());
+                        item_count = response.body().getItemCount();
+
+                        if(item_count>0)
+                        {
+                            dataset.add(new HeaderTitle("Staff Members"));
+                        }
                     }
 
 
-                    if (getRowCountVehicle) {
 
-                        item_count_vehicle = response.body().getItemCount();
-                        getRowCountVehicle = false;
-
-//                            dataset.add(new HeaderTitle("Type of Data"));
-
-                        dataset.add(new HeaderTitle("Staff Members"));
-                    }
 
 
                     if(response.body().getResults()!=null)
@@ -313,8 +297,29 @@ public class StaffListFragment extends Fragment implements SwipeRefreshLayout.On
                         dataset.addAll(response.body().getResults());
                     }
 
-                    listAdapter.notifyDataSetChanged();
+
+
+
+
+                    if(item_count==0)
+                    {
+                        dataset.add(EmptyScreenData.emptyScreenStaffList());
+
+                    }
+
+
+                    if(offset + limit >= item_count)
+                    {
+                        listAdapter.setLoadMore(false);
+                    }
+                    else
+                    {
+                        listAdapter.setLoadMore(true);
+                    }
                 }
+
+
+                listAdapter.notifyDataSetChanged();
 
 
                 swipeContainer.setRefreshing(false);
@@ -329,9 +334,15 @@ public class StaffListFragment extends Fragment implements SwipeRefreshLayout.On
                     return;
                 }
 
-                showToastMessage("Network Connection Failed !");
+//                showToastMessage("Network Connection Failed !");
 
                 swipeContainer.setRefreshing(false);
+
+
+                dataset.clear();
+                dataset.add(EmptyScreenData.getOffline());
+                listAdapter.notifyDataSetChanged();
+
             }
         });
 

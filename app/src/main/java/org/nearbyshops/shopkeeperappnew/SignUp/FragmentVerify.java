@@ -550,8 +550,8 @@ public class FragmentVerify extends Fragment {
 
 
 
-            Gson gson = new Gson();
-            logMessage(gson.toJson(user));
+//            Gson gson = new Gson();
+//            logMessage(gson.toJson(user));
 
             int userRoleForRegistration = getActivity().getIntent().getIntExtra("user_role", User.ROLE_SHOP_ADMIN_CODE);
 

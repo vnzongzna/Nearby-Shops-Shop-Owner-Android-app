@@ -59,25 +59,26 @@ public class OrderHistoryFragmentNew extends Fragment implements SwipeRefreshLay
     OrderServiceShopStaff orderServiceShopStaff;
 
 
-    RecyclerView recyclerView;
-    AdapterOrders adapter;
+    private RecyclerView recyclerView;
+    private AdapterOrders adapter;
 
     public List<Object> dataset = new ArrayList<>();
 
     GridLayoutManager layoutManager;
-    SwipeRefreshLayout swipeContainer;
+    private SwipeRefreshLayout swipeContainer;
 
 
     final private int limit = 10;
-    int offset = 0;
-    int item_count = 0;
+    private int offset = 0;
+    private int item_count = 0;
 
-    boolean isDestroyed;
+    private boolean isDestroyed;
 
 
-    @BindView(R.id.slidingLayer)
-    SlidingLayer slidingLayer;
+    @BindView(R.id.slidingLayer) SlidingLayer slidingLayer;
     @BindView(R.id.shop_count_indicator) TextView orderCountIndicator;
+
+
 
 
 

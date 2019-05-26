@@ -118,7 +118,7 @@
             <TextView
                 android:textStyle="normal"
                 android:id="@+id/header"
-                android:text="Step 2 : Enter Phone"
+                android:text="Step 2 : Enter E-mail or Phone"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"

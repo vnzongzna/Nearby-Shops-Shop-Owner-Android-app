@@ -123,15 +123,16 @@
 
 
 
+
         <activity
             android:label="Sign Up"
             android:name="org.nearbyshops.shopkeeperappnew.SignUp.SignUp"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustResize" />
 
 
         <activity
             android:name="org.nearbyshops.shopkeeperappnew.Login.Login"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustResize" />
 
 
 

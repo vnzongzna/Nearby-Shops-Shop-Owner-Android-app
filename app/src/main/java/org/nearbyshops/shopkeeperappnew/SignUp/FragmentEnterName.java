@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import butterknife.BindView;
@@ -11,6 +12,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.google.android.material.textfield.TextInputEditText;
 import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
+import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.SignUp.Interfaces.ShowFragmentSignUp;
 import org.nearbyshops.shopkeeperappnew.SignUp.PrefSignUp.PrefrenceSignUp;
@@ -26,6 +28,8 @@ public class FragmentEnterName extends Fragment {
     TextInputEditText name;
 //    @BindView(R.id.referrar_user_id)
 //    TextInputEditText referrerUserID;
+
+    @BindView(R.id.header) TextView header;
 
 
 
@@ -104,6 +108,27 @@ public class FragmentEnterName extends Fragment {
         name.requestFocus();
 
 //        referrerUserID.setText(String.valueOf(user.getReferredBy()));
+
+
+
+        int userRoleForRegistration = getActivity().getIntent().getIntExtra("user_role", User.ROLE_SHOP_ADMIN_CODE);
+
+
+        if(userRoleForRegistration== User.ROLE_SHOP_STAFF_CODE)
+        {
+
+            header.setText("Step 1 : Enter Staff name");
+
+        }
+        else if(userRoleForRegistration== User.ROLE_DELIVERY_GUY_SELF_CODE)
+        {
+            header.setText("Step 1 : Enter Delivery Person Name");
+        }
+        else
+        {
+            header.setText("Step 1 : Enter Your name");
+        }
+
 
     }
 

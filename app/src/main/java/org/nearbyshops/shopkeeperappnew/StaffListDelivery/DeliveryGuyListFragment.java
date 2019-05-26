@@ -27,6 +27,7 @@ import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.StaffListDelivery.EditProfileDelivery.EditProfileDelivery;
 import org.nearbyshops.shopkeeperappnew.StaffListDelivery.EditProfileDelivery.FragmentEditProfileDelivery;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,7 +40,7 @@ import java.util.ArrayList;
  * Created by sumeet on 14/6/17.
  */
 
-public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, Adapter.NotificationsFromAdapter{
+public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, ViewHolderDeliveryProfile.ListItemClick{
 
     boolean isDestroyed = false;
 
@@ -55,22 +56,25 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
     @Inject
     DeliveryGuyLoginService service;
 
-    GridLayoutManager layoutManager;
-    Adapter listAdapter;
 
-    ArrayList<Object> dataset = new ArrayList<>();
+
+
+    private GridLayoutManager layoutManager;
+    private Adapter listAdapter;
+
+    private ArrayList<Object> dataset = new ArrayList<>();
 
 
     // flags
-    boolean clearDataset = false;
+    private boolean clearDataset = false;
 
-    boolean getRowCountVehicle = false;
-    boolean resetOffsetVehicle = false;
+//    boolean getRowCountVehicle = false;
+//    boolean resetOffsetVehicle = false;
 
 
-    private int limit_vehicle = 10;
-    int offset_vehicle = 0;
-    public int item_count_vehicle = 0;
+    private int limit = 10;
+    private int offset = 0;
+    public int item_count = 0;
 
 
 //    @BindView(R.id.drivers_count) TextView driversCount;
@@ -135,10 +139,13 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
 
 
 
+
+
+
     void setupRecyclerView()
     {
 
-        listAdapter = new Adapter(dataset,getActivity(),this,this);
+        listAdapter = new Adapter(dataset,getActivity(),this);
         recyclerView.setAdapter(listAdapter);
 
         layoutManager = new GridLayoutManager(getActivity(),1, LinearLayoutManager.VERTICAL,false);
@@ -162,7 +169,7 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
                 if(layoutManager.findLastVisibleItemPosition()==dataset.size())
                 {
 
-                    if(offset_vehicle + limit_vehicle > layoutManager.findLastVisibleItemPosition())
+                    if(offset + limit > layoutManager.findLastVisibleItemPosition())
                     {
                         return;
                     }
@@ -170,11 +177,11 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
 
                     // trigger fetch next page
 
-                    if((offset_vehicle + limit_vehicle)<= item_count_vehicle)
+                    if((offset + limit)<= item_count)
                     {
-                        offset_vehicle = offset_vehicle + limit_vehicle;
+                        offset = offset + limit;
 
-                        getTripHistory();
+                        getDeliveryProfiles();
                     }
 
 
@@ -219,10 +226,10 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
     public void onRefresh() {
 
         clearDataset = true;
-        getRowCountVehicle = true;
-        resetOffsetVehicle = true;
+//        getRowCountVehicle = true;
+//        resetOffsetVehicle = true;
 
-        getTripHistory();
+        getDeliveryProfiles();
     }
 
 
@@ -231,13 +238,12 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
 
 
 
-    void getTripHistory()
+    private void getDeliveryProfiles()
     {
 
-        if(resetOffsetVehicle)
+        if(clearDataset)
         {
-            offset_vehicle = 0;
-            resetOffsetVehicle = false;
+            offset = 0;
         }
 
 
@@ -251,14 +257,12 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
 
 
 
-
-
         Call<UserEndpoint> call = service.getDeliveryGuyForShopAdmin(
                 PrefLogin.getAuthorizationHeaders(getActivity()),
                 (double) PrefLocation.getLatitude(getActivity()),(double)PrefLocation.getLongitude(getActivity()),
                 null,null,
-                limit_vehicle,offset_vehicle,
-                getRowCountVehicle,false
+                limit, offset,
+                clearDataset,false
         );
 
 
@@ -276,23 +280,19 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
 
                 if(response.code() == 200 && response.body()!=null) {
 
+
                     if (clearDataset) {
                         dataset.clear();
                         clearDataset = false;
 
-//                        dataset.add(new FilterSubmissions());
+                        item_count = response.body().getItemCount();
+
+                        if(item_count>0)
+                        {
+                            dataset.add(new HeaderTitle("Delivery Staff"));
+                        }
                     }
 
-
-                    if (getRowCountVehicle) {
-
-                        item_count_vehicle = response.body().getItemCount();
-                        getRowCountVehicle = false;
-
-//                            dataset.add(new HeaderTitle("Type of Data"));
-
-                        dataset.add(new HeaderTitle("Delivery Staff"));
-                    }
 
 
                     if(response.body().getResults()!=null)
@@ -300,9 +300,30 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
                         dataset.addAll(response.body().getResults());
                     }
 
-                    listAdapter.notifyDataSetChanged();
+
+
+//                    showToastMessage("Item Count : " + item_count);
+
+                    if(item_count==0)
+                    {
+                        dataset.add(EmptyScreenData.emptyScreenDeliveryStaff());
+
+                    }
+
+
+                    if(offset + limit >= item_count)
+                    {
+                        listAdapter.setLoadMore(false);
+                    }
+                    else
+                    {
+                        listAdapter.setLoadMore(true);
+                    }
                 }
 
+
+
+                listAdapter.notifyDataSetChanged();
 
                 swipeContainer.setRefreshing(false);
             }
@@ -316,9 +337,15 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
                     return;
                 }
 
-                showToastMessage("Network Connection Failed !");
+//                showToastMessage("Network Connection Failed !");
 
                 swipeContainer.setRefreshing(false);
+
+
+                dataset.clear();
+                dataset.add(EmptyScreenData.getOffline());
+                listAdapter.notifyDataSetChanged();
+
             }
         });
 
@@ -341,11 +368,6 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
 //    }
 
 
-
-    @Override
-    public void notifyTripRequestSelected() {
-
-    }
 
 
 
@@ -391,14 +413,10 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
 
 
 
+
     @Override
-    public boolean listItemLongClick(View view, User tripRequest, int position) {
+    public boolean listItemLongClick(User user, int position) {
         return false;
     }
-
-
-
-
-
 
 }
