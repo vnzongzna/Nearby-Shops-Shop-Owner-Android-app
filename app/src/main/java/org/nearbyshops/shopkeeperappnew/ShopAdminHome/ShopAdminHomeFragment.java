@@ -664,18 +664,13 @@ public class ShopAdminHomeFragment extends Fragment implements SwipeRefreshLayou
                     return;
                 }
 
-                showToastMessage("Failed !");
-                shopOpenSwitch.setChecked(false);
+                showToastMessage("Failed : Check you Network Connection !");
+                shopOpenSwitch.setChecked(!shopOpenSwitch.isChecked());
                 progressSwitch.setVisibility(View.GONE);
             }
         });
 
     }
-
-
-
-
-
 
 
 
@@ -731,16 +726,13 @@ public class ShopAdminHomeFragment extends Fragment implements SwipeRefreshLayou
                     return;
                 }
 
-                showToastMessage("Failed !");
-                shopOpenSwitch.setChecked(false);
+                showToastMessage("Failed : Check you Network Connection !");
+                shopOpenSwitch.setChecked(!shopOpenSwitch.isChecked());
                 progressSwitch.setVisibility(View.GONE);
             }
         });
 
     }
-
-
-
 
 
 }
