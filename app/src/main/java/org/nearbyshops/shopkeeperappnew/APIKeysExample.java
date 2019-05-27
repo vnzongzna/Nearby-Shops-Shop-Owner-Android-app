@@ -9,5 +9,4 @@ public class APIKeysExample {
     public static final String styleURLStreets = "put-style-url-with-api-key-here";
     public static final String styleURLBright = "put-style-url-with-api-key-here";
 
-
 }

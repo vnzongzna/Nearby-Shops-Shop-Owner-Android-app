@@ -24,6 +24,18 @@ public interface ShopService {
                                     @Body Shop shop);
 
 
+
+    @PUT ("/api/v1/Shop/SetShopOpen")
+    Call<ResponseBody> updateShopOpen(@Header("Authorization") String headers);
+
+
+
+    @PUT ("/api/v1/Shop/SetShopClosed")
+    Call<ResponseBody> updateShopClosed(@Header("Authorization") String headers);
+
+
+
+
     @DELETE("/api/v1/Shop/{id}")
     Call<ResponseBody> deleteShop(@Header("Authorization") String headers,
                                   @Path("id") int id);

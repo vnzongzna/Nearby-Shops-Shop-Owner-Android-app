@@ -6,10 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
@@ -19,6 +16,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.ResponseBody;
 import org.nearbyshops.shopkeeperappnew.API.ShopService;
 import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
 import org.nearbyshops.shopkeeperappnew.EditProfile.EditProfile;
@@ -52,6 +50,7 @@ public class ShopAdminHomeFragment extends Fragment implements SwipeRefreshLayou
     @BindView(R.id.shop_open_status) ImageView shopOpenStatus;
     @BindView(R.id.header) TextView headerText;
     @BindView(R.id.shop_open_switch) Switch shopOpenSwitch;
+    @BindView(R.id.progress_switch) ProgressBar progressSwitch;
 
     @BindView(R.id.current_dues) TextView currentDues;
     @BindView(R.id.credit_limit) TextView creditLimit;
@@ -468,6 +467,7 @@ public class ShopAdminHomeFragment extends Fragment implements SwipeRefreshLayou
 
                 shopOpenSwitch.setChecked(true);
 
+
                 if(shop.getAccountBalance()<shop.getRt_min_balance())
                 {
                     shopOpenStatus.setVisibility(View.GONE);
@@ -475,14 +475,18 @@ public class ShopAdminHomeFragment extends Fragment implements SwipeRefreshLayou
                 else
                 {
                     shopOpenStatus.setVisibility(View.VISIBLE);
+                    shopOpenStatus.setImageDrawable(ContextCompat.getDrawable(getActivity(),R.drawable.open));
                 }
 
                 headerText.setText("Shop Open");
             }
             else
             {
-                shopOpenStatus.setVisibility(View.GONE);
+//                shopOpenStatus.setVisibility(View.GONE);
+                shopOpenStatus.setImageDrawable(ContextCompat.getDrawable(getActivity(),R.drawable.shop_closed_small));
+
                 shopOpenSwitch.setChecked(false);
+
                 headerText.setText("Shop Closed");
             }
         }
@@ -579,6 +583,164 @@ public class ShopAdminHomeFragment extends Fragment implements SwipeRefreshLayou
             }
         });
     }
+
+
+
+
+
+
+
+
+
+    @OnClick(R.id.shop_open_switch)
+    void shopSwitchClick()
+    {
+        if(shopOpenSwitch.isChecked())
+        {
+//            showToastMessage("Checked !");
+            updateShopOpen();
+        }
+        else
+        {
+//            showToastMessage("Not checked !");
+            updateShopClosed();
+        }
+
+    }
+
+
+
+
+
+
+    void updateShopOpen()
+    {
+
+
+        progressSwitch.setVisibility(View.VISIBLE);
+
+        Call<ResponseBody> call = shopService.updateShopOpen(
+                PrefLogin.getAuthorizationHeaders(getActivity())
+        );
+
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+
+                if(!isVisible())
+                {
+                    return;
+                }
+
+
+                if(response.code()==200)
+                {
+//                    showToastMessage("Shop Open !");
+
+                    Shop shop = PrefShopHome.getShop(getActivity());
+                    shop.setOpen(true);
+                    PrefShopHome.saveShop(shop,getActivity());
+
+                    bindShopOpenStatus();
+                }
+                else
+                {
+                    showToastMessage("Failed Code : "  + String.valueOf(response.code()));
+                    shopOpenSwitch.setChecked(!shopOpenSwitch.isChecked());
+                }
+
+
+                progressSwitch.setVisibility(View.GONE);
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                if(!isVisible())
+                {
+                    return;
+                }
+
+                showToastMessage("Failed !");
+                shopOpenSwitch.setChecked(false);
+                progressSwitch.setVisibility(View.GONE);
+            }
+        });
+
+    }
+
+
+
+
+
+
+
+
+    void updateShopClosed()
+    {
+
+
+        progressSwitch.setVisibility(View.VISIBLE);
+
+        Call<ResponseBody> call = shopService.updateShopClosed(
+                PrefLogin.getAuthorizationHeaders(getActivity())
+        );
+
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+
+                if(!isVisible())
+                {
+                    return;
+                }
+
+
+                if(response.code()==200)
+                {
+//                    showToastMessage("Shop Closed !");
+
+
+                    Shop shop = PrefShopHome.getShop(getActivity());
+                    shop.setOpen(false);
+                    PrefShopHome.saveShop(shop,getActivity());
+
+                    bindShopOpenStatus();
+                }
+                else
+                {
+                    showToastMessage("Failed Code : "  + String.valueOf(response.code()));
+                    shopOpenSwitch.setChecked(!shopOpenSwitch.isChecked());
+                }
+
+
+                progressSwitch.setVisibility(View.GONE);
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                if(!isVisible())
+                {
+                    return;
+                }
+
+                showToastMessage("Failed !");
+                shopOpenSwitch.setChecked(false);
+                progressSwitch.setVisibility(View.GONE);
+            }
+        });
+
+    }
+
+
+
 
 
 }
