@@ -10,7 +10,7 @@ Nearby Shops helps you build your own self-hosted mobile based local marketplace
 
 
 Nearby Shops is a multi-vendor mobile based e-commerce platform. Multi-vendor means it can have multiple sellers. 
-Its designed primarily for local shopping needs like shopping grocery, fruits and vegetables. 
+Its designed primarily but not limited to local shopping needs like shopping grocery, fruits and vegetables. 
 
 It has 3 android apps each for End-User, Shop-Owner and adminstrator and a JSON based REST API at the backend. 
 
