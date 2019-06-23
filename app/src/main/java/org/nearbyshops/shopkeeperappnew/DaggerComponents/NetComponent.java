@@ -31,7 +31,7 @@ import org.nearbyshops.shopkeeperappnew.Markets.ViewHolders.ViewHolderSavedMarke
 import org.nearbyshops.shopkeeperappnew.Markets.ViewModels.MarketViewModel;
 import org.nearbyshops.shopkeeperappnew.OneSignal.UpdateOneSignalID;
 import org.nearbyshops.shopkeeperappnew.OrderDetail.FragmentOrderDetail;
-import org.nearbyshops.shopkeeperappnew.OrderHistory.OrderHistoryFragmentNew;
+import org.nearbyshops.shopkeeperappnew.OrderHistory.OrderHistoryFragment;
 import org.nearbyshops.shopkeeperappnew.OrdersInventory.Fragment.OrdersInventoryFragment;
 import org.nearbyshops.shopkeeperappnew.QuickStockEditor.FragmentShopItem;
 import org.nearbyshops.shopkeeperappnew.QuickStockEditor.ViewHolders.ViewHolderShopItem;
@@ -115,7 +115,7 @@ public interface NetComponent {
 
     void Inject(FragmentOrderDetail fragmentOrderDetail);
 
-    void Inject(OrderHistoryFragmentNew orderHistoryFragmentNew);
+    void Inject(OrderHistoryFragment orderHistoryFragment);
 
     void Inject(ItemsByCatFragmentSimple itemsByCatFragmentSimple);
 

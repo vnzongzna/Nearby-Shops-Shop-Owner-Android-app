@@ -49,7 +49,7 @@ public class OrderHistory extends AppCompatActivity implements NotifySort{
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment_container,new OrderHistoryFragmentNew(),"order_history")
+                .replace(R.id.fragment_container,new OrderHistoryFragment(),"order_history")
                 .commit();
 
 

@@ -99,6 +99,10 @@ public class AdapterItemsInShop extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
 
+
+
+
+
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
@@ -125,6 +129,13 @@ public class AdapterItemsInShop extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
 
     }
+
+
+
+
+
+
+
 
 
     @Override

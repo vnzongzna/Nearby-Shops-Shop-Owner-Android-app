@@ -128,7 +128,10 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
     }
 
 
-    void setupSwipeContainer()
+
+
+
+    private void setupSwipeContainer()
     {
         if(swipeContainer!=null) {
 
@@ -142,7 +145,10 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
     }
 
 
-    void setupRecyclerView()
+
+
+
+    private void setupRecyclerView()
     {
 
         adapter = new Adapter(dataset,this);

@@ -71,17 +71,18 @@ public class FragmentEmailOrPhone extends Fragment {
 
 //    int phoneOrEmail = 1; // flag for indicating the input mode 1 for phone and 2 for email
 
-    boolean phoneIsAvailable = false;
-    boolean emailIsAvailable = false;
+    private boolean phoneIsAvailable = false;
+    private boolean emailIsAvailable = false;
 
-    User user;
+    private User user;
 
 
     @Inject
     UserService userService;
 
 
-    boolean isDestroyed = false;
+
+    private boolean isDestroyed = false;
 
 
     @BindView(R.id.next) TextView nextButton;
@@ -175,6 +176,7 @@ public class FragmentEmailOrPhone extends Fragment {
 
 
 
+
     @OnClick(R.id.select_email)
     void selectEmailClick()
     {
@@ -205,8 +207,6 @@ public class FragmentEmailOrPhone extends Fragment {
         textAvailable.setVisibility(View.INVISIBLE);
         textInputChanged();
     }
-
-
 
 
 
@@ -245,7 +245,11 @@ public class FragmentEmailOrPhone extends Fragment {
 
 
 
-    void bindViews()
+
+
+
+
+    private void bindViews()
     {
             phone.setText(user.getPhone());
             email.setText(user.getEmail());
@@ -258,7 +262,7 @@ public class FragmentEmailOrPhone extends Fragment {
 
 
 
-    void saveDataFromViews()
+    private void saveDataFromViews()
     {
 
 //            user.setPhone(ccp.getSelectedCountryCode()+phone.getText().toString());
@@ -303,7 +307,10 @@ public class FragmentEmailOrPhone extends Fragment {
 
 
 
-    boolean isDataValid(boolean showError)
+
+
+
+    private boolean isDataValid(boolean showError)
     {
 
         boolean isValid = true;
@@ -419,7 +426,11 @@ public class FragmentEmailOrPhone extends Fragment {
 
 
 
-    void checkUsernameExist(final boolean initiateNext, final boolean showNextButtonProgress)
+
+
+
+
+    private void checkUsernameExist(final boolean initiateNext, final boolean showNextButtonProgress)
     {
         String inputName = "";
 
@@ -578,7 +589,7 @@ public class FragmentEmailOrPhone extends Fragment {
 
 
 
-    void initiateNext()
+    private void initiateNext()
     {
         if(!isDataValid(true))
         {

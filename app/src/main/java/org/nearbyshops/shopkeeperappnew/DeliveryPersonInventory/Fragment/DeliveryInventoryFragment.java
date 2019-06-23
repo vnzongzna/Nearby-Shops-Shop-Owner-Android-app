@@ -123,7 +123,9 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
     }
 
 
-    void setupSwipeContainer()
+
+
+    private void setupSwipeContainer()
     {
         if(swipeContainer!=null) {
 
@@ -138,9 +140,7 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
 
 
-
-
-    void setupRecyclerView()
+    private void setupRecyclerView()
     {
 
         adapter = new Adapter(dataset,this);
@@ -398,7 +398,9 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
 
 
-    void showToastMessage(String message)
+
+
+    private void showToastMessage(String message)
     {
         if(getActivity()!=null)
         {
@@ -411,10 +413,7 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
 
 
-
-
-
-    void notifyTitleChanged()
+    private void notifyTitleChanged()
     {
 
         if(getActivity() instanceof NotifyTitleChangedNew)

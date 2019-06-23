@@ -44,10 +44,8 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
 
     boolean isDestroyed = false;
 
-    @BindView(R.id.swipe_container)
-    SwipeRefreshLayout swipeContainer;
-    @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
+    @BindView(R.id.swipe_container) SwipeRefreshLayout swipeContainer;
+    @BindView(R.id.recycler_view) RecyclerView recyclerView;
 
 
     @Inject
@@ -55,6 +53,8 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
 
     @Inject
     DeliveryGuyLoginService service;
+
+
 
 
 
@@ -122,7 +122,9 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
 
 
 
-    void setupSwipeContainer()
+
+
+    private void setupSwipeContainer()
     {
 
         if(swipeContainer!=null) {
@@ -141,8 +143,7 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
 
 
 
-
-    void setupRecyclerView()
+    private void setupRecyclerView()
     {
 
         listAdapter = new Adapter(dataset,getActivity(),this);
@@ -207,7 +208,10 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
 
 
 
-    void makeRefreshNetworkCall()
+
+
+
+    private void makeRefreshNetworkCall()
     {
         swipeContainer.post(new Runnable() {
             @Override

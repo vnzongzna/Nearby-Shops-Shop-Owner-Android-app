@@ -224,6 +224,12 @@ public class ViewHolderShopItem extends RecyclerView.ViewHolder{
 
     }
 
+
+
+
+
+
+
     @OnClick(R.id.increaseQuantity)
     void increaseQuantityClick(View view)
     {
@@ -528,7 +534,10 @@ public class ViewHolderShopItem extends RecyclerView.ViewHolder{
 
 
 
-    void removeShopItem(final ShopItem shopItem)
+
+
+
+    private void removeShopItem(final ShopItem shopItem)
     {
 
         Call<ResponseBody> responseBodyCall = shopItemService.deleteShopItem(
@@ -623,9 +632,6 @@ public class ViewHolderShopItem extends RecyclerView.ViewHolder{
 
 
 
-
-
-
     public void bindShopItem(ShopItem shopItem)
     {
 
@@ -674,14 +680,12 @@ public class ViewHolderShopItem extends RecyclerView.ViewHolder{
     }
 
 
-    void showToastMessage(String message)
+
+
+    private void showToastMessage(String message)
     {
         Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
     }
-
-
-
-
 
 
 

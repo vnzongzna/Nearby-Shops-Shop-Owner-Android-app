@@ -43,15 +43,18 @@ public class FragmentShopItem extends Fragment implements SwipeRefreshLayout.OnR
 
     @Inject
     ShopItemService shopItemService;
-    RecyclerView recyclerView;
-    AdapterShopItem adapter;
+    private RecyclerView recyclerView;
+    private AdapterShopItem adapter;
+
 
     public ArrayList<Object> dataset = new ArrayList<>();
 
-    GridLayoutManager layoutManager;
-    SwipeRefreshLayout swipeContainer;
+    private GridLayoutManager layoutManager;
+    private SwipeRefreshLayout swipeContainer;
 
-    NotificationReceiverPager notificationReceiverPager;
+    private NotificationReceiverPager notificationReceiverPager;
+
+
 
     public static String ARG_MODE_KEY = "mode_key";
 
@@ -63,9 +66,10 @@ public class FragmentShopItem extends Fragment implements SwipeRefreshLayout.OnR
 
 
 
+
     private int limit = 10;
-    int offset = 0;
-    int item_count = 0;
+    private int offset = 0;
+    private int item_count = 0;
 
 
 
@@ -78,6 +82,9 @@ public class FragmentShopItem extends Fragment implements SwipeRefreshLayout.OnR
 
     }
 
+
+
+
     /**
      * Returns a new instance of this fragment for the given section
      * number.
@@ -89,6 +96,13 @@ public class FragmentShopItem extends Fragment implements SwipeRefreshLayout.OnR
         fragment.setArguments(args);
         return fragment;
     }
+
+
+
+
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -111,7 +125,13 @@ public class FragmentShopItem extends Fragment implements SwipeRefreshLayout.OnR
     }
 
 
-    void setupSwipeContainer()
+
+
+
+
+
+
+    private void setupSwipeContainer()
     {
         if(swipeContainer!=null) {
 
@@ -126,7 +146,8 @@ public class FragmentShopItem extends Fragment implements SwipeRefreshLayout.OnR
 
 
 
-    void setupRecyclerView()
+
+    private void setupRecyclerView()
     {
 
         adapter = new AdapterShopItem(dataset,getActivity(),this);
@@ -365,7 +386,10 @@ public class FragmentShopItem extends Fragment implements SwipeRefreshLayout.OnR
 
 
 
-    void showToastMessage(String message)
+
+
+
+    private void showToastMessage(String message)
     {
         if(getActivity()!=null)
         {
@@ -579,7 +603,11 @@ public class FragmentShopItem extends Fragment implements SwipeRefreshLayout.OnR
 
 
 
-    void notifyTitleChanged()
+
+
+
+
+    private void notifyTitleChanged()
     {
 
         if(getActivity() instanceof NotifyTitleChanged)
