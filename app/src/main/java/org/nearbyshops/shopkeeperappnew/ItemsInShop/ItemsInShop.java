@@ -18,8 +18,8 @@ import butterknife.OnClick;
 import com.wunderlist.slidinglayer.SlidingLayer;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySearch;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySort;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategoryTypeSimple.Interfaces.NotifyBackPressed;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategoryTypeSimple.Interfaces.NotifyIndicatorChanged;
+import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyBackPressed;
+import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyIndicatorChanged;
 import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.SlidingLayerSort.SlidingLayerSortItemsInShop;
 import org.nearbyshops.shopkeeperappnew.R;
 

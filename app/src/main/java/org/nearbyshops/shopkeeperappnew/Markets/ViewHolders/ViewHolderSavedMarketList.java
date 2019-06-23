@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import org.nearbyshops.shopkeeperappnew.Markets.AdapterSavedMarkets;
 import org.nearbyshops.shopkeeperappnew.Markets.Interfaces.listItemMarketNotifications;
 import org.nearbyshops.shopkeeperappnew.Markets.Model.ServiceConfigurationGlobal;
 import org.nearbyshops.shopkeeperappnew.R;

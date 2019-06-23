@@ -69,10 +69,11 @@ public class StaffListFragment extends Fragment implements SwipeRefreshLayout.On
 //    boolean resetOffsetVehicle = false;
 
 
-
     private int limit = 10;
     private int offset = 0;
     private int item_count = 0;
+
+
 
 
 //    @BindView(R.id.drivers_count) TextView driversCount;
@@ -119,7 +120,10 @@ public class StaffListFragment extends Fragment implements SwipeRefreshLayout.On
 
 
 
-    void setupSwipeContainer()
+
+
+
+    private void setupSwipeContainer()
     {
 
         if(swipeContainer!=null) {
@@ -136,7 +140,9 @@ public class StaffListFragment extends Fragment implements SwipeRefreshLayout.On
 
 
 
-    void setupRecyclerView()
+
+
+    private void setupRecyclerView()
     {
 
         listAdapter = new Adapter(dataset,getActivity(),this);
@@ -186,6 +192,10 @@ public class StaffListFragment extends Fragment implements SwipeRefreshLayout.On
     }
 
 
+
+
+
+
     @Override
     public void onResume() {
         super.onResume();
@@ -201,7 +211,9 @@ public class StaffListFragment extends Fragment implements SwipeRefreshLayout.On
 
 
 
-    void makeRefreshNetworkCall()
+
+
+    private void makeRefreshNetworkCall()
     {
         swipeContainer.post(new Runnable() {
             @Override
@@ -233,7 +245,7 @@ public class StaffListFragment extends Fragment implements SwipeRefreshLayout.On
 
 
 
-    void getStaffProfiles()
+    private void getStaffProfiles()
     {
 
         if(clearDataset)

@@ -39,7 +39,6 @@ public class MarketViewModel extends AndroidViewModel {
 
 
 
-
     final private int limit = 25;
     int offset = 0;
     int item_count = 0;
@@ -185,14 +184,14 @@ public class MarketViewModel extends AndroidViewModel {
 //                            savedMarkets.clear();
 
 
-//                            dataset.add(PrefServiceConfig.getServiceConfigLocal(getActivity()));
 
-                            ServiceConfigurationLocal configurationLocal = PrefServiceConfig.getServiceConfigLocal(getApplication());
 
-                            if(configurationLocal!=null)
-                            {
-                                dataset.add(configurationLocal);
-                            }
+//                            ServiceConfigurationLocal configurationLocal = PrefServiceConfig.getServiceConfigLocal(getApplication());
+//
+//                            if(configurationLocal!=null)
+//                            {
+//                                dataset.add(configurationLocal);
+//                            }
 
 
 
@@ -225,11 +224,6 @@ public class MarketViewModel extends AndroidViewModel {
 
 
 
-
-
-                            dataset.add(new ConnectWithURLMarker());
-
-
 //                            if(item_count>0)
 //                            {
 //                                dataset.add(new HeaderItemsList());
@@ -251,8 +245,23 @@ public class MarketViewModel extends AndroidViewModel {
                             if(response.body().getResults().size()==0)
                             {
                                 dataset.add(new CreateMarketMarker());
+                                dataset.add(new ConnectWithURLMarker());
+
                             }
+                            else if(dataset.size()>3)
+                            {
+                                dataset.add(3,new ConnectWithURLMarker());
+                            }
+                            else
+                            {
+                                dataset.add(new ConnectWithURLMarker());
+                            }
+
+
                         }
+
+
+
 
 
 

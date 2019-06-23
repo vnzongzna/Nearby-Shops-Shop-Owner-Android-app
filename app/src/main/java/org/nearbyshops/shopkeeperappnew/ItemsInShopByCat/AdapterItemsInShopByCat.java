@@ -5,9 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
-import org.nearbyshops.shopkeeperappnew.API.ShopItemService;
 import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategoryTypeSimple.ViewHolders.ViewHolderItemCategory;
+import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ViewHolders.ViewHolderItemCategory;
 import org.nearbyshops.shopkeeperappnew.Model.ItemCategory;
 import org.nearbyshops.shopkeeperappnew.Model.ShopItem;
 import org.nearbyshops.shopkeeperappnew.QuickStockEditor.ViewHolders.ViewHolderShopItem;
@@ -18,7 +17,6 @@ import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreenNe
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderHeaderSimple;
 
 
-import javax.inject.Inject;
 import java.util.List;
 
 /**

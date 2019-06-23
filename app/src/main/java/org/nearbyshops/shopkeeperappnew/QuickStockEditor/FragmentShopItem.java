@@ -184,7 +184,7 @@ public class FragmentShopItem extends Fragment implements SwipeRefreshLayout.OnR
     }
 
 
-    void makeRefreshNetworkCall()
+    private void makeRefreshNetworkCall()
     {
         swipeContainer.post(new Runnable() {
             @Override
@@ -201,7 +201,9 @@ public class FragmentShopItem extends Fragment implements SwipeRefreshLayout.OnR
 
 
 
-    void makeNetworkCall(final boolean clearDataset, boolean resetOffset) {
+
+
+    private void makeNetworkCall(final boolean clearDataset, boolean resetOffset) {
 
         if(resetOffset) {
             offset = 0;

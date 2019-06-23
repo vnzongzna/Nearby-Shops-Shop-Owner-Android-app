@@ -12,8 +12,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import org.nearbyshops.shopkeeperappnew.Model.Order;
 import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery;
-import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusPickFromShop;
-import org.nearbyshops.shopkeeperappnew.OrderHistoryNew.ViewHolders.ViewHolderOrder;
+import org.nearbyshops.shopkeeperappnew.OrderHistory.ViewHolders.ViewHolderOrder;
 import org.nearbyshops.shopkeeperappnew.R;
 
 

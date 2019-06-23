@@ -17,7 +17,9 @@ import org.nearbyshops.shopkeeperappnew.Markets.ViewHolders.ViewHolderSignIn;
 import org.nearbyshops.shopkeeperappnew.R;
 
 
-public class Markets extends AppCompatActivity implements MarketSelected, NotifyAboutLogin, ViewHolderSignIn.VHSignIn , ViewHolderEmptyScreen.VHCreateMarket {
+public class Markets extends AppCompatActivity implements MarketSelected, NotifyAboutLogin,
+        ViewHolderSignIn.VHSignIn,
+        ViewHolderEmptyScreen.VHCreateMarket {
 
 
 //    public static final String SHOP_DETAIL_INTENT_KEY = "shop_detail";
@@ -33,7 +35,7 @@ public class Markets extends AppCompatActivity implements MarketSelected, Notify
         if (getSupportFragmentManager().findFragmentByTag("market_fragment") == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragment_container, new MarketsFragmentNew(), "market_fragment")
+                    .replace(R.id.fragment_container, new MarketsFragment(), "market_fragment")
                     .commit();
         }
 
@@ -69,6 +71,11 @@ public class Markets extends AppCompatActivity implements MarketSelected, Notify
     public void marketSelected() {
         finish();
     }
+
+
+
+
+
 
     @Override
     public void loginSuccess() {
@@ -123,6 +130,9 @@ public class Markets extends AppCompatActivity implements MarketSelected, Notify
             refreshFragment();
         }
     }
+
+
+
 
 
 

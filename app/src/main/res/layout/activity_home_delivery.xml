@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="org.nearbyshops.shopkeeperappnew.PickFromShopInventory.HomeDeliveryInventory.HomeDelivery">
+    tools:context="org.nearbyshops.shopkeeperappnew.OrdersInventory.HomeDeliveryInventory.HomeDelivery">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"

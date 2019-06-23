@@ -3,7 +3,7 @@ package org.nearbyshops.shopkeeperappnew.DaggerComponents;
 import dagger.Component;
 import org.nearbyshops.shopkeeperappnew.DaggerModules.AppModule;
 import org.nearbyshops.shopkeeperappnew.DaggerModules.NetModule;
-import org.nearbyshops.shopkeeperappnew.DeliveryPersonInventory.FragmentNew.DeliveryInventoryFragment;
+import org.nearbyshops.shopkeeperappnew.DeliveryPersonInventory.Fragment.DeliveryInventoryFragment;
 import org.nearbyshops.shopkeeperappnew.EditProfile.ChangeEmail.FragmentChangeEmail;
 import org.nearbyshops.shopkeeperappnew.EditProfile.ChangeEmail.FragmentVerifyEmailChange;
 import org.nearbyshops.shopkeeperappnew.EditProfile.ChangePassword.FragmentChangePassword;
@@ -12,7 +12,7 @@ import org.nearbyshops.shopkeeperappnew.EditProfile.ChangePhone.FragmentVerifyPh
 import org.nearbyshops.shopkeeperappnew.EditProfile.FragmentEditProfile;
 import org.nearbyshops.shopkeeperappnew.EditShop.EditShopFragment;
 import org.nearbyshops.shopkeeperappnew.EditShopImage.EditShopImageFragment;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategoryTypeSimple.ItemsByCatFragmentSimple;
+import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ItemsByCatFragmentSimple;
 import org.nearbyshops.shopkeeperappnew.ItemsInShop.AdapterItemsInShop;
 import org.nearbyshops.shopkeeperappnew.ItemsInShop.ItemsInShopFragment;
 import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.AdapterItemsInShopByCat;
@@ -22,17 +22,17 @@ import org.nearbyshops.shopkeeperappnew.Login.LoginGlobalFragment;
 import org.nearbyshops.shopkeeperappnew.Login.ServiceIndicatorFragment;
 import org.nearbyshops.shopkeeperappnew.MarketDetail.MarketDetailFragment;
 import org.nearbyshops.shopkeeperappnew.MarketDetail.RateReviewDialogMarket;
-import org.nearbyshops.shopkeeperappnew.Markets.MarketsFragmentNew;
+import org.nearbyshops.shopkeeperappnew.Markets.MarketsFragment;
 import org.nearbyshops.shopkeeperappnew.Markets.SubmitURLDialog;
-import org.nearbyshops.shopkeeperappnew.Markets.ViewHolders.AdapterMarkets;
+import org.nearbyshops.shopkeeperappnew.Markets.AdapterMarkets;
 import org.nearbyshops.shopkeeperappnew.Markets.ViewHolders.ViewHolderConnectWithURL;
 import org.nearbyshops.shopkeeperappnew.Markets.ViewHolders.ViewHolderMarket;
 import org.nearbyshops.shopkeeperappnew.Markets.ViewHolders.ViewHolderSavedMarket;
 import org.nearbyshops.shopkeeperappnew.Markets.ViewModels.MarketViewModel;
 import org.nearbyshops.shopkeeperappnew.OneSignal.UpdateOneSignalID;
 import org.nearbyshops.shopkeeperappnew.OrderDetail.FragmentOrderDetail;
-import org.nearbyshops.shopkeeperappnew.OrderHistoryNew.OrderHistoryFragmentNew;
-import org.nearbyshops.shopkeeperappnew.PickFromShopInventory.Fragment.OrdersInventoryFragment;
+import org.nearbyshops.shopkeeperappnew.OrderHistory.OrderHistoryFragmentNew;
+import org.nearbyshops.shopkeeperappnew.OrdersInventory.Fragment.OrdersInventoryFragment;
 import org.nearbyshops.shopkeeperappnew.QuickStockEditor.FragmentShopItem;
 import org.nearbyshops.shopkeeperappnew.QuickStockEditor.ViewHolders.ViewHolderShopItem;
 import org.nearbyshops.shopkeeperappnew.SelectDeliveryGuy.SelectDeliveryFragment;
@@ -145,7 +145,7 @@ public interface NetComponent {
 
     void Inject(MarketViewModel marketViewModel);
 
-    void Inject(MarketsFragmentNew marketsFragmentNew);
+    void Inject(MarketsFragment marketsFragment);
 
     void Inject(MarketDetailFragment marketDetailFragment);
 

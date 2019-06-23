@@ -3,7 +3,7 @@ package org.nearbyshops.shopkeeperappnew.DeliveryPersonInventory;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import org.nearbyshops.shopkeeperappnew.DeliveryPersonInventory.FragmentNew.DeliveryInventoryFragment;
+import org.nearbyshops.shopkeeperappnew.DeliveryPersonInventory.Fragment.DeliveryInventoryFragment;
 import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery;
 

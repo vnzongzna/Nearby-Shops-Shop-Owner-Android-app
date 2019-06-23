@@ -74,7 +74,7 @@
 
         <activity
             android:launchMode="singleTop"
-            android:name="org.nearbyshops.shopkeeperappnew.PickFromShopInventory.PickFromShopInventory.PickFromShopInventory"
+            android:name="org.nearbyshops.shopkeeperappnew.OrdersInventory.PickFromShopInventory.PickFromShopInventory"
             android:label="Pick From Shop Inventory"
             android:parentActivityName="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome">
             <meta-data
@@ -95,7 +95,7 @@
 
         <activity
             android:launchMode="singleTop"
-            android:name=".PickFromShopInventory.HomeDeliveryInventory.HomeDelivery"
+            android:name=".OrdersInventory.HomeDeliveryInventory.HomeDelivery"
             android:label="Home Delivery Inventory"
             android:parentActivityName="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome">
             <meta-data
@@ -180,7 +180,7 @@
 
 
         <activity
-            android:name="org.nearbyshops.shopkeeperappnew.ItemsByCategoryTypeSimple.ItemsByCatSimple"
+            android:name="org.nearbyshops.shopkeeperappnew.ItemsByCategory.ItemsByCatSimple"
             android:label="Items by Category"
             android:launchMode="singleTop"
             android:parentActivityName="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome">
@@ -241,7 +241,7 @@
 
         <activity
             android:launchMode="singleTop"
-            android:name=".OrderHistoryNew.OrderHistory"
+            android:name=".OrderHistory.OrderHistory"
             android:label="Order History"
             android:parentActivityName=".ShopHome.ShopHome">
 

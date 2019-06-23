@@ -19,7 +19,7 @@ import org.nearbyshops.shopkeeperappnew.API.ShopItemService;
 import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySearch;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySort;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategoryTypeSimple.Interfaces.NotifyIndicatorChanged;
+import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyIndicatorChanged;
 import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.SlidingLayerSort.PrefSortItemsInShop;
 import org.nearbyshops.shopkeeperappnew.Model.Item;
 import org.nearbyshops.shopkeeperappnew.Model.Shop;
@@ -420,6 +420,20 @@ public class ItemsInShopFragment extends Fragment implements SwipeRefreshLayout.
                 swipeContainer.setRefreshing(false);
 
                 notifyItemIndicatorChanged();
+
+
+
+
+
+
+                if(offset_item+limit_item >= item_count_item)
+                {
+                    listAdapter.setLoadMore(false);
+                }
+                else
+                {
+                    listAdapter.setLoadMore(true);
+                }
 
 
             }

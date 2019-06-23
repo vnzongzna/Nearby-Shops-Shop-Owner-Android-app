@@ -19,6 +19,8 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 import org.nearbyshops.shopkeeperappnew.DeliveryGuyHome.DeliveryGuyHomeFragment;
 import org.nearbyshops.shopkeeperappnew.LoginPlaceholders.FragmentSignInMessage;
+import org.nearbyshops.shopkeeperappnew.Markets.Interfaces.MarketSelected;
+import org.nearbyshops.shopkeeperappnew.Markets.MarketsFragment;
 import org.nearbyshops.shopkeeperappnew.ModelEventBus.NotificationEvent;
 import org.nearbyshops.shopkeeperappnew.Interfaces.LocationUpdated;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifyAboutLogin;
@@ -32,22 +34,14 @@ import org.nearbyshops.shopkeeperappnew.ShopAdminHome.ShopAdminHomeFragment;
 import org.nearbyshops.shopkeeperappnew.ShopStaffHome.ShopStaffHomeFragment;
 
 
-public class Home extends AppCompatActivity implements NotifyAboutLogin {
+public class Home extends AppCompatActivity implements NotifyAboutLogin, MarketSelected {
 
 
 
     public static final String TAG_LOGIN = "tag_login";
-    public static final String TAG_SELECT_CITY = "tag_select_city";
+    public static final String TAG_MARKETS = "tag_markets";
+
     public static final String TAG_PROFILE = "tag_profile_fragment";
-    public static final String TAG_TRIP_REQUEST = "tag_trip_request_fragment";
-    public static final String TAG_VEHICLE_FRAGMENT = "tag_vehicle_fragment";
-    public static final String TAG_VEHICLE_FRAGMENT_LOCAL = "tag_vehicle_fragment_local";
-    public static final String TAG_TRIP_CURRENT_FRAGMENT = "tag_current_fragment";
-
-    public static final String TAG_MAP_PICKER = "tag_map_picker";
-    public static final String TAG_TRIP_DETAILS = "tag_trip_details";
-
-    private static final int REQUEST_CHECK_SETTINGS = 2;
 
 
     // fragments
@@ -214,10 +208,25 @@ public class Home extends AppCompatActivity implements NotifyAboutLogin {
     }
 
 
+
+
+
+
     public void showLoginFragment()
     {
 
-        if(getSupportFragmentManager().findFragmentByTag(TAG_LOGIN)==null)
+
+        if(PrefGeneral.getServiceURL(this)==null)
+        {
+            if(getSupportFragmentManager().findFragmentByTag(TAG_MARKETS)==null)
+            {
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container,new MarketsFragment(),TAG_MARKETS)
+                        .commit();
+            }
+        }
+        else if(getSupportFragmentManager().findFragmentByTag(TAG_LOGIN)==null)
         {
             getSupportFragmentManager()
                     .beginTransaction()
@@ -431,6 +440,11 @@ public class Home extends AppCompatActivity implements NotifyAboutLogin {
 
     }
 
+
+    @Override
+    public void marketSelected() {
+        showDashboard();
+    }
 
 
 }

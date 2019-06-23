@@ -10,7 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategoryTypeSimple.ItemsByCatSimple;
+import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ItemsByCatSimple;
 import org.nearbyshops.shopkeeperappnew.ItemsInShop.ItemsInShop;
 import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.ItemsInShopByCat;
 import org.nearbyshops.shopkeeperappnew.Model.Shop;

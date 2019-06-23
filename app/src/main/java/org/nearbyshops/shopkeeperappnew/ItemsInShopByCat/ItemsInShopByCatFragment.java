@@ -20,9 +20,9 @@ import org.nearbyshops.shopkeeperappnew.API.ShopItemService;
 import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySearch;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySort;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategoryTypeSimple.Interfaces.NotifyBackPressed;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategoryTypeSimple.Interfaces.NotifyIndicatorChanged;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategoryTypeSimple.ViewHolders.ViewHolderItemCategory;
+import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyBackPressed;
+import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyIndicatorChanged;
+import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ViewHolders.ViewHolderItemCategory;
 import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.SlidingLayerSort.PrefSortItemsInShop;
 import org.nearbyshops.shopkeeperappnew.Model.Item;
 import org.nearbyshops.shopkeeperappnew.Model.ItemCategory;
@@ -51,30 +51,32 @@ public class ItemsInShopByCatFragment extends Fragment implements SwipeRefreshLa
 
 //    Map<Integer,ShopItem> shopItemMapTemp = new HashMap<>();
 
-    boolean isDestroyed = false;
+    private boolean isDestroyed = false;
 //    @State
     boolean show = true;
 
-    int item_count_item_category = 0;
+
+    private int item_count_item_category = 0;
 
     private int limit_item = 10;
-    int offset_item = 0;
-    int item_count_item;
-    int fetched_items_count = 0;
+    private int offset_item = 0;
+    private int item_count_item;
+    private int fetched_items_count = 0;
 
     @BindView(R.id.swipe_container)
     SwipeRefreshLayout swipeContainer;
     @BindView(R.id.recycler_view)
     RecyclerView itemCategoriesList;
 
-    ArrayList<Object> dataset = new ArrayList<>();
-    ArrayList<ItemCategory> datasetCategory = new ArrayList<>();
-    ArrayList<ShopItem> datasetShopItems = new ArrayList<>();
+    private ArrayList<Object> dataset = new ArrayList<>();
+    private ArrayList<ItemCategory> datasetCategory = new ArrayList<>();
+    private ArrayList<ShopItem> datasetShopItems = new ArrayList<>();
 
 
-    GridLayoutManager layoutManager;
 
-    AdapterItemsInShopByCat listAdapter;
+
+    private GridLayoutManager layoutManager;
+    private AdapterItemsInShopByCat listAdapter;
 
 
     @Inject
@@ -136,7 +138,7 @@ public class ItemsInShopByCatFragment extends Fragment implements SwipeRefreshLa
 
 
 
-    void setupSwipeContainer()
+    private void setupSwipeContainer()
     {
 
         if(swipeContainer!=null) {
@@ -153,7 +155,8 @@ public class ItemsInShopByCatFragment extends Fragment implements SwipeRefreshLa
 
 
 
-    void setupRecyclerView()
+
+    private void setupRecyclerView()
     {
 
 
@@ -253,7 +256,9 @@ public class ItemsInShopByCatFragment extends Fragment implements SwipeRefreshLa
 
 
 
-    void makeRefreshNetworkCall()
+
+
+    private void makeRefreshNetworkCall()
     {
         swipeContainer.post(new Runnable() {
             @Override
@@ -297,7 +302,8 @@ public class ItemsInShopByCatFragment extends Fragment implements SwipeRefreshLa
     boolean isFirst = true;
 
 
-    void makeRequestItemCategory()
+
+    private void makeRequestItemCategory()
     {
 
         /*Call<ItemCategoryEndPoint> endPointCall = itemCategoryService.getItemCategoriesEndPoint(
@@ -370,6 +376,8 @@ public class ItemsInShopByCatFragment extends Fragment implements SwipeRefreshLa
 
                     datasetCategory.clear();
                     datasetCategory.addAll(endPoint.getResults());
+
+
                 }
 
 
@@ -584,6 +592,20 @@ public class ItemsInShopByCatFragment extends Fragment implements SwipeRefreshLa
                     }
 
                     swipeContainer.setRefreshing(false);
+                }
+
+
+
+
+
+
+                if(offset_item+limit_item >= item_count_item)
+                {
+                    listAdapter.setLoadMore(false);
+                }
+                else
+                {
+                    listAdapter.setLoadMore(true);
                 }
 
 
