@@ -45,12 +45,6 @@ If you want any help regarding anything. Feel free to contact us. Send a message
 Reach out to us - Please Visit - https://forum.nearbyshops.org
 
 
-Get paid to Contribute
---------------------------
-
-Developer time is valuable and its not fair to expect developers to contribute to the project without getting reasonably compensated. 
-
-Therefore we are planning to arrange funds which will help us compensate those who contribute to the project. For more information please visit https://forum.nearbyshops.org and get in touch with us !
 
 
 Source code for Shop-Owner, Admin app and Server Side
