@@ -59,7 +59,7 @@ public class ViewHolderUserProfile extends RecyclerView.ViewHolder {
 
 
 
-    void setItem(User user)
+    public void setItem(User user)
     {
 
         userID.setText("User ID : " + String.valueOf(user.getUserID()));

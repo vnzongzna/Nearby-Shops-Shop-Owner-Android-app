@@ -163,7 +163,9 @@ public class ViewHolderOrderSelectable extends ViewHolderOrder {
 
 
 
-    void bindOrder()
+
+
+    private void bindOrder()
     {
         if (selectedOrders.containsKey(order.getOrderID())) {
 

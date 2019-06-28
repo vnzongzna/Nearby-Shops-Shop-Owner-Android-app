@@ -58,7 +58,7 @@ public class ViewHolderSavedMarketList extends RecyclerView.ViewHolder {
 
 
 
-    void setItem(List<ServiceConfigurationGlobal> item)
+    public void setItem(List<ServiceConfigurationGlobal> item)
     {
 
 //        this.configurationGlobal = item;
