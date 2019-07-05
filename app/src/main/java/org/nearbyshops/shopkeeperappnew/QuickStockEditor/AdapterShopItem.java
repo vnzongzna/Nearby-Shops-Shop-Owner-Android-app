@@ -4,12 +4,12 @@ import android.content.Context;
 import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
-import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
+
 import org.nearbyshops.shopkeeperappnew.Model.ShopItem;
 import org.nearbyshops.shopkeeperappnew.QuickStockEditor.ViewHolders.ViewHolderShopItem;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.LoadingViewHolder;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreenNew;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreen;
 
 import java.util.List;
 
@@ -61,7 +61,7 @@ public class AdapterShopItem extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
         else if(viewType==VIEW_TYPE_EMPTY_SCREEN)
         {
-            return ViewHolderEmptyScreenNew.create(parent,context);
+            return ViewHolderEmptyScreen.create(parent,context);
         }
 
 
@@ -84,9 +84,9 @@ public class AdapterShopItem extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
             ((LoadingViewHolder) holder).setLoading(loadMore);
         }
-        else if(holder instanceof ViewHolderEmptyScreenNew)
+        else if(holder instanceof ViewHolderEmptyScreen)
         {
-            ((ViewHolderEmptyScreenNew) holder).setItem((EmptyScreenData) dataset.get(position));
+            ((ViewHolderEmptyScreen) holder).setItem((EmptyScreenData) dataset.get(position));
         }
 
     }

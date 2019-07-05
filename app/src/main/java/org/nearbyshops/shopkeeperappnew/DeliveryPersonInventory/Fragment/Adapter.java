@@ -11,7 +11,7 @@ import org.nearbyshops.shopkeeperappnew.OrderHistory.ViewHolders.ViewHolderOrder
 import org.nearbyshops.shopkeeperappnew.OrdersInventory.ViewHolders.ViewHolderOrderButtonSingle;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.LoadingViewHolder;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreenNew;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreen;
 
 import java.util.List;
 
@@ -68,7 +68,7 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         }
         else if(viewType==VIEW_TYPE_EMPTY_SCREEN)
         {
-            return ViewHolderEmptyScreenNew.create(parent,parent.getContext());
+            return ViewHolderEmptyScreen.create(parent,parent.getContext());
         }
 
 
@@ -157,9 +157,9 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
             ((LoadingViewHolder) holder).setLoading(loadMore);
         }
-        else if(holder instanceof ViewHolderEmptyScreenNew)
+        else if(holder instanceof ViewHolderEmptyScreen)
         {
-            ((ViewHolderEmptyScreenNew) holder).setItem((EmptyScreenData) dataset.get(position));
+            ((ViewHolderEmptyScreen) holder).setItem((EmptyScreenData) dataset.get(position));
         }
 
     }

@@ -95,7 +95,11 @@ public class FragmentEnterName extends Fragment {
 
 
 
-    void bindViews()
+
+
+
+
+    private void bindViews()
     {
 //        User user = PrefrenceSignUp.getUser(getActivity());
 //
@@ -135,7 +139,7 @@ public class FragmentEnterName extends Fragment {
 
 
 
-    void saveDataFromViews()
+    private void saveDataFromViews()
     {
         user.setName(name.getText().toString());
 

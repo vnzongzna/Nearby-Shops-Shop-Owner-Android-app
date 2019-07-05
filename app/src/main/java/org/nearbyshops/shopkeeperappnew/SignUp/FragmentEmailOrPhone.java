@@ -52,17 +52,14 @@ public class FragmentEmailOrPhone extends Fragment {
     TextInputLayout emailLayout;
 
 
-
-    @BindView(R.id.ccp)
-    CountryCodePicker ccp;
-    @BindView(R.id.phone)
-    TextInputEditText phone;
-    @BindView(R.id.email)
-    TextInputEditText email;
+    @BindView(R.id.ccp) CountryCodePicker ccp;
+    @BindView(R.id.phone) TextInputEditText phone;
+    @BindView(R.id.email) TextInputEditText email;
 
     @BindView(R.id.check_icon) ImageView checkIcon;
     @BindView(R.id.cross_icon) ImageView crossIcon;
     @BindView(R.id.message) TextView textAvailable;
+
 
     @BindView(R.id.progress_bar) ProgressBar progressBar;
 

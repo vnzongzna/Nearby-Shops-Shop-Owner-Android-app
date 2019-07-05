@@ -13,7 +13,7 @@ import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
 
 
-public class ViewHolderEmptyScreenNew extends RecyclerView.ViewHolder{
+public class ViewHolderEmptyScreen extends RecyclerView.ViewHolder{
 
 
 
@@ -32,20 +32,20 @@ public class ViewHolderEmptyScreenNew extends RecyclerView.ViewHolder{
 
 
 
-    public static ViewHolderEmptyScreenNew create(ViewGroup parent, Context context)
+    public static ViewHolderEmptyScreen create(ViewGroup parent, Context context)
     {
 
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item_empty_screen,parent,false);
 
-        return new ViewHolderEmptyScreenNew(view,context);
+        return new ViewHolderEmptyScreen(view,context);
     }
 
 
 
 
 
-    public ViewHolderEmptyScreenNew(View itemView, Context context) {
+    public ViewHolderEmptyScreen(View itemView, Context context) {
         super(itemView);
 
         ButterKnife.bind(this,itemView);

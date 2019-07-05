@@ -30,7 +30,7 @@ package org.nearbyshops.shopkeeperappnew.PickDeliveryRadiusFromMap;//package org
 //import com.mapbox.mapboxsdk.maps.MapboxMap;
 //import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 //
-//import org.nearbyshops.shopkeeperappnew.APIKeys;
+//import org.nearbyshops.shopkeeperappnew.AppConfig;
 //import org.nearbyshops.shopkeeperappnew.R;
 //
 //import java.util.ArrayList;
@@ -89,14 +89,14 @@ package org.nearbyshops.shopkeeperappnew.PickDeliveryRadiusFromMap;//package org
 ////        {
 ////            if(configuration.getStyleURL()!=null)
 ////            {
-////                mapView.setStyleUrl(configuration.getStyleURL()+ "?key=" + APIKeys.openMapTilesMapsKey);
+////                mapView.setStyleUrl(configuration.getStyleURL()+ "?key=" + AppConfig.openMapTilesMapsKey);
 //////                showlog(configuration.getStyleURL());
 ////            }
 ////        }
 //
 //
 //
-//        mapView.setStyleUrl(APIKeys.styleURLBright);
+//        mapView.setStyleUrl(AppConfig.styleURLBright);
 //
 //
 //

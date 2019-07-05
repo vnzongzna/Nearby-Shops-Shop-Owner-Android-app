@@ -1,41 +1,20 @@
 package org.nearbyshops.shopkeeperappnew.ItemsInShop;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
-import androidx.appcompat.app.AlertDialog;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import com.squareup.picasso.Picasso;
-import okhttp3.ResponseBody;
-import org.nearbyshops.shopkeeperappnew.API.ShopItemService;
-import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
-import org.nearbyshops.shopkeeperappnew.Model.Item;
+
 import org.nearbyshops.shopkeeperappnew.Model.ShopItem;
-import org.nearbyshops.shopkeeperappnew.Prefrences.PrefGeneral;
-import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.QuickStockEditor.ViewHolders.ViewHolderShopItem;
-import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.LoadingViewHolder;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreenNew;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderHeaderSimple;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreen;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderHeader;
 
-import javax.inject.Inject;
 import java.util.List;
 
 /**
@@ -83,7 +62,7 @@ public class AdapterItemsInShop extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
         else if(viewType == VIEW_TYPE_HEADER)
         {
-            return ViewHolderHeaderSimple.create(parent,context);
+            return ViewHolderHeader.create(parent,context);
         }
         else if(viewType == VIEW_TYPE_SCROLL_PROGRESS_BAR)
         {
@@ -91,7 +70,7 @@ public class AdapterItemsInShop extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
         else if(viewType==VIEW_TYPE_EMPTY_SCREEN)
         {
-            return ViewHolderEmptyScreenNew.create(parent,context);
+            return ViewHolderEmptyScreen.create(parent,context);
         }
 
 
@@ -111,17 +90,17 @@ public class AdapterItemsInShop extends RecyclerView.Adapter<RecyclerView.ViewHo
             ((ViewHolderShopItem) holder).bindShopItem((ShopItem) dataset.get(position));
 
         }
-        else if (holder instanceof ViewHolderHeaderSimple) {
+        else if (holder instanceof ViewHolderHeader) {
 
             if (dataset.get(position) instanceof HeaderTitle) {
 
-                ((ViewHolderHeaderSimple) holder).setItem((HeaderTitle) dataset.get(position));
+                ((ViewHolderHeader) holder).setItem((HeaderTitle) dataset.get(position));
             }
 
         }
-        else if(holder instanceof ViewHolderEmptyScreenNew)
+        else if(holder instanceof ViewHolderEmptyScreen)
         {
-            ((ViewHolderEmptyScreenNew) holder).setItem((EmptyScreenData) dataset.get(position));
+            ((ViewHolderEmptyScreen) holder).setItem((EmptyScreenData) dataset.get(position));
         }
         else if (holder instanceof LoadingViewHolder) {
 

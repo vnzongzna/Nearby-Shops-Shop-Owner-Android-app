@@ -13,7 +13,7 @@ import org.nearbyshops.shopkeeperappnew.OrdersInventory.ViewHolders.ViewHolderOr
 import org.nearbyshops.shopkeeperappnew.OrdersInventory.ViewHolders.ViewHolderOrderWithDeliveryProfile;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.LoadingViewHolder;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreenNew;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreen;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +26,7 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private List<Object> dataset = null;
 
+    
     public static final int VIEW_TYPE_ORDER = 1;
     public static final int VIEW_TYPE_ORDER_WITH_BUTTON = 2;
     public static final int VIEW_TYPE_ORDER_SELECTABLE = 3;
@@ -77,7 +78,7 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         }
         else if(viewType==VIEW_TYPE_EMPTY_SCREEN)
         {
-            return ViewHolderEmptyScreenNew.create(parent,parent.getContext());
+            return ViewHolderEmptyScreen.create(parent,parent.getContext());
         }
 
 
@@ -174,7 +175,6 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
 
 
-
         if(holder instanceof ViewHolderOrderButtonSingle)
         {
             ((ViewHolderOrderButtonSingle) holder).setItem((Order) dataset.get(position));
@@ -187,6 +187,7 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         {
 
             ((ViewHolderOrderSelectable)holder).setItem((Order) dataset.get(position));
+
         }
         else if(holder instanceof ViewHolderOrderWithDeliveryProfile)
         {
@@ -196,9 +197,9 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
             ((LoadingViewHolder) holder).setLoading(loadMore);
         }
-        else if(holder instanceof ViewHolderEmptyScreenNew)
+        else if(holder instanceof ViewHolderEmptyScreen)
         {
-            ((ViewHolderEmptyScreenNew) holder).setItem((EmptyScreenData) dataset.get(position));
+            ((ViewHolderEmptyScreen) holder).setItem((EmptyScreenData) dataset.get(position));
         }
 
     }
@@ -219,6 +220,7 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     {
         this.loadMore = loadMore;
     }
+
 
 
 

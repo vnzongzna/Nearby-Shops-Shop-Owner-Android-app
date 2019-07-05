@@ -10,7 +10,7 @@ import org.nearbyshops.shopkeeperappnew.Model.Order;
 import org.nearbyshops.shopkeeperappnew.OrderHistory.ViewHolders.ViewHolderOrder;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.LoadingViewHolder;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreenNew;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreen;
 
 import java.util.List;
 
@@ -62,7 +62,7 @@ class AdapterOrders extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         }
         else if(viewType==VIEW_TYPE_EMPTY_SCREEN)
         {
-            return ViewHolderEmptyScreenNew.create(parent,context);
+            return ViewHolderEmptyScreen.create(parent,context);
         }
 
 
@@ -107,9 +107,9 @@ class AdapterOrders extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             ((LoadingViewHolder) holderVH).setLoading(loadMore);
 
         }
-        else if(holderVH instanceof ViewHolderEmptyScreenNew)
+        else if(holderVH instanceof ViewHolderEmptyScreen)
         {
-            ((ViewHolderEmptyScreenNew) holderVH).setItem((EmptyScreenData) dataset.get(position));
+            ((ViewHolderEmptyScreen) holderVH).setItem((EmptyScreenData) dataset.get(position));
         }
 
     }

@@ -21,7 +21,7 @@ import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
-import org.nearbyshops.shopkeeperappnew.APIKeys;
+import org.nearbyshops.shopkeeperappnew.AppConfig;
 import org.nearbyshops.shopkeeperappnew.R;
 
 import java.util.ArrayList;
@@ -77,14 +77,14 @@ public class PickDeliveryRange extends AppCompatActivity {
 //        {
 //            if(configuration.getStyleURL()!=null)
 //            {
-//                mapView.setStyleUrl(configuration.getStyleURL()+ "?key=" + APIKeys.openMapTilesMapsKey);
+//                mapView.setStyleUrl(configuration.getStyleURL()+ "?key=" + AppConfig.openMapTilesMapsKey);
 ////                showlog(configuration.getStyleURL());
 //            }
 //        }
 
 
 
-        mapView.setStyleUrl(APIKeys.styleURLBright);
+        mapView.setStyleUrl(AppConfig.styleURLBright);
 
 
 
@@ -109,7 +109,7 @@ public class PickDeliveryRange extends AppCompatActivity {
                 mapboxMapInstance = mapboxMap;
 
 
-//                mapboxMapInstance.setStyle(new Style.Builder().fromUrl(APIKeys.styleURLBright));
+//                mapboxMapInstance.setStyle(new Style.Builder().fromUrl(AppConfig.styleURLBright));
 
 
                 mapboxMap.getUiSettings().setAllGesturesEnabled(true);

@@ -9,8 +9,8 @@ import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.LoadingViewHolder;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreenNew;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderHeaderSimple;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreen;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderHeader;
 
 import java.util.List;
 
@@ -61,7 +61,7 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
         else if (viewType == VIEW_TYPE_HEADER) {
 
-            return ViewHolderHeaderSimple.create(parent,context);
+            return ViewHolderHeader.create(parent,context);
         }
         else if(viewType == VIEW_TYPE_SCROLL_PROGRESS_BAR)
         {
@@ -69,7 +69,7 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
         else if(viewType==VIEW_TYPE_EMPTY_SCREEN)
         {
-            return ViewHolderEmptyScreenNew.create(parent,context);
+            return ViewHolderEmptyScreen.create(parent,context);
         }
 
 
@@ -88,15 +88,15 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             ((LoadingViewHolder) holder).setLoading(loadMore);
         }
-        else if(holder instanceof ViewHolderEmptyScreenNew)
+        else if(holder instanceof ViewHolderEmptyScreen)
         {
-            ((ViewHolderEmptyScreenNew) holder).setItem((EmptyScreenData) dataset.get(position));
+            ((ViewHolderEmptyScreen) holder).setItem((EmptyScreenData) dataset.get(position));
         }
-        else if (holder instanceof ViewHolderHeaderSimple) {
+        else if (holder instanceof ViewHolderHeader) {
 
             if (dataset.get(position) instanceof HeaderTitle) {
 
-                ((ViewHolderHeaderSimple) holder).setItem((HeaderTitle) dataset.get(position));
+                ((ViewHolderHeader) holder).setItem((HeaderTitle) dataset.get(position));
             }
 
         }

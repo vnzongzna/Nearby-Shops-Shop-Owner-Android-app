@@ -12,7 +12,7 @@ import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
 
 
-public class ViewHolderHeaderSimple extends RecyclerView.ViewHolder{
+public class ViewHolderHeader extends RecyclerView.ViewHolder{
 
 
 
@@ -25,21 +25,21 @@ public class ViewHolderHeaderSimple extends RecyclerView.ViewHolder{
 
 
 
-    public static ViewHolderHeaderSimple create(ViewGroup parent, Context context)
+    public static ViewHolderHeader create(ViewGroup parent, Context context)
     {
 
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item_header_type_simple, parent, false);
 
 
-        return new ViewHolderHeaderSimple(view,context);
+        return new ViewHolderHeader(view,context);
     }
 
 
 
 
 
-    public ViewHolderHeaderSimple(View itemView, Context context) {
+    public ViewHolderHeader(View itemView, Context context) {
         super(itemView);
 
         ButterKnife.bind(this,itemView);
