@@ -7,14 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import okhttp3.ResponseBody;
+
 import org.nearbyshops.shopkeeperappnew.API.ItemCategoryService;
 import org.nearbyshops.shopkeeperappnew.API.ItemService;
 import org.nearbyshops.shopkeeperappnew.API.ShopItemService;
@@ -25,6 +24,7 @@ import org.nearbyshops.shopkeeperappnew.Interfaces.ToggleFab;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyBackPressed;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyFABClick;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyIndicatorChanged;
+import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Model.ItemCategoriesList;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Utility.PrefSortItems;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ViewHolders.ViewHolderItemCategory;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ViewHolders.ViewHolderItemSimple;
@@ -39,21 +39,26 @@ import org.nearbyshops.shopkeeperappnew.Prefrences.PrefShopHome;
 import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 /**
  * Created by sumeet on 2/12/16.
  */
 
-public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLayout.OnRefreshListener,
+public class ItemsByCatFragmentNew extends Fragment implements SwipeRefreshLayout.OnRefreshListener,
         ViewHolderItemCategory.ListItemClick, ViewHolderItemSimple.ListItemClick,
         NotifyBackPressed, NotifySort, NotifyFABClick, NotifySearch {
 
@@ -79,14 +84,14 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
     @BindView(R.id.recycler_view)
     RecyclerView itemCategoriesList;
 
-    ArrayList<Object> dataset = new ArrayList<>();
-    ArrayList<ItemCategory> datasetCategory = new ArrayList<>();
-    ArrayList<Item> datasetItems = new ArrayList<>();
+    private ArrayList<Object> dataset = new ArrayList<>();
+//    ArrayList<ItemCategory> datasetCategory = new ArrayList<>();
+//    ArrayList<Item> datasetItems = new ArrayList<>();
 
 
-    GridLayoutManager layoutManager;
+    private GridLayoutManager layoutManager;
+    private AdapterSimple listAdapter;
 
-    AdapterSimple listAdapter;
 
 
     @Inject
@@ -100,10 +105,10 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
     ItemService itemService;
 
 
-    ItemCategory currentCategory = null;
+    private ItemCategory currentCategory = null;
 
 
-    public ItemsByCatFragmentSimple() {
+    public ItemsByCatFragmentNew() {
 
         super();
 
@@ -149,7 +154,7 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
 
 
 
-    void setupSwipeContainer()
+    private void setupSwipeContainer()
     {
 
         if(swipeContainer!=null) {
@@ -167,11 +172,7 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
 
 
 
-
-
-
-
-    void setupRecyclerView()
+    private void setupRecyclerView()
     {
 
 
@@ -259,19 +260,6 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
 
-                /*if(layoutManager.findLastVisibleItemPosition()==dataset.size()-1)
-                {
-                    // trigger fetch next page
-
-                    if((offset_item + limit_item)<=item_count_item)
-                    {
-                        offset_item = offset_item + limit_item;
-
-                        makeRequestItem(false,false);
-                    }
-
-                }
-*/
 
                 if(offset_item + limit_item > layoutManager.findLastVisibleItemPosition())
                 {
@@ -281,25 +269,6 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
 
                 if(layoutManager.findLastVisibleItemPosition()==dataset.size())
                 {
-
-                    // trigger fetch next page
-
-
-/*
-                    String log = "Dataset Size : " + String.valueOf(dataset.size()) + "\n"
-                            + "Last Visible Item Position : " + layoutManager.findLastVisibleItemPosition() + "\n"
-                            + "Previous Position : " + previous_position + "\n"
-                            + "Offset Item : " + offset_item + "\n"
-                            + "Limit Item : " + limit_item + "\n"
-                            + "Item Count Item : " + item_count_item;
-
-                    System.out.println(log);
-
-                    Log.d("log_scroll",log);
-
-*/
-
-
 
                     // trigger fetch next page
 
@@ -318,44 +287,6 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
 
-
-                if(dy > 20)
-                {
-
-                    boolean previous = show;
-
-                    show = false ;
-
-                    if(show!=previous)
-                    {
-                        // changed
-                        Log.d("scrolllog","show");
-
-                        if(getActivity() instanceof ToggleFab)
-                        {
-                            ((ToggleFab)getActivity()).hideFab();
-                        }
-                    }
-
-                }else if(dy < -20)
-                {
-
-                    boolean previous = show;
-
-                    show = true;
-
-                    if(show!=previous)
-                    {
-                        Log.d("scrolllog","hide");
-
-                        if(getActivity() instanceof ToggleFab)
-                        {
-                            ((ToggleFab)getActivity()).showFab();
-                        }
-                    }
-                }
-
-
             }
 
 
@@ -371,15 +302,17 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
     @Override
     public void onRefresh() {
 
-        makeRequestItemCategory();
-        makeRequestItem(true,true);
 
+        makeRequestItem(true,true);
         makeNetworkCallShopItem();
     }
 
 
 
-    void makeRefreshNetworkCall()
+
+
+
+    private void makeRefreshNetworkCall()
     {
         swipeContainer.post(new Runnable() {
             @Override
@@ -408,6 +341,12 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
         isDestroyed=false;
     }
 
+
+
+
+
+
+
     private void showToastMessage(String message)
     {
         if(getActivity()!=null)
@@ -418,198 +357,6 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
 
 
 
-
-
-
-
-    private boolean isFirst = true;
-
-
-
-
-
-
-    private void makeRequestItemCategory()
-    {
-
-
-
-
-        /*Call<ItemCategoryEndPoint> endPointCall = itemCategoryService.getItemCategoriesEndPoint(
-                null,
-                currentCategory.getItemCategoryID(),
-                null,
-                null,
-                null,
-                null,null,null,
-                "ITEM_CATEGORY_NAME",null,null,false);*/
-
-        Call<ItemCategoryEndPoint> endPointCall = null;
-
-        if(searchQuery == null)
-        {
-            endPointCall = itemCategoryService.getItemCategoriesQuerySimple(
-                    currentCategory.getItemCategoryID(),
-                    null,
-                    null,
-                    ItemCategory.CATEGORY_ORDER,null,null
-            );
-        }
-        else
-        {
-            endPointCall = itemCategoryService.getItemCategoriesQuerySimple(
-                    null,
-                    null,
-                    searchQuery,
-                    ItemCategory.CATEGORY_ORDER,null,null
-            );
-        }
-
-
-
-        endPointCall.enqueue(new Callback<ItemCategoryEndPoint>() {
-            @Override
-            public void onResponse(Call<ItemCategoryEndPoint> call, Response<ItemCategoryEndPoint> response) {
-
-                if(isDestroyed)
-                {
-                    return;
-                }
-
-                if(response.body()!=null)
-                {
-
-                    ItemCategoryEndPoint endPoint = response.body();
-                    item_count_item_category = endPoint.getItemCount();
-
-                    datasetCategory.clear();
-                    datasetCategory.addAll(endPoint.getResults());
-                }
-
-
-                if(isFirst)
-                {
-                    isFirst = false;
-                }
-                else
-                {
-                    // is last
-                    refreshAdapter();
-                    isFirst = true;// reset the flag
-                }
-
-
-//                swipeContainer.setRefreshing(false);
-            }
-
-            @Override
-            public void onFailure(Call<ItemCategoryEndPoint> call, Throwable t) {
-
-
-                if(isDestroyed)
-                {
-                    return;
-                }
-
-//                showToastMessage("Network request failed. Please check your connection !");
-
-
-//                if(isFirst)
-//                {
-//                    isFirst = false;
-//                }
-//                else
-//                {
-//                    // is last
-//                    refreshAdapter();
-//                    isFirst = true;// reset the flag
-//                }
-
-
-                
-
-                if(swipeContainer!=null)
-                {
-                    swipeContainer.setRefreshing(false);
-                }
-
-
-
-                if(dataset.size()<=1)
-                {
-                    dataset.clear();
-                }
-
-
-
-                dataset.add(EmptyScreenData.getOffline());
-                listAdapter.notifyDataSetChanged();
-
-
-            }
-        });
-    }
-
-
-
-
-
-
-
-
-    void refreshAdapter()
-    {
-        dataset.clear();
-
-        HeaderTitle headerItemCategory = new HeaderTitle();
-
-        if(searchQuery==null)
-        {
-            headerItemCategory.setHeading(currentCategory.getCategoryName() + " Subcategories");
-        }
-        else
-        {
-            headerItemCategory.setHeading( "Search Results (Subcategories)");
-        }
-
-
-
-
-        HeaderTitle headerItem = new HeaderTitle();
-
-        if(searchQuery==null)
-        {
-            headerItem.setHeading(currentCategory.getCategoryName() + " Items");
-        }
-        else
-        {
-            headerItem.setHeading("Search Results (Items)");
-        }
-
-
-
-
-        if(datasetCategory.size()==0 && datasetItems.size()==0)
-        {
-            EmptyScreenData data = EmptyScreenData.noItemsAndCategories();
-            data.setTitle("No items in " + currentCategory.getCategoryName());
-
-            dataset.add(data);
-        }
-        else
-        {
-
-            dataset.add(headerItemCategory);
-            dataset.addAll(datasetCategory);
-
-            dataset.add(headerItem);
-            dataset.addAll(datasetItems);
-        }
-
-
-        listAdapter.notifyDataSetChanged();
-        swipeContainer.setRefreshing(false);
-    }
 
 
 
@@ -630,6 +377,9 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
         searchQuery = null;
         makeRefreshNetworkCall();
     }
+
+
+
 
 
 
@@ -664,7 +414,7 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
         {
             endPointCall = itemService.getItemsOuterJoin(
                     currentCategory.getItemCategoryID(),
-                    false,null,
+                    clearDataset,null,
                     current_sort,
                     limit_item,offset_item, null);
         }
@@ -672,10 +422,15 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
         {
             endPointCall = itemService.getItemsOuterJoin(
                     null,
-                    false, searchQuery,
+                    clearDataset, searchQuery,
                     current_sort,
                     limit_item,offset_item, null);
         }
+
+
+
+
+
 
 
         endPointCall.enqueue(new Callback<ItemEndPoint>() {
@@ -693,50 +448,97 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
                 if(response.code() ==200)
                 {
 
+
                     if(clearDataset)
                     {
+                        dataset.clear();
+                        item_count_item = response.body().getItemCount();
 
-                        if(response.body()!=null)
+
+
+                        if(response.body().getSubcategories()!=null && response.body().getSubcategories().size()>0)
                         {
 
-                            datasetItems.clear();
-                            datasetItems.addAll(response.body().getResults());
-                            item_count_item = response.body().getItemCount();
-                            fetched_items_count = datasetItems.size();
 
-//                        if(response.body().getItemCount()!=null)
-//                        {
-//
-//                        }
+                            if (searchQuery == null) {
+
+                                HeaderTitle headerItemCategory = new HeaderTitle();
+
+                                if (currentCategory.getParentCategoryID() == -1) {
+                                    headerItemCategory.setHeading("Item Categories");
+                                } else {
+                                    headerItemCategory.setHeading(currentCategory.getCategoryName() + " Subcategories");
+                                }
+
+                                dataset.add(headerItemCategory);
+                            }
+
+
+
+
+                            if(currentCategory.getParentCategoryID()==-1 || response.body().getResults().size()==0)
+                            {
+                                dataset.addAll(response.body().getSubcategories());
+                            }
+                            else
+                            {
+
+                                ItemCategoriesList list = new ItemCategoriesList();
+                                list.setItemCategories(response.body().getSubcategories());
+
+                                dataset.add(list);
+
+                            }
+
+
                         }
 
 
-                        if(isFirst)
+
+
+
+
+                        HeaderTitle headerItem = new HeaderTitle();
+
+
+
+                        if(searchQuery==null)
                         {
-                            isFirst = false;
+                            if(response.body().getResults().size()>0)
+                            {
+                                headerItem.setHeading(currentCategory.getCategoryName() + " Items");
+                            }
+                            else
+                            {
+                                headerItem.setHeading("No Items in this category");
+                            }
+
+
                         }
                         else
                         {
-                            // is last
-                            refreshAdapter();
-                            isFirst = true;// reset the flag
+                            if(response.body().getResults().size()>0)
+                            {
+                                headerItem.setHeading("Search Results");
+                            }
+                            else
+                            {
+                                headerItem.setHeading("No items for the given search !");
+                            }
                         }
 
-                    }
-                    else
-                    {
-                        if(response.body()!=null)
-                        {
 
-                            dataset.addAll(response.body().getResults());
-                            fetched_items_count = fetched_items_count + response.body().getResults().size();
-                            item_count_item = response.body().getItemCount();
-                            listAdapter.notifyDataSetChanged();
-                        }
 
-                        swipeContainer.setRefreshing(false);
+                        dataset.add(headerItem);
+
                     }
 
+
+
+
+
+
+                    dataset.addAll(response.body().getResults());
 
 
 
@@ -776,29 +578,6 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
                 {
                     return;
                 }
-
-
-                if(clearDataset)
-                {
-
-                    if(isFirst)
-                    {
-                        isFirst = false;
-                    }
-                    else
-                    {
-                        // is last
-                        refreshAdapter();
-                        isFirst = true;// reset the flag
-                    }
-                }
-                else
-                {
-                    swipeContainer.setRefreshing(false);
-                }
-
-
-
 
 
 
@@ -852,6 +631,8 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
 
 
 
+
+
     @Override
     public boolean backPressed() {
 
@@ -885,7 +666,10 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
     }
 
 
-    void notifyItemHeaderChanged()
+
+
+
+    private void notifyItemHeaderChanged()
     {
         if(getActivity() instanceof NotifyIndicatorChanged)
         {
@@ -909,7 +693,9 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
     // display shop Item Status
 
 
-    void makeNetworkCallShopItem()
+
+
+    private void makeNetworkCallShopItem()
     {
 
         int currentShopID = PrefShopHome.getShop(getContext()).getShopID();
@@ -1022,7 +808,7 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
 
 
 
-    void addSelectedToShopClick()
+    private void addSelectedToShopClick()
     {
 
         if(listAdapter.selectedItems.size()==0)
@@ -1049,6 +835,9 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
         makeShopItemCreateBulkRequest(tempShopItemList);
 
     }
+
+
+
 
 
     private void makeShopItemCreateBulkRequest(List<ShopItem> tempShopItemList) {
@@ -1114,7 +903,7 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
 
 
 
-    void removeSeletedShopItemClick(){
+    private void removeSeletedShopItemClick(){
 
 
 
@@ -1205,7 +994,7 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
 
 
 
-    void clearSelectedItems()
+    private void clearSelectedItems()
     {
         // clear the selected items
         listAdapter.selectedItems.clear();

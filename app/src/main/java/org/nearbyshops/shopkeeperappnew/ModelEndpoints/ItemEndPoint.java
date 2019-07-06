@@ -2,6 +2,7 @@ package org.nearbyshops.shopkeeperappnew.ModelEndpoints;
 
 
 import org.nearbyshops.shopkeeperappnew.Model.Item;
+import org.nearbyshops.shopkeeperappnew.Model.ItemCategory;
 
 import java.util.List;
 
@@ -10,12 +11,24 @@ import java.util.List;
  */
 public class ItemEndPoint {
 
-    Integer itemCount;
-    Integer offset;
-    Integer limit;
-    Integer max_limit;
-    List<Item> results;
+    private int itemCount;
+    private int offset;
+    private int limit;
+    private int max_limit;
+    private List<Item> results;
+    private List<ItemCategory> subcategories;
 
+
+
+
+
+    public List<ItemCategory> getSubcategories() {
+        return subcategories;
+    }
+
+    public void setSubcategories(List<ItemCategory> subcategories) {
+        this.subcategories = subcategories;
+    }
 
     public Integer getItemCount() {
         return itemCount;

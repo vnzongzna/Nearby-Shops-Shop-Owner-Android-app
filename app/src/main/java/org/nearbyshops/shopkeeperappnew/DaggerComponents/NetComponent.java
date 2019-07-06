@@ -12,6 +12,7 @@ import org.nearbyshops.shopkeeperappnew.EditProfile.ChangePhone.FragmentVerifyPh
 import org.nearbyshops.shopkeeperappnew.EditProfile.FragmentEditProfile;
 import org.nearbyshops.shopkeeperappnew.EditShop.EditShopFragment;
 import org.nearbyshops.shopkeeperappnew.EditShopImage.EditShopImageFragment;
+import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ItemsByCatFragmentNew;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ItemsByCatFragmentSimple;
 import org.nearbyshops.shopkeeperappnew.ItemsInShop.AdapterItemsInShop;
 import org.nearbyshops.shopkeeperappnew.ItemsInShop.ItemsInShopFragment;
@@ -158,4 +159,6 @@ public interface NetComponent {
     void Inject(SelectDeliveryFragment selectDeliveryFragment);
 
     void Inject(DeliveryInventoryFragment deliveryInventoryFragment);
+
+    void Inject(ItemsByCatFragmentNew itemsByCatFragmentNew);
 }
