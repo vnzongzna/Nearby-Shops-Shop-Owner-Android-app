@@ -53,7 +53,7 @@ import java.util.Map;
  * Created by sumeet on 2/12/16.
  */
 
-public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLayout.OnRefreshListener,
+public class ItemsByCatFragmentDeprecated extends Fragment implements SwipeRefreshLayout.OnRefreshListener,
         ViewHolderItemCategory.ListItemClick, ViewHolderItemSimple.ListItemClick,
         NotifyBackPressed, NotifySort, NotifyFABClick, NotifySearch {
 
@@ -103,7 +103,7 @@ public class ItemsByCatFragmentSimple extends Fragment implements SwipeRefreshLa
     ItemCategory currentCategory = null;
 
 
-    public ItemsByCatFragmentSimple() {
+    public ItemsByCatFragmentDeprecated() {
 
         super();
 

@@ -27,6 +27,7 @@ import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyIndicat
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Model.ItemCategoriesList;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Utility.PrefSortItems;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ViewHolders.ViewHolderItemCategory;
+import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ViewHolders.ViewHolderItemCategoryHorizontal;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ViewHolders.ViewHolderItemSimple;
 import org.nearbyshops.shopkeeperappnew.Model.Item;
 import org.nearbyshops.shopkeeperappnew.Model.ItemCategory;
@@ -58,8 +59,10 @@ import retrofit2.Response;
  * Created by sumeet on 2/12/16.
  */
 
-public class ItemsByCatFragmentNew extends Fragment implements SwipeRefreshLayout.OnRefreshListener,
-        ViewHolderItemCategory.ListItemClick, ViewHolderItemSimple.ListItemClick,
+public class ItemsByCatFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener,
+        ViewHolderItemCategory.ListItemClick,
+        ViewHolderItemSimple.ListItemClick,
+        ViewHolderItemCategoryHorizontal.ListItemClick,
         NotifyBackPressed, NotifySort, NotifyFABClick, NotifySearch {
 
 
@@ -108,7 +111,7 @@ public class ItemsByCatFragmentNew extends Fragment implements SwipeRefreshLayou
     private ItemCategory currentCategory = null;
 
 
-    public ItemsByCatFragmentNew() {
+    public ItemsByCatFragment() {
 
         super();
 
@@ -433,6 +436,7 @@ public class ItemsByCatFragmentNew extends Fragment implements SwipeRefreshLayou
 
 
 
+
         endPointCall.enqueue(new Callback<ItemEndPoint>() {
             @Override
             public void onResponse(Call<ItemEndPoint> call, Response<ItemEndPoint> response) {
@@ -447,12 +451,15 @@ public class ItemsByCatFragmentNew extends Fragment implements SwipeRefreshLayou
 
                 if(response.code() ==200)
                 {
+//                    showToastMessage("Response Code : " + String.valueOf(response.code()));
 
 
                     if(clearDataset)
                     {
                         dataset.clear();
+
                         item_count_item = response.body().getItemCount();
+                        fetched_items_count = dataset.size();
 
 
 
@@ -510,7 +517,18 @@ public class ItemsByCatFragmentNew extends Fragment implements SwipeRefreshLayou
                             }
                             else
                             {
+
                                 headerItem.setHeading("No Items in this category");
+
+
+                                if(currentCategory.getItemCategoryID()!=1)
+                                {
+                                    EmptyScreenData data = EmptyScreenData.noItemsAndCategories();
+                                    data.setTitle("No items in " + currentCategory.getCategoryName());
+
+                                    dataset.add(data);
+                                }
+
                             }
 
 
@@ -536,27 +554,8 @@ public class ItemsByCatFragmentNew extends Fragment implements SwipeRefreshLayou
 
 
 
-
-
+                    fetched_items_count = fetched_items_count + response.body().getResults().size();
                     dataset.addAll(response.body().getResults());
-
-
-
-
-
-                    if(offset_item+limit_item >= item_count_item)
-                    {
-                        listAdapter.setLoadMore(false);
-                    }
-                    else
-                    {
-                        listAdapter.setLoadMore(true);
-                    }
-
-
-
-                    notifyItemHeaderChanged();
-
                 }
                 else
                 {
@@ -567,6 +566,21 @@ public class ItemsByCatFragmentNew extends Fragment implements SwipeRefreshLayou
 
 
 
+                if(offset_item+limit_item >= item_count_item)
+                {
+                    listAdapter.setLoadMore(false);
+                }
+                else
+                {
+                    listAdapter.setLoadMore(true);
+                }
+
+
+
+
+                swipeContainer.setRefreshing(false);
+                listAdapter.notifyDataSetChanged();
+                notifyItemHeaderChanged();
 
 
             }
@@ -591,6 +605,7 @@ public class ItemsByCatFragmentNew extends Fragment implements SwipeRefreshLayou
                 listAdapter.notifyDataSetChanged();
 
 
+                swipeContainer.setRefreshing(false);
 
 
 //                showToastMessage("Items: Network request failed. Please check your connection !");

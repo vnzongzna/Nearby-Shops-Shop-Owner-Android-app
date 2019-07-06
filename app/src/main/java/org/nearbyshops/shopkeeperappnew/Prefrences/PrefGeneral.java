@@ -23,7 +23,8 @@ public class PrefGeneral {
 
 
 
-    public static final String SERVICE_URL = null;
+
+    public static final String SERVICE_URL = SERVICE_URL_LOCAL_HOTSPOT;
 
 
 

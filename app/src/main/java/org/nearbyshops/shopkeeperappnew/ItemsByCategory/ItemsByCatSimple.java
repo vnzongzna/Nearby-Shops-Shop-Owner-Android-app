@@ -75,7 +75,7 @@ public class ItemsByCatSimple extends AppCompatActivity implements NotifyIndicat
         {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.fragment_container,new ItemsByCatFragmentSimple(),TAG_FRAGMENT)
+                    .add(R.id.fragment_container,new ItemsByCatFragment(),TAG_FRAGMENT)
                     .commit();
         }
 
