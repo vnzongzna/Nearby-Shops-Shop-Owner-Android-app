@@ -17,14 +17,13 @@ public class PrefGeneral {
     public static final String TAG_SERVICE_URL = "service_url_shop_owner";
 
 
-    public static final String SERVICE_URL_LOCAL_HOTSPOT = "http://192.168.43.73:5121";
+    public static final String SERVICE_URL_LOCAL_HOTSPOT = "http://192.168.43.56:5121";
     public static final String SERVICE_URL_LOCAL = "http://192.168.0.5:5120";
     public static final String SERVICE_URL_NEARBYSHOPS = "http://api.nearbyshops.org";
+    public static final String SERVICE_URL_NEARBYSHOPS_DEMO = "http://api-demo.nearbyshops.org";
 
 
-
-
-    public static final String SERVICE_URL = SERVICE_URL_LOCAL_HOTSPOT;
+    public static final String SERVICE_URL = null;
 
 
 
@@ -36,7 +35,6 @@ public class PrefGeneral {
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_name), Context.MODE_PRIVATE);
        return sharedPref.getString(TAG_SERVICE_URL, SERVICE_URL);
     }
-
 
 
 

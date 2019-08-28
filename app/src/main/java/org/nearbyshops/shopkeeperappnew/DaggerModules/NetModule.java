@@ -232,4 +232,22 @@ public class NetModule {
 
 
 
+
+
+
+    @Provides
+    ItemImageService provideItemImageService(Retrofit retrofit)
+    {
+        return retrofit.create(ItemImageService.class);
+    }
+
+
+
+
+    @Provides
+    ItemSpecNameService provideItemSpecNameService(Retrofit retrofit)
+    {
+        return retrofit.create(ItemSpecNameService.class);
+    }
+
 }

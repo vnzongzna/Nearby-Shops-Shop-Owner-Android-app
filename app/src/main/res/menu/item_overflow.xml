@@ -3,13 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="org.nearbyshops.enduser.ScrollingActivity">
 
-    <item
-        android:id="@+id/action_remove"
-        android:orderInCategory="102"
-        android:title="Remove"
-        app:showAsAction="never"
-        app:srcCompat="@drawable/ic_delete_black_48px"/>
-
 
     <item
         android:id="@+id/action_edit"
@@ -18,17 +11,27 @@
         app:showAsAction="never" />
 
 
-    <item
-        android:id="@+id/action_detach"
-        android:orderInCategory="101"
-        android:title="Detach"
-        app:showAsAction="never" />
 
 
-    <item
-        android:id="@+id/action_change_parent"
-        android:orderInCategory="101"
-        android:title="Change Parent"
-        app:showAsAction="never" />
+    <!--    <item-->
+<!--        android:id="@+id/action_remove"-->
+<!--        android:orderInCategory="102"-->
+<!--        android:title="Remove"-->
+<!--        app:showAsAction="never"-->
+<!--        app:srcCompat="@drawable/ic_delete_black_48px"/>-->
+
+
+<!--    <item-->
+<!--        android:id="@+id/action_detach"-->
+<!--        android:orderInCategory="101"-->
+<!--        android:title="Detach"-->
+<!--        app:showAsAction="never" />-->
+
+
+<!--    <item-->
+<!--        android:id="@+id/action_change_parent"-->
+<!--        android:orderInCategory="101"-->
+<!--        android:title="Change Parent"-->
+<!--        app:showAsAction="never" />-->
 
 </menu>

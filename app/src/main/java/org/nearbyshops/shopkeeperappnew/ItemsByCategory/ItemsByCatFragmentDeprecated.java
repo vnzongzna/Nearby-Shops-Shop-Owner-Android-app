@@ -841,6 +841,8 @@ public class ItemsByCatFragmentDeprecated extends Fragment implements SwipeRefre
 
     }
 
+
+
     @Override
     public void notifyItemSelected() {
         if(getActivity() instanceof ToggleFab)
@@ -850,6 +852,12 @@ public class ItemsByCatFragmentDeprecated extends Fragment implements SwipeRefre
         }
     }
 
+
+
+    @Override
+    public void notifyItemUnSelected() {
+
+    }
 
 
     @Override

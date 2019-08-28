@@ -18,9 +18,13 @@ import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import com.github.clans.fab.FloatingActionButton;
+
 import com.github.clans.fab.FloatingActionMenu;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.wunderlist.slidinglayer.SlidingLayer;
+
+import org.nearbyshops.shopkeeperappnew.EditItem.EditItem;
+import org.nearbyshops.shopkeeperappnew.EditItem.EditItemFragmentNew;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySearch;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySort;
 import org.nearbyshops.shopkeeperappnew.Interfaces.ToggleFab;
@@ -31,19 +35,18 @@ import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Utility.SlidingLayerSort
 import org.nearbyshops.shopkeeperappnew.R;
 
 
-public class ItemsByCatSimple extends AppCompatActivity implements NotifyIndicatorChanged, NotifySort,ToggleFab{
+public class ItemsByCatSimple extends AppCompatActivity implements NotifyIndicatorChanged, NotifySort{
 
     public static final String TAG_FRAGMENT = "item_categories_simple";
     public static final String TAG_SLIDING = "sort_items_sliding";
 
-    @BindView(R.id.fab_menu)
-    FloatingActionMenu fab_menu;
+//    @BindView(R.id.fab_menu) FloatingActionMenu fab_menu;
+//    @BindView(R.id.fab_remove_selected_from_shop) FloatingActionButton fab_remove_selected;
+//    @BindView(R.id.fab_add_selected_to_shop) FloatingActionButton fab_add_selected;
 
-    @BindView(R.id.fab_remove_selected_from_shop)
-    FloatingActionButton fab_remove_selected;
-    @BindView(R.id.fab_add_selected_to_shop)
-    FloatingActionButton fab_add_selected;
-//    @BindView(R.id.fab_add_item) FloatingActionButton fab_add_item;
+
+    @BindView(R.id.fab) FloatingActionButton fab;
+
 
     @BindView(R.id.text_sub)
     TextView itemHeader;
@@ -81,7 +84,7 @@ public class ItemsByCatSimple extends AppCompatActivity implements NotifyIndicat
 
 
         setupSlidingLayer();
-        setFabBackground();
+//        setFabBackground();
     }
 
 
@@ -125,41 +128,42 @@ public class ItemsByCatSimple extends AppCompatActivity implements NotifyIndicat
 
 
 
-    private void setFabBackground() {
-        // assign background to the FAB's
 
-
-        Drawable removeDrawable = VectorDrawableCompat
-                .create(getResources(),
-                        R.drawable.ic_remove_white_24px, getTheme());
-
-
-        Drawable drawableAdd = VectorDrawableCompat
-                .create(getResources(), R.drawable.ic_add_white_24px, getTheme());
-
-//        ContextCompat.getDrawable(this,R.drawable.ic_remove_white_24px)
-//        ContextCompat.getDrawable(this,R.drawable.ic_add_white_24px)
-        fab_remove_selected.setImageDrawable(removeDrawable);
-        fab_add_selected.setImageDrawable(drawableAdd);
-
-//        fab_add_item.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_add_white_24px));
-    }
-
-
-
-
-
-    @Override
-    public void showFab() {
-        fab_menu.animate().translationY(0);
-    }
-
-    @Override
-    public void hideFab() {
-        fab_menu.animate().translationY(fab_menu.getHeight());
-    }
-
-
+//
+//    private void setFabBackground() {
+//        // assign background to the FAB's
+//
+//        Drawable removeDrawable = VectorDrawableCompat
+//                .create(getResources(),
+//                        R.drawable.ic_remove_white_24px, getTheme());
+//
+//
+//        Drawable drawableAdd = VectorDrawableCompat
+//                .create(getResources(), R.drawable.ic_add_white_24px, getTheme());
+//
+////        ContextCompat.getDrawable(this,R.drawable.ic_remove_white_24px)
+////        ContextCompat.getDrawable(this,R.drawable.ic_add_white_24px)
+//        fab_remove_selected.setImageDrawable(removeDrawable);
+//        fab_add_selected.setImageDrawable(drawableAdd);
+//
+////        fab_add_item.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_add_white_24px));
+//    }
+//
+//
+//
+//
+//
+//    @Override
+//    public void showFab() {
+//        fab_menu.animate().translationY(0);
+//    }
+//
+//    @Override
+//    public void hideFab() {
+//        fab_menu.animate().translationY(fab_menu.getHeight());
+//    }
+//
+//
 
 
 
@@ -219,36 +223,47 @@ public class ItemsByCatSimple extends AppCompatActivity implements NotifyIndicat
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
     // fab click buttons
 
 
-    @OnClick(R.id.fab_remove_selected_from_shop)
-    void fabRemoveSelectedClick()
-    {
-//        Fragment fragment = getSupportFragmentManager()
-//                .findFragmentByTag(TAG_FRAGMENT);
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-
-        if(fragment instanceof NotifyFABClick)
-        {
-            ((NotifyFABClick) fragment).removeSelectedFromShop();
-        }
-    }
-
-
-    @OnClick(R.id.fab_add_selected_to_shop)
-    void fabAddSelectedClick()
-    {
-//        Fragment fragment = getSupportFragmentManager()
-//                .findFragmentByTag(TAG_FRAGMENT);
-
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-
-        if(fragment instanceof NotifyFABClick)
-        {
-            ((NotifyFABClick) fragment).addSelectedToShop();
-        }
-    }
+//    @OnClick(R.id.fab_remove_selected_from_shop)
+//    void fabRemoveSelectedClick()
+//    {
+////        Fragment fragment = getSupportFragmentManager()
+////                .findFragmentByTag(TAG_FRAGMENT);
+//        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+//
+//        if(fragment instanceof NotifyFABClick)
+//        {
+//            ((NotifyFABClick) fragment).removeSelectedFromShop();
+//        }
+//    }
+//
+//
+//    @OnClick(R.id.fab_add_selected_to_shop)
+//    void fabAddSelectedClick()
+//    {
+////        Fragment fragment = getSupportFragmentManager()
+////                .findFragmentByTag(TAG_FRAGMENT);
+//
+//        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+//
+//        if(fragment instanceof NotifyFABClick)
+//        {
+//            ((NotifyFABClick) fragment).addSelectedToShop();
+//        }
+//    }
 
 
 
@@ -374,6 +389,9 @@ public class ItemsByCatSimple extends AppCompatActivity implements NotifyIndicat
 
 
 
+
+
+
     private void handleIntent(Intent intent) {
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
@@ -390,6 +408,26 @@ public class ItemsByCatSimple extends AppCompatActivity implements NotifyIndicat
         }
     }
 
+
+
+
+
+
+
+    @OnClick(R.id.fab)
+    void fabClick()
+    {
+//        showToast("Fab Clicked !");
+
+        Fragment fragment = getSupportFragmentManager()
+                .findFragmentByTag(TAG_FRAGMENT);
+
+        if(fragment instanceof NotifyFABClick)
+        {
+            ((NotifyFABClick) fragment).addItem();
+        }
+
+    }
 
 
 

@@ -91,27 +91,43 @@
 -->
 
 
-    app:srcCompat="@android:drawable/ic_dialog_email" />
-    -->
+<!--    app:srcCompat="@android:drawable/ic_dialog_email" />-->
+<!--    &ndash;&gt;-->
 
 
-    <com.github.clans.fab.FloatingActionMenu
-        android:id="@+id/fab_menu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+
+
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:src="@drawable/fab_add"
+        android:layout_margin="16dp"
         android:layout_gravity="end|bottom"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="10dp"
-        fab:menu_labels_ellipsize="end"
-        fab:menu_labels_singleLine="false"
-        app:menu_labels_colorNormal="#ffffff"
-        app:menu_labels_textColor="#000000"
-        fab:menu_backgroundColor="#aa37474F"
-        app:menu_colorNormal="@color/buttonColorDark"
-        app:menu_colorPressed="@color/phonographyBlue"
-        app:menu_colorRipple="@color/white"
-        fab:menu_fab_label="Close">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
+
+<!--    <com.github.clans.fab.FloatingActionMenu-->
+<!--        android:id="@+id/fab_menu"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="end|bottom"-->
+<!--        android:paddingRight="10dp"-->
+<!--        android:paddingBottom="10dp"-->
+<!--        android:paddingLeft="10dp"-->
+<!--        fab:menu_labels_ellipsize="end"-->
+<!--        fab:menu_labels_singleLine="false"-->
+<!--        app:menu_labels_colorNormal="#ffffff"-->
+<!--        app:menu_labels_textColor="#000000"-->
+<!--        fab:menu_backgroundColor="#aa37474F"-->
+<!--        app:menu_colorNormal="@color/buttonColorDark"-->
+<!--        app:menu_colorPressed="@color/phonographyBlue"-->
+<!--        app:menu_colorRipple="@color/white"-->
+<!--        fab:menu_fab_label="Close">-->
 
         <!--<com.github.clans.fab.FloatingActionButton-->
             <!--android:id="@+id/fab_add_item"-->
@@ -126,29 +142,29 @@
 
 
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_add_selected_to_shop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            fab:fab_size="mini"
-            app:srcCompat="@drawable/fab_add"
-            app:fab_colorNormal="@color/gplus_color_1"
-            app:fab_colorPressed="@color/blueGrey800"
-            fab:fab_label="Add Selected to Shop" />
+<!--        <com.github.clans.fab.FloatingActionButton-->
+<!--            android:id="@+id/fab_add_selected_to_shop"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            fab:fab_size="mini"-->
+<!--            app:srcCompat="@drawable/fab_add"-->
+<!--            app:fab_colorNormal="@color/gplus_color_1"-->
+<!--            app:fab_colorPressed="@color/blueGrey800"-->
+<!--            fab:fab_label="Add Selected to Shop" />-->
 
 
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_remove_selected_from_shop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            fab:fab_size="mini"
-            app:srcCompat="@drawable/fab_add"
-            app:fab_colorNormal="@color/phonographyBlue"
-            app:fab_colorPressed="@color/blueGrey800"
-            fab:fab_label="Remove Selected from Shop" />
+<!--        <com.github.clans.fab.FloatingActionButton-->
+<!--            android:id="@+id/fab_remove_selected_from_shop"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            fab:fab_size="mini"-->
+<!--            app:srcCompat="@drawable/fab_add"-->
+<!--            app:fab_colorNormal="@color/phonographyBlue"-->
+<!--            app:fab_colorPressed="@color/blueGrey800"-->
+<!--            fab:fab_label="Remove Selected from Shop" />-->
 
-    </com.github.clans.fab.FloatingActionMenu>
+<!--    </com.github.clans.fab.FloatingActionMenu>-->
 
 
 

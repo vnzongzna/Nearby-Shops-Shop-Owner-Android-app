@@ -75,10 +75,6 @@ public class ViewHolderItemSimple extends RecyclerView.ViewHolder implements Pop
 
 
 
-
-
-
-
     public ViewHolderItemSimple(View itemView, Context context, Fragment fragment, RecyclerView.Adapter adapter,
                                 Map<Integer, ShopItem> shopItemMap,
                                 Map<Integer, Item> selectedItems
@@ -185,6 +181,7 @@ public class ViewHolderItemSimple extends RecyclerView.ViewHolder implements Pop
             ))
             {
                 selectedItems.remove(item.getItemID());
+                ((ListItemClick)fragment).notifyItemUnSelected();
 
             }else
             {
@@ -199,15 +196,18 @@ public class ViewHolderItemSimple extends RecyclerView.ViewHolder implements Pop
 
 
 
-    //        @OnClick(R.id.more_options)
-    void optionsOverflowClick(View v)
-    {
-        PopupMenu popup = new PopupMenu(context, v);
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.item_overflow, popup.getMenu());
-        popup.setOnMenuItemClickListener(this);
-        popup.show();
-    }
+        @OnClick(R.id.more_options)
+        void optionsOverflowClick(View v)
+        {
+            PopupMenu popup = new PopupMenu(context, v);
+            MenuInflater inflater = popup.getMenuInflater();
+            inflater.inflate(R.menu.item_overflow, popup.getMenu());
+            popup.setOnMenuItemClickListener(this);
+            popup.show();
+        }
+
+
+
 
 
     @Override
@@ -245,6 +245,7 @@ public class ViewHolderItemSimple extends RecyclerView.ViewHolder implements Pop
     public interface ListItemClick
     {
         void notifyItemSelected();
+        void notifyItemUnSelected();
         void editItem(Item item);
     }
 

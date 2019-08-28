@@ -85,6 +85,8 @@ dependencies {
     implementation 'com.hbb20:ccp:2.2.7'
     implementation 'com.googlecode.libphonenumber:libphonenumber:8.10.12'
 
+    implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
+
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'

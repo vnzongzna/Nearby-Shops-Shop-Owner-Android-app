@@ -1,11 +1,13 @@
 package org.nearbyshops.shopkeeperappnew.ItemsByCategory;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -18,6 +20,9 @@ import org.nearbyshops.shopkeeperappnew.API.ItemCategoryService;
 import org.nearbyshops.shopkeeperappnew.API.ItemService;
 import org.nearbyshops.shopkeeperappnew.API.ShopItemService;
 import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
+import org.nearbyshops.shopkeeperappnew.EditItem.EditItem;
+import org.nearbyshops.shopkeeperappnew.EditItem.EditItemFragmentNew;
+import org.nearbyshops.shopkeeperappnew.EditItem.PrefItem;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySearch;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySort;
 import org.nearbyshops.shopkeeperappnew.Interfaces.ToggleFab;
@@ -50,6 +55,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -94,6 +100,9 @@ public class ItemsByCatFragment extends Fragment implements SwipeRefreshLayout.O
 
     private GridLayoutManager layoutManager;
     private AdapterSimple listAdapter;
+
+
+    @BindView(R.id.add_remove_buttons) LinearLayout addRemoveButtons;
 
 
 
@@ -635,15 +644,35 @@ public class ItemsByCatFragment extends Fragment implements SwipeRefreshLayout.O
 
     }
 
+
     @Override
     public void notifyItemSelected() {
+
         if(getActivity() instanceof ToggleFab)
         {
             ((ToggleFab)getActivity()).showFab();
             show=true;
         }
+
+
+
+
+        if(!listAdapter.getSelectedItems().isEmpty())
+        {
+            addRemoveButtons.setVisibility(View.VISIBLE);
+        }
     }
 
+
+
+    @Override
+    public void notifyItemUnSelected() {
+
+        if(listAdapter.getSelectedItems().isEmpty())
+        {
+            addRemoveButtons.setVisibility(View.GONE);
+        }
+    }
 
 
 
@@ -1016,6 +1045,10 @@ public class ItemsByCatFragment extends Fragment implements SwipeRefreshLayout.O
     }
 
 
+
+
+
+
     @Override
     public void addItem() {
 
@@ -1023,7 +1056,19 @@ public class ItemsByCatFragment extends Fragment implements SwipeRefreshLayout.O
 //        intent.putExtra(EditItemFragmentNew.EDIT_MODE_INTENT_KEY, EditItemFragmentNew.MODE_ADD);
 //        intent.putExtra(EditItemFragmentNew.ITEM_CATEGORY_INTENT_KEY,currentCategory);
 //        startActivity(intent);
+
+
+
+
+        Intent intent = new Intent(getActivity(), EditItem.class);
+        intent.putExtra(EditItemFragmentNew.EDIT_MODE_INTENT_KEY, EditItemFragmentNew.MODE_ADD);
+        intent.putExtra(EditItemFragmentNew.ITEM_CATEGORY_INTENT_KEY,currentCategory);
+        startActivity(intent);
     }
+
+
+
+
 
     @Override
     public void editItem(Item item) {
@@ -1040,27 +1085,62 @@ public class ItemsByCatFragment extends Fragment implements SwipeRefreshLayout.O
 //        intentEdit.putExtra(EditItemFragmentNew.ITEM_INTENT_KEY,json);
 //
 //        getActivity().startActivity(intentEdit);
+
+
+
+
+
+        PrefItem.saveItem(item, getActivity());
+
+        Intent intentEdit = new Intent(getActivity(), EditItem.class);
+        intentEdit.putExtra(EditItemFragmentNew.EDIT_MODE_INTENT_KEY, EditItemFragmentNew.MODE_UPDATE);
+        startActivity(intentEdit);
     }
+
+
+
+
+
+
+
 
 
     @Override
     public void removeSelectedFromShop() {
 //        showToastMessage("Remove Selected");
 
-        removeSeletedShopItemClick();
+//        removeSeletedShopItemClick();
     }
+
+
+
 
     @Override
     public void addSelectedToShop() {
 
 //        showToastMessage("Add Selected !");
-        addSelectedToShopClick();
+//        addSelectedToShopClick();
     }
 
 
 
 
 
+    @OnClick(R.id.add_to_shop)
+    void addToShopButtonClick()
+    {
+        addSelectedToShopClick();
+        addRemoveButtons.setVisibility(View.GONE);
+    }
 
+
+
+
+    @OnClick(R.id.remove_from_shop)
+    void removeFromShopClick()
+    {
+        removeSeletedShopItemClick();
+        addRemoveButtons.setVisibility(View.GONE);
+    }
 
 }

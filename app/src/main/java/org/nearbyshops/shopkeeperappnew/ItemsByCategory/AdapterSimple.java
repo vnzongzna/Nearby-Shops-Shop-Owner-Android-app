@@ -201,4 +201,10 @@ public class AdapterSimple extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
 
+
+
+    public Map<Integer, Item> getSelectedItems() {
+        return selectedItems;
+    }
+
 }

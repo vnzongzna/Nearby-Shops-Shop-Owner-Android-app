@@ -4,6 +4,8 @@ import dagger.Component;
 import org.nearbyshops.shopkeeperappnew.DaggerModules.AppModule;
 import org.nearbyshops.shopkeeperappnew.DaggerModules.NetModule;
 import org.nearbyshops.shopkeeperappnew.DeliveryPersonInventory.Fragment.DeliveryInventoryFragment;
+import org.nearbyshops.shopkeeperappnew.EditItem.EditItemFragmentNew;
+import org.nearbyshops.shopkeeperappnew.EditItemImage.EditItemImageFragment;
 import org.nearbyshops.shopkeeperappnew.EditProfile.ChangeEmail.FragmentChangeEmail;
 import org.nearbyshops.shopkeeperappnew.EditProfile.ChangeEmail.FragmentVerifyEmailChange;
 import org.nearbyshops.shopkeeperappnew.EditProfile.ChangePassword.FragmentChangePassword;
@@ -161,4 +163,8 @@ public interface NetComponent {
     void Inject(DeliveryInventoryFragment deliveryInventoryFragment);
 
     void Inject(ItemsByCatFragment itemsByCatFragment);
+
+    void Inject(EditItemImageFragment editItemImageFragment);
+
+    void Inject(EditItemFragmentNew editItemFragmentNew);
 }

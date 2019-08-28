@@ -411,6 +411,27 @@
 
 
 
+        <activity
+            android:name=".EditItem.EditItem"
+            android:label="Edit Item"
+            android:parentActivityName=".ShopHome.ShopHome">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ShopHome.ShopHome" />
+        </activity>
+
+
+    <!--            android:theme="@style/Theme.AppCompat.Light.NoActionBar">-->
+
+        <activity
+            android:name=".EditItemImage.EditItemImage"
+            android:label="Edit Item Image"
+            android:parentActivityName=".ShopHome.ShopHome">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ShopHome.ShopHome" />
+        </activity>
+
     </application>
 
 </manifest>
