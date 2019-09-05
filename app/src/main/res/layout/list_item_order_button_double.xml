@@ -26,7 +26,7 @@
         android:layout_marginTop="5dp"
         android:background="@color/gplus_color_2"
         android:padding="5dp"
-        android:text="2.3 Km"
+        android:text=" - "
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"

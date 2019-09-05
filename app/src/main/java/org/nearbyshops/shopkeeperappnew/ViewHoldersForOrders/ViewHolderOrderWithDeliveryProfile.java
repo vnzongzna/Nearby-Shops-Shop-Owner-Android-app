@@ -1,4 +1,4 @@
-package org.nearbyshops.shopkeeperappnew.OrdersInventory.ViewHolders;
+package org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,7 +15,6 @@ import com.squareup.picasso.Picasso;
 import org.nearbyshops.shopkeeperappnew.Model.Order;
 import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery;
-import org.nearbyshops.shopkeeperappnew.OrderHistory.ViewHolders.ViewHolderOrder;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefGeneral;
 import org.nearbyshops.shopkeeperappnew.R;
 

@@ -27,10 +27,10 @@ import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery
 import org.nearbyshops.shopkeeperappnew.OrderDetail.OrderDetail;
 import org.nearbyshops.shopkeeperappnew.OrderDetail.PrefOrderDetail;
 import org.nearbyshops.shopkeeperappnew.OrderHistory.SlidingLayerSort.PrefSortOrders;
-import org.nearbyshops.shopkeeperappnew.OrderHistory.ViewHolders.ViewHolderOrder;
-import org.nearbyshops.shopkeeperappnew.OrdersInventory.ViewHolders.ViewHolderOrderButtonSingle;
-import org.nearbyshops.shopkeeperappnew.OrdersInventory.ViewHolders.ViewHolderOrderSelectable;
-import org.nearbyshops.shopkeeperappnew.OrdersInventory.ViewHolders.ViewHolderOrderWithDeliveryProfile;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrder;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrderButtonSingle;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrderSelectable;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrderWithDeliveryProfile;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.SelectDeliveryGuy.SelectDeliveryGuy;
@@ -237,6 +237,8 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
             }
         });
     }
+
+
 
 
 
@@ -1415,6 +1417,9 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
 
 
+
+
+
     private int selectedDeliveryGuy = 0;
     private ArrayList<Order> selected = new ArrayList<>();
 
@@ -1570,8 +1575,6 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
     private Integer deliveryGuyID = null;
 
-
-
     private void selectDeliveryGuy()
     {
 
@@ -1582,5 +1585,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
         intent.putExtra("order_status",orderStatus);
         startActivityForResult(intent,562);
     }
+
+
 
 }

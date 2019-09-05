@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NBS : Distributor</string>
+    <string name="app_name">NBS:ShopOwner</string>
     <string name="action_settings">Settings</string>
 
     <string name="preference_file_name">sharedpreferencefile</string>

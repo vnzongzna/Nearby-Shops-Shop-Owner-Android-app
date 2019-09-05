@@ -1,6 +1,8 @@
-package org.nearbyshops.shopkeeperappnew.DeliveryPersonInventory.ViewHolders;
+package org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +12,10 @@ import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import org.nearbyshops.shopkeeperappnew.Model.DeliveryAddress;
 import org.nearbyshops.shopkeeperappnew.Model.Order;
 import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery;
-import org.nearbyshops.shopkeeperappnew.OrderHistory.ViewHolders.ViewHolderOrder;
 import org.nearbyshops.shopkeeperappnew.R;
 
 
@@ -24,6 +27,9 @@ public class ViewHolderOrderButtonDouble extends ViewHolderOrder {
 
     @BindView(R.id.button_right) TextView buttonRight;
     @BindView(R.id.progress_right) ProgressBar progressRight;
+
+    @BindView(R.id.distance) TextView distance;
+
 
 
 
@@ -101,6 +107,13 @@ public class ViewHolderOrderButtonDouble extends ViewHolderOrder {
             {
                 buttonLeft.setText(" Delivered ");
                 buttonRight.setText(" Return ");
+
+
+                if(order.getDeliveryAddress()!=null)
+                {
+                    distance.setText(String.format("%.2f Kms",order.getDeliveryAddress().getRt_distance()));
+                }
+
             }
 
         }
@@ -153,6 +166,48 @@ public class ViewHolderOrderButtonDouble extends ViewHolderOrder {
 
 
 
+
+
+
+
+
+    @OnClick(R.id.get_directions)
+    void getDirectionsClick()
+    {
+        DeliveryAddress deliveryAddress = order.getDeliveryAddress();
+
+        if(deliveryAddress!=null)
+        {
+            getDirections(deliveryAddress.getLatitude(),deliveryAddress.getLongitude());
+
+        }
+    }
+
+
+
+
+
+    private void getDirections(double lat, double lon)
+    {
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + String.valueOf(lat) + "," + String.valueOf(lon));
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        fragment.startActivity(mapIntent);
+    }
+
+
+
+
+
+
+
+    void seeOnMap(double lat,double lon,String label)
+    {
+        Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + String.valueOf(lat) + "," + String.valueOf(lon) + "(" + label + ")");
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        fragment.startActivity(mapIntent);
+    }
 
 
 

@@ -34,7 +34,7 @@ import org.nearbyshops.shopkeeperappnew.OrderDetail.OrderDetail;
 import org.nearbyshops.shopkeeperappnew.OrderDetail.PrefOrderDetail;
 import org.nearbyshops.shopkeeperappnew.OrderHistory.SlidingLayerSort.PrefSortOrders;
 import org.nearbyshops.shopkeeperappnew.OrderHistory.SlidingLayerSort.SlidingLayerSortOrders;
-import org.nearbyshops.shopkeeperappnew.OrderHistory.ViewHolders.ViewHolderOrder;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrder;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;

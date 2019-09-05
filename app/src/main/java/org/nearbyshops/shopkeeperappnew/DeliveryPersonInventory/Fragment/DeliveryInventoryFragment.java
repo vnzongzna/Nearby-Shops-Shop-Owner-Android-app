@@ -1,6 +1,7 @@
 package org.nearbyshops.shopkeeperappnew.DeliveryPersonInventory.Fragment;
 
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -16,7 +17,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import okhttp3.ResponseBody;
 import org.nearbyshops.shopkeeperappnew.API.OrderServiceDeliveryPersonSelf;
 import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
-import org.nearbyshops.shopkeeperappnew.DeliveryPersonInventory.ViewHolders.ViewHolderOrderButtonDouble;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrderButtonDouble;
+import org.nearbyshops.shopkeeperappnew.Interfaces.NotifyLocation;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySearch;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySort;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifyTitleChangedNew;
@@ -26,8 +28,9 @@ import org.nearbyshops.shopkeeperappnew.ModelEndpoints.OrderEndPoint;
 import org.nearbyshops.shopkeeperappnew.OrderDetail.OrderDetail;
 import org.nearbyshops.shopkeeperappnew.OrderDetail.PrefOrderDetail;
 import org.nearbyshops.shopkeeperappnew.OrderHistory.SlidingLayerSort.PrefSortOrders;
-import org.nearbyshops.shopkeeperappnew.OrderHistory.ViewHolders.ViewHolderOrder;
-import org.nearbyshops.shopkeeperappnew.OrdersInventory.ViewHolders.ViewHolderOrderButtonSingle;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrder;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrderButtonSingle;
+import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLocation;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
@@ -44,7 +47,7 @@ import java.util.List;
 public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener,
         ViewHolderOrderButtonSingle.ListItemClick, ViewHolderOrder.ListItemClick,
         ViewHolderOrderButtonDouble.ListItemClick,
-        NotifySort, NotifySearch, RefreshFragment{
+        NotifySort, NotifySearch, RefreshFragment, NotifyLocation {
 
 
 //    @Inject
@@ -265,8 +268,6 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
 
 
-
-
         int deliveryGuyID = 0;
 
 
@@ -288,14 +289,17 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
 
 
+
+
         Call<OrderEndPoint> call = orderServiceDelivery.getOrders(
                     PrefLogin.getAuthorizationHeaders(getActivity()),
                     deliveryGuyID,
                     null,null,
                     isPickFromShop,
                     orderStatusHD, orderStatusPFS, null,
-                    null,null,
-                    null,null,
+                    null,
+                    PrefLocation.getLatitude(getActivity()), PrefLocation.getLongitude(getActivity()),
+                null,
                     searchQuery, current_sort,limit,offset,null);
 
 
@@ -768,6 +772,14 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
     @Override
     public void refreshFragment() {
+        makeRefreshNetworkCall();
+    }
+
+
+
+
+    @Override
+    public void fetchedLocation(Location location) {
         makeRefreshNetworkCall();
     }
 

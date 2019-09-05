@@ -249,7 +249,7 @@ public class FragmentOrderDetail extends Fragment implements SwipeRefreshLayout.
 
 
 
-    void makeRefreshNetworkCall()
+    private void makeRefreshNetworkCall()
     {
 
         swipeContainer.post(new Runnable() {
@@ -267,7 +267,7 @@ public class FragmentOrderDetail extends Fragment implements SwipeRefreshLayout.
 
 
 
-    void makeNetworkCall(final boolean clearDataset)
+    private void makeNetworkCall(final boolean clearDataset)
     {
 
         Shop currentShop = PrefShopHome.getShop(getContext());
@@ -327,7 +327,7 @@ public class FragmentOrderDetail extends Fragment implements SwipeRefreshLayout.
 
 
 
-    void showToastMessage(String message)
+    private void showToastMessage(String message)
     {
         if(getActivity()!=null)
         {

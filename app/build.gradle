@@ -50,6 +50,8 @@ dependencies {
     implementation 'com.airbnb.android:lottie:3.0.3'
     implementation 'com.github.sujithkanna:smileyrating:1.6.8'
 
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+
 
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'

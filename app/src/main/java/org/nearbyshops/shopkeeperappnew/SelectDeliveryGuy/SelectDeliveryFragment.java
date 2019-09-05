@@ -232,7 +232,9 @@ public class SelectDeliveryFragment extends Fragment implements SwipeRefreshLayo
 
 
 
-    void getDeliveryGuys()
+
+
+    private void getDeliveryGuys()
     {
 
         if(resetOffsetVehicle)
@@ -330,7 +332,9 @@ public class SelectDeliveryFragment extends Fragment implements SwipeRefreshLayo
 
 
 
-    void showToastMessage(String message)
+
+
+    private void showToastMessage(String message)
     {
         Toast.makeText(getActivity(),message, Toast.LENGTH_SHORT).show();
     }
