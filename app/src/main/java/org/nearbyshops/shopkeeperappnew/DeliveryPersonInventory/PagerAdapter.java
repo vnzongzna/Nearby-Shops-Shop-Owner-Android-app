@@ -31,6 +31,8 @@ public class PagerAdapter extends FragmentPagerAdapter {
 //        }
     }
 
+
+
     @Override
     public Fragment getItem(int position) {
 
@@ -83,10 +85,20 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
 
 
-    private String titlePendingHandover = "Handover Requested (0/0)";
-    private String titleConfirmed = "Out For Delivery (0/0)";
-    private String titleReturnPending = "Return Pending (0/0)";
-    private String titlePaymentPending = "Payment Pending (0/0)";
+
+
+
+    private String titlePendingHandover = "Handover Requested";
+    private String titleConfirmed = "Out For Delivery";
+    private String titleReturnPending = "Return Pending";
+    private String titlePaymentPending = "Payment Pending";
+
+
+
+//    private String titlePendingHandover = "Handover Requested (0/0)";
+//    private String titleConfirmed = "Out For Delivery (0/0)";
+//    private String titleReturnPending = "Return Pending (0/0)";
+//    private String titlePaymentPending = "Payment Pending (0/0)";
 
 
 

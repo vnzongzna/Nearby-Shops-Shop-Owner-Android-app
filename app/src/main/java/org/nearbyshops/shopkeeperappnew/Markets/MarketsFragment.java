@@ -29,7 +29,7 @@ import org.nearbyshops.shopkeeperappnew.MarketDetail.MarketDetailFragment;
 import org.nearbyshops.shopkeeperappnew.Markets.Interfaces.MarketSelected;
 import org.nearbyshops.shopkeeperappnew.Markets.Interfaces.listItemMarketNotifications;
 import org.nearbyshops.shopkeeperappnew.Markets.Model.ServiceConfigurationGlobal;
-import org.nearbyshops.shopkeeperappnew.Markets.ViewHolders.ViewHolderEmptyScreen;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreen;
 import org.nearbyshops.shopkeeperappnew.Markets.ViewHolders.ViewHolderSignIn;
 import org.nearbyshops.shopkeeperappnew.Markets.ViewModels.MarketViewModel;
 import org.nearbyshops.shopkeeperappnew.Prefrences.UtilityFunctions;
@@ -43,7 +43,7 @@ import java.util.List;
 public class MarketsFragment extends Fragment implements listItemMarketNotifications,
         SwipeRefreshLayout.OnRefreshListener,
         NotifySort, NotifySearch, LocationUpdated, NotifyAboutLogin, RefreshFragment ,
-        ViewHolderSignIn.VHSignIn , ViewHolderEmptyScreen.VHCreateMarket {
+        ViewHolderSignIn.VHSignIn , ViewHolderEmptyScreen.VHEmptyScreen {
 
 
 
@@ -461,10 +461,11 @@ public class MarketsFragment extends Fragment implements listItemMarketNotificat
 
 
 
-    @Override
-    public void createMarketClick() {
 
-        String url = "https://nearbyshops.org/entrepreneur.html";
+    @Override
+    public void buttonClick(String url) {
+
+
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);

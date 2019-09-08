@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.LoadingViewHolder;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreen;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreenFullScreen;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderHeader;
 
 import java.util.List;
@@ -73,7 +73,7 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
         else if(viewType==VIEW_TYPE_EMPTY_SCREEN)
         {
-            return ViewHolderEmptyScreen.create(parent,context);
+            return ViewHolderEmptyScreenFullScreen.create(parent,context);
         }
 
 
@@ -97,9 +97,9 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             ((LoadingViewHolder) holder).setLoading(loadMore);
         }
-        else if(holder instanceof ViewHolderEmptyScreen)
+        else if(holder instanceof ViewHolderEmptyScreenFullScreen)
         {
-            ((ViewHolderEmptyScreen) holder).setItem((EmptyScreenData) dataset.get(position));
+            ((ViewHolderEmptyScreenFullScreen) holder).setItem((EmptyScreenDataFullScreen) dataset.get(position));
         }
         else if (holder instanceof ViewHolderHeader) {
 
@@ -130,7 +130,7 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             return VIEW_TYPE_STAFF_PROFILE;
         }
-        else if(dataset.get(position) instanceof EmptyScreenData)
+        else if(dataset.get(position) instanceof EmptyScreenDataFullScreen)
         {
             return VIEW_TYPE_EMPTY_SCREEN;
         }

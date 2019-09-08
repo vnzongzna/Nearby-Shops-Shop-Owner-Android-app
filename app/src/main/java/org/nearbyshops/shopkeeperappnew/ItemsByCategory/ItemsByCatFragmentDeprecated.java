@@ -37,7 +37,7 @@ import org.nearbyshops.shopkeeperappnew.ModelEndpoints.ShopItemEndPoint;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefShopHome;
 import org.nearbyshops.shopkeeperappnew.R;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -542,7 +542,7 @@ public class ItemsByCatFragmentDeprecated extends Fragment implements SwipeRefre
 
 
 
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 listAdapter.notifyDataSetChanged();
 
 
@@ -591,7 +591,7 @@ public class ItemsByCatFragmentDeprecated extends Fragment implements SwipeRefre
 
         if(datasetCategory.size()==0 && datasetItems.size()==0)
         {
-            EmptyScreenData data = EmptyScreenData.noItemsAndCategories();
+            EmptyScreenDataFullScreen data = EmptyScreenDataFullScreen.noItemsAndCategories();
             data.setTitle("No items in " + currentCategory.getCategoryName());
 
             dataset.add(data);
@@ -808,7 +808,7 @@ public class ItemsByCatFragmentDeprecated extends Fragment implements SwipeRefre
                     dataset.clear();
                 }
 
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 listAdapter.notifyDataSetChanged();
 
 

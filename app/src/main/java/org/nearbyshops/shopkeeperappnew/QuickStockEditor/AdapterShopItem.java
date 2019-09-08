@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.nearbyshops.shopkeeperappnew.Model.ShopItem;
 import org.nearbyshops.shopkeeperappnew.QuickStockEditor.ViewHolders.ViewHolderShopItem;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.LoadingViewHolder;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreen;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreenFullScreen;
 
 import java.util.List;
 
@@ -61,7 +61,7 @@ public class AdapterShopItem extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
         else if(viewType==VIEW_TYPE_EMPTY_SCREEN)
         {
-            return ViewHolderEmptyScreen.create(parent,context);
+            return ViewHolderEmptyScreenFullScreen.create(parent,context);
         }
 
 
@@ -84,9 +84,9 @@ public class AdapterShopItem extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
             ((LoadingViewHolder) holder).setLoading(loadMore);
         }
-        else if(holder instanceof ViewHolderEmptyScreen)
+        else if(holder instanceof ViewHolderEmptyScreenFullScreen)
         {
-            ((ViewHolderEmptyScreen) holder).setItem((EmptyScreenData) dataset.get(position));
+            ((ViewHolderEmptyScreenFullScreen) holder).setItem((EmptyScreenDataFullScreen) dataset.get(position));
         }
 
     }
@@ -111,7 +111,7 @@ public class AdapterShopItem extends RecyclerView.Adapter<RecyclerView.ViewHolde
         {
             return VIEW_TYPE_SHOP_ITEM;
         }
-        else if(dataset.get(position) instanceof EmptyScreenData)
+        else if(dataset.get(position) instanceof EmptyScreenDataFullScreen)
         {
             return VIEW_TYPE_EMPTY_SCREEN;
         }

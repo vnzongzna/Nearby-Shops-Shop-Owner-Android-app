@@ -15,7 +15,9 @@ import org.nearbyshops.shopkeeperappnew.Markets.Model.*;
 import org.nearbyshops.shopkeeperappnew.Markets.ViewHolders.*;
 import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.R;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreen;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -180,8 +182,11 @@ public class AdapterMarkets extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             return VIEW_TYPE_Market;
         }
-        else if(dataset.get(position) instanceof CreateMarketMarker)
+        else if(dataset.get(position) instanceof EmptyScreenData)
         {
+
+
+
             return VIEW_TYPE_create_market;
         }
 
@@ -219,6 +224,13 @@ public class AdapterMarkets extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             ((ViewHolderMarket)holderVH).setItem((ServiceConfigurationGlobal) dataset.get(position));
 
+        }
+        else if(holderVH instanceof ViewHolderEmptyScreen)
+        {
+            if(dataset.get(position) instanceof EmptyScreenData)
+            {
+                ((ViewHolderEmptyScreen) holderVH).setItem((EmptyScreenData) dataset.get(position));
+            }
         }
         else if (holderVH instanceof LoadingViewHolder) {
 

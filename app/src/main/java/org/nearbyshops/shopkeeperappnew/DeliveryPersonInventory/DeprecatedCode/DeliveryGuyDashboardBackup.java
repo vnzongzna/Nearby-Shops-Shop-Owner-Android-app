@@ -1,4 +1,4 @@
-package org.nearbyshops.shopkeeperappnew.DeliveryPersonInventory;
+package org.nearbyshops.shopkeeperappnew.DeliveryPersonInventory.DeprecatedCode;
 
 import android.Manifest;
 import android.app.SearchManager;
@@ -22,6 +22,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.wunderlist.slidinglayer.SlidingLayer;
 
+import org.nearbyshops.shopkeeperappnew.DeliveryPersonInventory.PagerAdapter;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifyLocation;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySearch;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySort;

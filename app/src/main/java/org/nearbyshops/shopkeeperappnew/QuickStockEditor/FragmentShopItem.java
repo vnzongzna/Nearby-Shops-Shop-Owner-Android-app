@@ -22,7 +22,7 @@ import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefShopHome;
 import org.nearbyshops.shopkeeperappnew.QuickStockEditor.ViewHolders.ViewHolderShopItem;
 import org.nearbyshops.shopkeeperappnew.R;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -334,7 +334,7 @@ public class FragmentShopItem extends Fragment implements SwipeRefreshLayout.OnR
 
                     if(item_count==0)
                     {
-                        dataset.add(EmptyScreenData.emptyScreenQuickStockEditor());
+                        dataset.add(EmptyScreenDataFullScreen.emptyScreenQuickStockEditor());
                     }
 
 
@@ -376,7 +376,7 @@ public class FragmentShopItem extends Fragment implements SwipeRefreshLayout.OnR
 
 
                 dataset.clear();
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 adapter.notifyDataSetChanged();
             }
         });

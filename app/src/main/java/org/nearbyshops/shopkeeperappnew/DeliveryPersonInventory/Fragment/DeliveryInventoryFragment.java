@@ -33,7 +33,7 @@ import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrderButt
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLocation;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.R;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -357,7 +357,7 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
                 if(item_count==0)
                 {
-                    dataset.add(EmptyScreenData.emptyScreenPFSINventory());
+                    dataset.add(EmptyScreenDataFullScreen.emptyScreenPFSINventory());
                 }
 
 
@@ -375,7 +375,7 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
 //                showToastMessage("Network Request failed !");
                 dataset.clear();
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 adapter.notifyDataSetChanged();
 
                 swipeContainer.setRefreshing(false);
@@ -496,6 +496,9 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
 
 
+
+
+
     @Override
     public void acceptHandover(Order order, int position, TextView button, ProgressBar progressBar) {
 
@@ -545,7 +548,7 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
                 if(item_count==0)
                 {
-                    dataset.add(EmptyScreenData.emptyScreenPFSINventory());
+                    dataset.add(EmptyScreenDataFullScreen.emptyScreenPFSINventory());
                     adapter.notifyDataSetChanged();
                 }
 
@@ -569,7 +572,7 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
 
                 dataset.clear();
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 adapter.notifyDataSetChanged();
 
             }
@@ -628,7 +631,7 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
                 if(item_count==0)
                 {
-                    dataset.add(EmptyScreenData.emptyScreenPFSINventory());
+                    dataset.add(EmptyScreenDataFullScreen.emptyScreenPFSINventory());
                     adapter.notifyDataSetChanged();
                 }
 
@@ -652,7 +655,7 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
 
                 dataset.clear();
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 adapter.notifyDataSetChanged();
 
             }
@@ -710,7 +713,7 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
                 if(item_count==0)
                 {
-                    dataset.add(EmptyScreenData.emptyScreenPFSINventory());
+                    dataset.add(EmptyScreenDataFullScreen.emptyScreenPFSINventory());
                     adapter.notifyDataSetChanged();
                 }
 
@@ -734,7 +737,7 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
 
                 dataset.clear();
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 adapter.notifyDataSetChanged();
 
             }
@@ -769,6 +772,8 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
         makeRefreshNetworkCall();
     }
 
+
+    
 
     @Override
     public void refreshFragment() {

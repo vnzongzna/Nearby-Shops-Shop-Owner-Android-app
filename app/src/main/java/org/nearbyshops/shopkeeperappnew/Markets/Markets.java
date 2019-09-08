@@ -12,14 +12,14 @@ import org.nearbyshops.shopkeeperappnew.Interfaces.NotifyAboutLogin;
 import org.nearbyshops.shopkeeperappnew.Interfaces.RefreshFragment;
 import org.nearbyshops.shopkeeperappnew.Login.Login;
 import org.nearbyshops.shopkeeperappnew.Markets.Interfaces.MarketSelected;
-import org.nearbyshops.shopkeeperappnew.Markets.ViewHolders.ViewHolderEmptyScreen;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreen;
 import org.nearbyshops.shopkeeperappnew.Markets.ViewHolders.ViewHolderSignIn;
 import org.nearbyshops.shopkeeperappnew.R;
 
 
 public class Markets extends AppCompatActivity implements MarketSelected, NotifyAboutLogin,
         ViewHolderSignIn.VHSignIn,
-        ViewHolderEmptyScreen.VHCreateMarket {
+        ViewHolderEmptyScreen.VHEmptyScreen {
 
 
 //    public static final String SHOP_DETAIL_INTENT_KEY = "shop_detail";
@@ -140,11 +140,9 @@ public class Markets extends AppCompatActivity implements MarketSelected, Notify
 
 
     @Override
-    public void createMarketClick() {
+    public void buttonClick(String url) {
 //        showToastMessage("Create Market Clicked !");
 
-
-        String url = "https://nearbyshops.org/entrepreneur.html";
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
@@ -152,9 +150,9 @@ public class Markets extends AppCompatActivity implements MarketSelected, Notify
 
 
 
-
     void showToastMessage(String message)
     {
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
+
 }

@@ -8,10 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.google.gson.Gson;
 import okhttp3.OkHttpClient;
 import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
-import org.nearbyshops.shopkeeperappnew.Markets.Model.ConnectWithURLMarker;
-import org.nearbyshops.shopkeeperappnew.Markets.Model.CreateMarketMarker;
 import org.nearbyshops.shopkeeperappnew.Markets.Model.Endpoints.ServiceConfigurationEndPoint;
-import org.nearbyshops.shopkeeperappnew.Markets.Model.ServiceConfigurationLocal;
 import org.nearbyshops.shopkeeperappnew.Markets.Model.SignInMarker;
 import org.nearbyshops.shopkeeperappnew.Markets.api.ServiceConfigService;
 import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
@@ -19,6 +16,7 @@ import org.nearbyshops.shopkeeperappnew.MyApplication;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLocation;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLoginGlobal;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefServiceConfig;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -112,6 +110,10 @@ public class MarketViewModel extends AndroidViewModel {
     {
 
     }
+
+
+
+
 
 
 
@@ -241,21 +243,23 @@ public class MarketViewModel extends AndroidViewModel {
                         {
                             dataset.addAll(response.body().getResults());
 
+                            dataset.add(EmptyScreenData.getCreateMarketData());
 
-                            if(response.body().getResults().size()==0)
-                            {
-                                dataset.add(new CreateMarketMarker());
-                                dataset.add(new ConnectWithURLMarker());
 
-                            }
-                            else if(dataset.size()>3)
-                            {
-                                dataset.add(3,new ConnectWithURLMarker());
-                            }
-                            else
-                            {
-                                dataset.add(new ConnectWithURLMarker());
-                            }
+//                            if(response.body().getResults().size()==0)
+//                            {
+//                                dataset.add(new CreateMarketMarker());
+//                                dataset.add(new ConnectWithURLMarker());
+//
+//                            }
+//                            else if(dataset.size()>3)
+//                            {
+//                                dataset.add(3,new ConnectWithURLMarker());
+//                            }
+//                            else
+//                            {
+//                                dataset.add(new ConnectWithURLMarker());
+//                            }
 
 
                         }

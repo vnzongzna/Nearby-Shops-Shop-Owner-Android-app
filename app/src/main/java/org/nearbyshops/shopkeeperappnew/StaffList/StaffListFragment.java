@@ -27,7 +27,7 @@ import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.StaffList.EditProfileStaff.EditProfileStaff;
 import org.nearbyshops.shopkeeperappnew.StaffList.EditProfileStaff.FragmentEditProfileStaff;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -315,7 +315,7 @@ public class StaffListFragment extends Fragment implements SwipeRefreshLayout.On
 
                     if(item_count==0)
                     {
-                        dataset.add(EmptyScreenData.emptyScreenStaffList());
+                        dataset.add(EmptyScreenDataFullScreen.emptyScreenStaffList());
 
                     }
 
@@ -352,7 +352,7 @@ public class StaffListFragment extends Fragment implements SwipeRefreshLayout.On
 
 
                 dataset.clear();
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 listAdapter.notifyDataSetChanged();
 
             }

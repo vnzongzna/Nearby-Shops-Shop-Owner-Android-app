@@ -23,7 +23,7 @@
         android:id="@+id/distance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="2dp"
         android:background="@color/gplus_color_2"
         android:padding="5dp"
         android:text=" - "
@@ -67,7 +67,7 @@
 <!--    android:background="@color/mapbox_blue"-->
 
     <TextView
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="2dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/distance"
         app:layout_constraintEnd_toStartOf="@id/button_right"
@@ -102,7 +102,7 @@
         app:layout_constraintStart_toEndOf="@id/button_left"
         app:layout_constraintTop_toTopOf="@id/button_left"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="2dp"
         android:id="@+id/button_right"
         android:padding="7dp"
         android:textSize="17dp"

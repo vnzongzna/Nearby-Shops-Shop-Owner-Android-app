@@ -27,7 +27,7 @@ import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.StaffListDelivery.EditProfileDelivery.EditProfileDelivery;
 import org.nearbyshops.shopkeeperappnew.StaffListDelivery.EditProfileDelivery.FragmentEditProfileDelivery;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -310,7 +310,7 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
 
                     if(item_count==0)
                     {
-                        dataset.add(EmptyScreenData.emptyScreenDeliveryStaff());
+                        dataset.add(EmptyScreenDataFullScreen.emptyScreenDeliveryStaff());
 
                     }
 
@@ -347,7 +347,7 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
 
 
                 dataset.clear();
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 listAdapter.notifyDataSetChanged();
 
             }

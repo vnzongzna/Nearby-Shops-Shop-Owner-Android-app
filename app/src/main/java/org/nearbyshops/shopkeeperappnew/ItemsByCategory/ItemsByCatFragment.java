@@ -3,7 +3,6 @@ package org.nearbyshops.shopkeeperappnew.ItemsByCategory;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,13 +36,12 @@ import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ViewHolders.ViewHolderIt
 import org.nearbyshops.shopkeeperappnew.Model.Item;
 import org.nearbyshops.shopkeeperappnew.Model.ItemCategory;
 import org.nearbyshops.shopkeeperappnew.Model.ShopItem;
-import org.nearbyshops.shopkeeperappnew.ModelEndpoints.ItemCategoryEndPoint;
 import org.nearbyshops.shopkeeperappnew.ModelEndpoints.ItemEndPoint;
 import org.nearbyshops.shopkeeperappnew.ModelEndpoints.ShopItemEndPoint;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefShopHome;
 import org.nearbyshops.shopkeeperappnew.R;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
 
 import java.util.ArrayList;
@@ -532,7 +530,7 @@ public class ItemsByCatFragment extends Fragment implements SwipeRefreshLayout.O
 
                                 if(currentCategory.getItemCategoryID()!=1)
                                 {
-                                    EmptyScreenData data = EmptyScreenData.noItemsAndCategories();
+                                    EmptyScreenDataFullScreen data = EmptyScreenDataFullScreen.noItemsAndCategories();
                                     data.setTitle("No items in " + currentCategory.getCategoryName());
 
                                     dataset.add(data);
@@ -610,7 +608,7 @@ public class ItemsByCatFragment extends Fragment implements SwipeRefreshLayout.O
                     dataset.clear();
                 }
 
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 listAdapter.notifyDataSetChanged();
 
 

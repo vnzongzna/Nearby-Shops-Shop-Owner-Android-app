@@ -10,8 +10,8 @@ import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery
 import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrder;
 import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrderButtonSingle;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.LoadingViewHolder;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreen;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreenFullScreen;
 
 import java.util.List;
 
@@ -68,7 +68,7 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         }
         else if(viewType==VIEW_TYPE_EMPTY_SCREEN)
         {
-            return ViewHolderEmptyScreen.create(parent,parent.getContext());
+            return ViewHolderEmptyScreenFullScreen.create(parent,parent.getContext());
         }
 
 
@@ -122,7 +122,7 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             }
 
         }
-        else if(dataset.get(position) instanceof EmptyScreenData)
+        else if(dataset.get(position) instanceof EmptyScreenDataFullScreen)
         {
             return VIEW_TYPE_EMPTY_SCREEN;
         }
@@ -157,9 +157,9 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
             ((LoadingViewHolder) holder).setLoading(loadMore);
         }
-        else if(holder instanceof ViewHolderEmptyScreen)
+        else if(holder instanceof ViewHolderEmptyScreenFullScreen)
         {
-            ((ViewHolderEmptyScreen) holder).setItem((EmptyScreenData) dataset.get(position));
+            ((ViewHolderEmptyScreenFullScreen) holder).setItem((EmptyScreenDataFullScreen) dataset.get(position));
         }
 
     }

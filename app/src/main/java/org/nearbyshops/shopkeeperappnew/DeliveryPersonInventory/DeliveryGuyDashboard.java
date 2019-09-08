@@ -550,6 +550,12 @@ public class DeliveryGuyDashboard extends AppCompatActivity implements NotifyTit
 
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        stopLocationUpdates();
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
         stopLocationUpdates();

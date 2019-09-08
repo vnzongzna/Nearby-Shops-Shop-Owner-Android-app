@@ -35,7 +35,7 @@ import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.SelectDeliveryGuy.SelectDeliveryGuy;
 import org.nearbyshops.shopkeeperappnew.StaffListDelivery.DeliveryGuyList;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -339,7 +339,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
                 if(item_count==0)
                 {
-                    dataset.add(EmptyScreenData.emptyScreenPFSINventory());
+                    dataset.add(EmptyScreenDataFullScreen.emptyScreenPFSINventory());
                 }
 
 
@@ -357,7 +357,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
 //                showToastMessage("Network Request failed !");
                 dataset.clear();
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 adapter.notifyDataSetChanged();
 
                 swipeContainer.setRefreshing(false);
@@ -400,7 +400,9 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
 
 
-    void notifyTitleChanged()
+
+
+    private void notifyTitleChanged()
     {
 
         if(getActivity() instanceof NotifyTitleChangedNew)
@@ -412,6 +414,9 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
         }
     }
+
+
+
 
 
 
@@ -553,7 +558,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
                 if(item_count==0)
                 {
-                    dataset.add(EmptyScreenData.emptyScreenPFSINventory());
+                    dataset.add(EmptyScreenDataFullScreen.emptyScreenPFSINventory());
                     adapter.notifyDataSetChanged();
                 }
 
@@ -573,7 +578,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
 
                 dataset.clear();
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 adapter.notifyDataSetChanged();
 
 //                showToastMessage("Network request failed. Check your connection !");
@@ -635,7 +640,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
                 if(item_count==0)
                 {
-                    dataset.add(EmptyScreenData.emptyScreenPFSINventory());
+                    dataset.add(EmptyScreenDataFullScreen.emptyScreenPFSINventory());
                     adapter.notifyDataSetChanged();
                 }
 
@@ -658,7 +663,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
 
                 dataset.clear();
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 adapter.notifyDataSetChanged();
             }
         });
@@ -720,7 +725,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
                 if(item_count==0)
                 {
-                    dataset.add(EmptyScreenData.emptyScreenPFSINventory());
+                    dataset.add(EmptyScreenDataFullScreen.emptyScreenPFSINventory());
                     adapter.notifyDataSetChanged();
                 }
 
@@ -743,7 +748,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
 
                 dataset.clear();
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 adapter.notifyDataSetChanged();
             }
         });
@@ -804,7 +809,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
                 if(item_count==0)
                 {
-                    dataset.add(EmptyScreenData.emptyScreenPFSINventory());
+                    dataset.add(EmptyScreenDataFullScreen.emptyScreenPFSINventory());
                     adapter.notifyDataSetChanged();
                 }
 
@@ -826,7 +831,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
 
                 dataset.clear();
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 adapter.notifyDataSetChanged();
             }
         });
@@ -882,7 +887,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
                 if(item_count==0)
                 {
-                    dataset.add(EmptyScreenData.emptyScreenPFSINventory());
+                    dataset.add(EmptyScreenDataFullScreen.emptyScreenPFSINventory());
                     adapter.notifyDataSetChanged();
                 }
 
@@ -906,7 +911,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
 
                 dataset.clear();
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 adapter.notifyDataSetChanged();
 
             }
@@ -966,7 +971,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
                 if(item_count==0)
                 {
-                    dataset.add(EmptyScreenData.emptyScreenPFSINventory());
+                    dataset.add(EmptyScreenDataFullScreen.emptyScreenPFSINventory());
                     adapter.notifyDataSetChanged();
                 }
 
@@ -990,7 +995,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
 
                 dataset.clear();
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 adapter.notifyDataSetChanged();
 
             }
@@ -1053,7 +1058,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
                 if(item_count==0)
                 {
-                    dataset.add(EmptyScreenData.emptyScreenPFSINventory());
+                    dataset.add(EmptyScreenDataFullScreen.emptyScreenPFSINventory());
                     adapter.notifyDataSetChanged();
                 }
 
@@ -1077,7 +1082,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
 
                 dataset.clear();
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 adapter.notifyDataSetChanged();
 
             }
@@ -1135,7 +1140,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
                 if(item_count==0)
                 {
-                    dataset.add(EmptyScreenData.emptyScreenPFSINventory());
+                    dataset.add(EmptyScreenDataFullScreen.emptyScreenPFSINventory());
                     adapter.notifyDataSetChanged();
                 }
 
@@ -1159,7 +1164,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
 
                 dataset.clear();
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 adapter.notifyDataSetChanged();
 
             }
@@ -1219,7 +1224,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
                 if(item_count==0)
                 {
-                    dataset.add(EmptyScreenData.emptyScreenPFSINventory());
+                    dataset.add(EmptyScreenDataFullScreen.emptyScreenPFSINventory());
                     adapter.notifyDataSetChanged();
                 }
 
@@ -1243,7 +1248,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
 
                 dataset.clear();
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 adapter.notifyDataSetChanged();
 
             }
@@ -1301,7 +1306,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
                 if(item_count==0)
                 {
-                    dataset.add(EmptyScreenData.emptyScreenPFSINventory());
+                    dataset.add(EmptyScreenDataFullScreen.emptyScreenPFSINventory());
                     adapter.notifyDataSetChanged();
                 }
 
@@ -1325,7 +1330,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
 
                 dataset.clear();
-                dataset.add(EmptyScreenData.getOffline());
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
                 adapter.notifyDataSetChanged();
 
             }

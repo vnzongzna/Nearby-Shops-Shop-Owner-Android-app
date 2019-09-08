@@ -37,7 +37,7 @@ import org.nearbyshops.shopkeeperappnew.OrderHistory.SlidingLayerSort.SlidingLay
 import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrder;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.R;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -384,7 +384,7 @@ public class OrderHistoryFragment extends Fragment implements SwipeRefreshLayout
 
                         if(item_count==0)
                         {
-                            dataset.add(EmptyScreenData.emptyScreenOrders());
+                            dataset.add(EmptyScreenDataFullScreen.emptyScreenOrders());
 
                         }
 
@@ -407,7 +407,7 @@ public class OrderHistoryFragment extends Fragment implements SwipeRefreshLayout
 //                        showToastMessage("Failed Code : " + String.valueOf(response.code()));
 
                         dataset.clear();
-                        dataset.add(EmptyScreenData.getErrorTemplate(response.code()));
+                        dataset.add(EmptyScreenDataFullScreen.getErrorTemplate(response.code()));
 
                     }
 
@@ -432,7 +432,7 @@ public class OrderHistoryFragment extends Fragment implements SwipeRefreshLayout
 
 
                     dataset.clear();
-                    dataset.add(EmptyScreenData.getOffline());
+                    dataset.add(EmptyScreenDataFullScreen.getOffline());
                     adapter.notifyDataSetChanged();
 
                 }
