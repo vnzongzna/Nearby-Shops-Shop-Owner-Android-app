@@ -43,7 +43,7 @@ import org.nearbyshops.shopkeeperappnew.ModelReviewMarket.MarketReviewEndPoint;
 import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLoginGlobal;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefServiceConfig;
-import org.nearbyshops.shopkeeperappnew.Prefrences.UtilityFunctions;
+import org.nearbyshops.shopkeeperappnew.Utility.UtilityFunctions;
 import org.nearbyshops.shopkeeperappnew.R;
 import retrofit2.Call;
 import retrofit2.Callback;

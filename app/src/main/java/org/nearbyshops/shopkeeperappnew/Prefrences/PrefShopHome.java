@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 import org.nearbyshops.shopkeeperappnew.Model.Shop;
 import org.nearbyshops.shopkeeperappnew.R;
+import org.nearbyshops.shopkeeperappnew.Utility.UtilityFunctions;
 
 import static android.content.Context.MODE_PRIVATE;
 

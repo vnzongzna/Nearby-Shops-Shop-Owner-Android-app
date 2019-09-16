@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.MyApplication;
 import org.nearbyshops.shopkeeperappnew.R;
+import org.nearbyshops.shopkeeperappnew.Utility.UtilityFunctions;
 
 import static android.content.Context.MODE_PRIVATE;
 

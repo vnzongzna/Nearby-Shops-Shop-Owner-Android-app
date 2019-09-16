@@ -177,7 +177,10 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         if(holder instanceof ViewHolderOrderButtonSingle)
         {
-            ((ViewHolderOrderButtonSingle) holder).setItem((Order) dataset.get(position));
+
+            Order order = (Order) dataset.get(position);
+            ((ViewHolderOrderButtonSingle) holder).setItem(order,getButtonTitle(order));
+
         }
         else if(holder instanceof ViewHolderOrder)
         {
@@ -226,6 +229,51 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     Map<Integer, Order> getSelectedOrders() {
         return selectedOrders;
+    }
+
+
+
+
+
+    private String getButtonTitle(Order order)
+    {
+        if(order.isPickFromShop())
+        {
+            if(order.getStatusPickFromShop()== OrderStatusPickFromShop.ORDER_PLACED)
+            {
+                return " Confirm ";
+            }
+            else if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_CONFIRMED)
+            {
+                return " Packed ";
+            }
+            else if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_PACKED)
+            {
+                return " Ready for Pickup ";
+            }
+            else if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_READY_FOR_PICKUP)
+            {
+                return " Payment Received ";
+            }
+        }
+        else
+        {
+
+            if(order.getStatusHomeDelivery()== OrderStatusHomeDelivery.ORDER_PLACED)
+            {
+                return " Confirm ";
+            }
+            else if(order.getStatusHomeDelivery()==OrderStatusHomeDelivery.ORDER_CONFIRMED)
+            {
+                return " Packed ";
+            }
+            else if(order.getStatusHomeDelivery()==OrderStatusHomeDelivery.RETURNED_ORDERS)
+            {
+                return " Unpack Order ";
+            }
+        }
+
+        return " - - - ";
     }
 
 

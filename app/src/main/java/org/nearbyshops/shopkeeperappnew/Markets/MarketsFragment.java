@@ -32,7 +32,7 @@ import org.nearbyshops.shopkeeperappnew.Markets.Model.ServiceConfigurationGlobal
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreen;
 import org.nearbyshops.shopkeeperappnew.Markets.ViewHolders.ViewHolderSignIn;
 import org.nearbyshops.shopkeeperappnew.Markets.ViewModels.MarketViewModel;
-import org.nearbyshops.shopkeeperappnew.Prefrences.UtilityFunctions;
+import org.nearbyshops.shopkeeperappnew.Utility.UtilityFunctions;
 import org.nearbyshops.shopkeeperappnew.R;
 
 import javax.inject.Inject;

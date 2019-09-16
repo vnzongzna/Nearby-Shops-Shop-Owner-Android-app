@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import com.google.gson.Gson;
 import org.nearbyshops.shopkeeperappnew.Model.ShopImage;
-import org.nearbyshops.shopkeeperappnew.Prefrences.UtilityFunctions;
+import org.nearbyshops.shopkeeperappnew.Utility.UtilityFunctions;
 import org.nearbyshops.shopkeeperappnew.R;
 
 import static android.content.Context.MODE_PRIVATE;

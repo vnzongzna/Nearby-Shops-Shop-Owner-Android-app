@@ -25,7 +25,9 @@ public class PrefGeneral {
     public static final String SERVICE_URL_NEARBYSHOPS_DEMO = "http://api-demo.nearbyshops.org";
 
 
-    public static final String SERVICE_URL = SERVICE_URL_NEARBYSHOPS;
+
+
+    public static final String SERVICE_URL = SERVICE_URL_LOCAL_HOTSPOT;
 
 
 
@@ -38,8 +40,6 @@ public class PrefGeneral {
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_name), Context.MODE_PRIVATE);
        return sharedPref.getString(TAG_SERVICE_URL, SERVICE_URL);
     }
-
-
 
 
 
@@ -66,12 +66,6 @@ public class PrefGeneral {
 
 
 
-
-
-
-
-
-
     public static String getImageEndpointURL(Context context)
     {
         return PrefGeneral.getServiceURL(context) + "/api/Images";
@@ -88,9 +82,6 @@ public class PrefGeneral {
         prefsEditor.putString(TAG_PREF_CURRENCY, symbol);
         prefsEditor.apply();
     }
-
-
-
 
 
 

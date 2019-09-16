@@ -19,6 +19,7 @@ import okhttp3.ResponseBody;
 import org.nearbyshops.shopkeeperappnew.API.OrderServiceShopStaff;
 import org.nearbyshops.shopkeeperappnew.ApplicationState.ApplicationState;
 import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
+import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusPickFromShop;
 import org.nearbyshops.shopkeeperappnew.OrdersInventory.HomeDeliveryInventory.HomeDelivery;
 import org.nearbyshops.shopkeeperappnew.Interfaces.*;
 import org.nearbyshops.shopkeeperappnew.Model.Order;
@@ -143,6 +144,10 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
         }
 
     }
+
+
+
+
 
 
 
@@ -384,7 +389,11 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
 
 
-    void showToastMessage(String message)
+
+
+
+
+    private void showToastMessage(String message)
     {
         if(getActivity()!=null)
         {
@@ -488,6 +497,35 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
     }
 
 
+
+    @Override
+    public void buttonClicked(Order order, int position, TextView button, ProgressBar progressBar) {
+
+
+                if(order.getStatusPickFromShop()== OrderStatusPickFromShop.ORDER_PLACED)
+                {
+                    confirmOrderPFS(order,position,button,progressBar);
+
+                }
+                else if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_CONFIRMED)
+                {
+                    setOrderPackedPFS(order,position,button,progressBar);
+                }
+                else if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_PACKED)
+                {
+
+                    readyForPickupPFS(order,position,button,progressBar);
+
+                }
+                else if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_READY_FOR_PICKUP)
+                {
+                    paymentReceivedPFS(order,position,button,progressBar);
+                }
+
+
+    }
+
+
     @Override
     public void selectionStarted() {
 
@@ -501,7 +539,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
 
 
 
-    @Override
+
     public void confirmOrderPFS(Order order, int position, TextView button, ProgressBar progressBar) {
 
 
@@ -587,7 +625,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
     }
 
 
-    @Override
+
     public void setOrderPackedPFS(Order order, int position, TextView button, ProgressBar progressBar) {
 
 
@@ -670,7 +708,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
     }
 
 
-    @Override
+
     public void readyForPickupPFS(Order order, int position, TextView button, ProgressBar progressBar) {
 
 
@@ -755,7 +793,7 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
     }
 
 
-    @Override
+
     public void paymentReceivedPFS(Order order, int position, TextView button, ProgressBar progressBar) {
 
 
@@ -1002,8 +1040,16 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
         });
     }
 
+
+
+
     @Override
     public void acceptHandover(Order order, int position, TextView button, ProgressBar progressBar) {
+
+    }
+
+    @Override
+    public void pickupOrder(Order order, int position, TextView button, ProgressBar progressBar) {
 
     }
 
@@ -1470,6 +1516,9 @@ public class OrdersInventoryFragment extends Fragment implements SwipeRefreshLay
         startActivityForResult(intent,123);
 
     }
+
+
+
 
 
     @Override

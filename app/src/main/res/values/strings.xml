@@ -28,4 +28,5 @@
     <string name="delivery_type_description_home_delivery">Home Delivery - This order will be delivered to the customers address by the shop owner.</string>
 
     <string name="notice_low_balance">Attention : Your services are paused due to low balance in your account please add balance to resume your services !</string>
+    <string name="default_notification_channel_id">nearby_shops_notifications</string>
 </resources>

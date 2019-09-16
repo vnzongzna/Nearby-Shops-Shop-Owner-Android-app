@@ -13,6 +13,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.google.firebase.FirebaseApp;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -28,6 +31,7 @@ import org.nearbyshops.shopkeeperappnew.Model.Shop;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefGeneral;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefShopHome;
+import org.nearbyshops.shopkeeperappnew.Utility.UtilityFunctions;
 import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome;
 import org.nearbyshops.shopkeeperappnew.Transactions.Transactions;
@@ -380,12 +384,20 @@ public class ShopAdminHomeFragment extends Fragment implements SwipeRefreshLayou
 
 
 
-    void logout()
+
+
+
+
+
+
+    private void logout()
     {
         // log out
         PrefLogin.saveUserProfile(null,getActivity());
         PrefLogin.saveCredentials(getActivity(),null,null);
         PrefShopHome.saveShop(null,getActivity());
+
+        FirebaseApp.getInstance().delete();
 
         // stop location update service
 
@@ -399,9 +411,7 @@ public class ShopAdminHomeFragment extends Fragment implements SwipeRefreshLayou
 
 
 
-
-
-    void bindAllFields()
+    private void bindAllFields()
     {
         bindBalance();
         bindShopOpenStatus();
@@ -411,7 +421,8 @@ public class ShopAdminHomeFragment extends Fragment implements SwipeRefreshLayou
 
 
 
-    void bindNotice()
+
+    private void bindNotice()
     {
 
         Shop shop = PrefShopHome.getShop(getActivity());
@@ -446,7 +457,9 @@ public class ShopAdminHomeFragment extends Fragment implements SwipeRefreshLayou
 
 
 
-    void bindShopOpenStatus()
+
+
+    private void bindShopOpenStatus()
     {
 
         Shop shop = PrefShopHome.getShop(getActivity());
@@ -502,7 +515,8 @@ public class ShopAdminHomeFragment extends Fragment implements SwipeRefreshLayou
 
 
 
-    void bindBalance()
+
+    private void bindBalance()
     {
         Shop shop = PrefShopHome.getShop(getActivity());
 
@@ -535,7 +549,11 @@ public class ShopAdminHomeFragment extends Fragment implements SwipeRefreshLayou
 
 
 
-    void refreshShop()
+
+
+
+
+    private void refreshShop()
     {
         Call<Shop> call = shopService.getShopForShopAdmin(
                 PrefLogin.getAuthorizationHeaders(getActivity())
@@ -551,6 +569,8 @@ public class ShopAdminHomeFragment extends Fragment implements SwipeRefreshLayou
                     PrefShopHome.saveShop(response.body(),getActivity());
 
                     bindAllFields();
+
+                    UtilityFunctions.updateFirebaseSubscriptions(PrefShopHome.getShop(getActivity()).getShopID());
 
                 }
                 else if(response.code()==204)
@@ -592,6 +612,9 @@ public class ShopAdminHomeFragment extends Fragment implements SwipeRefreshLayou
 
 
 
+
+
+
     @OnClick(R.id.shop_open_switch)
     void shopSwitchClick()
     {
@@ -613,7 +636,9 @@ public class ShopAdminHomeFragment extends Fragment implements SwipeRefreshLayou
 
 
 
-    void updateShopOpen()
+
+
+    private void updateShopOpen()
     {
 
 
@@ -674,7 +699,10 @@ public class ShopAdminHomeFragment extends Fragment implements SwipeRefreshLayou
 
 
 
-    void updateShopClosed()
+
+
+
+    private void updateShopClosed()
     {
 
 

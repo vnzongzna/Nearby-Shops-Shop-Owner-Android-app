@@ -12,6 +12,16 @@ public interface OrderServiceDeliveryPersonSelf {
 
     //////////****************** CODE BEGINS ***********************************
 
+
+
+
+    @PUT ("/api/Order/DeliveryGuySelf/StartPickup/{OrderID}")
+    Call<ResponseBody> startPickup(@Header("Authorization") String headers,
+                                   @Path("OrderID")int orderID);
+
+
+
+
     @PUT("/api/Order/DeliveryGuySelf/AcceptOrder/{OrderID}")
     Call<ResponseBody> acceptOrder(@Header("Authorization") String headers,
                                    @Path("OrderID") int orderID);

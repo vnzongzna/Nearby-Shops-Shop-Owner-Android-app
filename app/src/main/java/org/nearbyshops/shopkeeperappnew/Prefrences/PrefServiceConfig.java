@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import org.nearbyshops.shopkeeperappnew.Markets.Model.ServiceConfigurationLocal;
 import org.nearbyshops.shopkeeperappnew.MyApplication;
 import org.nearbyshops.shopkeeperappnew.R;
+import org.nearbyshops.shopkeeperappnew.Utility.UtilityFunctions;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -34,6 +35,7 @@ public class PrefServiceConfig {
 
     private static final String TAG_PREF_CONFIG = "configuration";
     private static final String TAG_SDS_URL = "url_for_sds";
+
 
 
 

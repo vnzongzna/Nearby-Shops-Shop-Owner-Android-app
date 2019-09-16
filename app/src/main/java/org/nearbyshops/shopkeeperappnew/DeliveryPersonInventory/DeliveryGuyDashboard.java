@@ -154,15 +154,6 @@ public class DeliveryGuyDashboard extends AppCompatActivity implements NotifyTit
 
 
 
-
-
-
-
-
-
-
-
-
     
 
     private void saveLocation(Location mLastLocation) {

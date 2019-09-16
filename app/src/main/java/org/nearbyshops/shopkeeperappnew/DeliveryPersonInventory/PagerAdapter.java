@@ -33,26 +33,35 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
 
 
+
+
+
     @Override
     public Fragment getItem(int position) {
 
 
+
         if(position==0)
+        {
+            return DeliveryInventoryFragment.newInstance(OrderStatusHomeDelivery.ORDER_PACKED,false);
+        }
+        else if(position==1)
         {
             return DeliveryInventoryFragment.newInstance(OrderStatusHomeDelivery.HANDOVER_REQUESTED,false);
 
-        }else if(position == 1)
+        }else if(position == 2)
         {
             return DeliveryInventoryFragment.newInstance(OrderStatusHomeDelivery.OUT_FOR_DELIVERY,false);
         }
-        else if(position==2)
+        else if(position==3)
         {
             return DeliveryInventoryFragment.newInstance(OrderStatusHomeDelivery.RETURN_REQUESTED,false);
         }
-        else if(position==3)
+        else if(position==4)
         {
             return DeliveryInventoryFragment.newInstance(OrderStatusHomeDelivery.DELIVERED,false);
         }
+
 
         return null;
     }
@@ -63,20 +72,23 @@ public class PagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // Show 3 total pages.
-        return 4;
+        return 5;
     }
 
 
     @Override
     public CharSequence getPageTitle(int position) {
         switch (position) {
+
             case 0:
-                return titlePendingHandover;
+                return titleOrderPacked;
             case 1:
-                return titleConfirmed;
+                return titlePendingHandover;
             case 2:
-                return titleReturnPending;
+                return titleConfirmed;
             case 3:
+                return titleReturnPending;
+            case 4:
                 return titlePaymentPending;
 
         }
@@ -88,6 +100,9 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
 
 
+
+
+    private String titleOrderPacked = "Order Packed";
     private String titlePendingHandover = "Handover Requested";
     private String titleConfirmed = "Out For Delivery";
     private String titleReturnPending = "Return Pending";

@@ -11,6 +11,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+
+import com.google.firebase.FirebaseApp;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -208,6 +211,9 @@ public class ShopStaffHomeFragment extends Fragment {
         PrefLogin.saveUserProfile(null,getActivity());
         PrefLogin.saveCredentials(getActivity(),null,null);
         PrefShopHome.saveShop(null,getActivity());
+
+
+        FirebaseApp.getInstance().delete();
 
         // stop location update service
 

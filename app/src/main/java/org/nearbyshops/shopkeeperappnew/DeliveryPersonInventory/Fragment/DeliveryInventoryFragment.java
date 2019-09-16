@@ -17,6 +17,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import okhttp3.ResponseBody;
 import org.nearbyshops.shopkeeperappnew.API.OrderServiceDeliveryPersonSelf;
 import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
+import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery;
 import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrderButtonDouble;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifyLocation;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySearch;
@@ -237,6 +238,9 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
 
 
+
+
+
     private void makeNetworkCall(final boolean clearDataset)
     {
 
@@ -268,7 +272,8 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
 
 
-        int deliveryGuyID = 0;
+        Integer deliveryGuyID = null;
+
 
 
 
@@ -286,6 +291,17 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 //                        null,
 //                        searchQuery,current_sort,limit,offset,null);
 //
+
+
+
+
+
+        if(!isPickFromShop && orderStatusHD== OrderStatusHomeDelivery.ORDER_PACKED)
+        {
+            // order status of home delivery order is order packed then do not filter using delivery ID
+            deliveryGuyID=null;
+        }
+
 
 
 
@@ -455,6 +471,11 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
     }
 
+    @Override
+    public void buttonClicked(Order order, int position, TextView button, ProgressBar progressBar) {
+
+    }
+
 
     @Override
     public void notifyCancelOrder(Order order) {
@@ -465,26 +486,6 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
 
     @Override
-    public void confirmOrderPFS(Order order, int position, TextView button, ProgressBar progressBar) {
-
-    }
-
-    @Override
-    public void setOrderPackedPFS(Order order, int position, TextView button, ProgressBar progressBar) {
-
-    }
-
-    @Override
-    public void readyForPickupPFS(Order order, int position, TextView button, ProgressBar progressBar) {
-
-    }
-
-    @Override
-    public void paymentReceivedPFS(Order order, int position, TextView button, ProgressBar progressBar) {
-
-    }
-
-    @Override
     public void confirmOrderHD(Order order, int position, TextView button, ProgressBar progressBar) {
 
     }
@@ -493,7 +494,6 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
     public void setOrderPackedHD(Order order, int position, TextView button, ProgressBar progressBar) {
 
     }
-
 
 
 
@@ -581,6 +581,96 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
 
 
+
+
+
+
+    @Override
+    public void pickupOrder(Order order, int position, TextView button, ProgressBar progressBar) {
+
+
+        button.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
+
+        Call<ResponseBody> call = orderServiceDelivery.startPickup(
+                PrefLogin.getAuthorizationHeaders(getActivity()),
+                order.getOrderID());
+
+
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+
+                if(!isVisible())
+                {
+                    return;
+                }
+
+                button.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.INVISIBLE);
+
+
+
+
+                if(response.code()==200)
+                {
+                    showToastMessage("Successful !");
+
+                    dataset.remove(order);
+                    item_count = item_count - 1;
+                    adapter.notifyItemRemoved(position);
+                    notifyTitleChanged();
+
+                }
+                else if(response.code() == 401 || response.code() == 403)
+                {
+                    showToastMessage("Not permitted !");
+                }
+                else
+                {
+                    showToastMessage("Failed with Error Code : " + String.valueOf(response.code()));
+                }
+
+
+
+                if(item_count==0)
+                {
+                    dataset.add(EmptyScreenDataFullScreen.emptyScreenPFSINventory());
+                    adapter.notifyDataSetChanged();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+
+
+                if(!isVisible())
+                {
+                    return;
+                }
+
+                button.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.INVISIBLE);
+
+//                showToastMessage("Network request failed. Check your connection !");
+
+
+                dataset.clear();
+                dataset.add(EmptyScreenDataFullScreen.getOffline());
+                adapter.notifyDataSetChanged();
+
+            }
+        });
+    }
+
+
+
+
     @Override
     public void deliveredHD(Order order, int position, TextView button, ProgressBar progressBar) {
 
@@ -660,9 +750,11 @@ public class DeliveryInventoryFragment extends Fragment implements SwipeRefreshL
 
             }
         });
-
-
     }
+
+
+
+
 
     @Override
     public void returnOrderHD(Order order, int position, TextView button, ProgressBar progressBar) {

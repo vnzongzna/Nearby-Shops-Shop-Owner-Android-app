@@ -1,11 +1,25 @@
 package org.nearbyshops.shopkeeperappnew;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.multidex.MultiDex;
 import androidx.multidex.MultiDexApplication;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.mapbox.mapboxsdk.Mapbox;
+
+import org.json.JSONObject;
 import org.nearbyshops.shopkeeperappnew.ApplicationState.ApplicationState;
+import org.nearbyshops.shopkeeperappnew.OneSignal.PrefOneSignal;
+import org.nearbyshops.shopkeeperappnew.OneSignal.UpdateOneSignalID;
+import org.nearbyshops.shopkeeperappnew.Prefrences.PrefGeneral;
 
 //import com.squareup.leakcanary.LeakCanary;
 //import com.onesignal.OSNotification;
@@ -44,11 +58,11 @@ public class MyApplication extends MultiDexApplication {
         ApplicationState.getInstance().setMyApplication(this);
 
 
-        Log.d("one_signal", "User: outside one signal");
 
-
+//
+//
 //        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.DEBUG,OneSignal.LOG_LEVEL.DEBUG);
-
+//
 //        OneSignal.startInit(this)
 //                .setNotificationReceivedHandler(new OneSignal.NotificationReceivedHandler() {
 //                    @Override
@@ -130,6 +144,7 @@ public class MyApplication extends MultiDexApplication {
 //
 //
 //
+//
 //        OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
 //            @Override
 //            public void idsAvailable(String userId, String registrationId) {
@@ -153,7 +168,9 @@ public class MyApplication extends MultiDexApplication {
 //            }
 //
 //        });
-//
+
+
+
 
 
 

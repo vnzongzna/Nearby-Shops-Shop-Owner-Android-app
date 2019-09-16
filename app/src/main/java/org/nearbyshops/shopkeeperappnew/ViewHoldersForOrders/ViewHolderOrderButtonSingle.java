@@ -84,56 +84,70 @@ public class ViewHolderOrderButtonSingle extends ViewHolderOrder {
 
 
 
-    public void setItem (Order order)
+    public void setItem (Order order, String buttonTitle)
     {
         super.setItem(order);
         this.order = order;
 //        orderID.append(" - Append from Buttons");
 
 
-        if(order.isPickFromShop())
-        {
-            if(order.getStatusPickFromShop()== OrderStatusPickFromShop.ORDER_PLACED)
-            {
-                buttonSingle.setText(" Confirm ");
-            }
-            else if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_CONFIRMED)
-            {
-                buttonSingle.setText(" Packed ");
-            }
-            else if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_PACKED)
-            {
-                buttonSingle.setText(" Ready for Pickup ");
-            }
-            else if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_READY_FOR_PICKUP)
-            {
-                buttonSingle.setText(" Payment Received ");
-            }
-        }
-        else
-        {
 
-            if(order.getStatusHomeDelivery()== OrderStatusHomeDelivery.ORDER_PLACED)
-            {
-                buttonSingle.setText(" Confirm ");
-            }
-            else if(order.getStatusHomeDelivery()==OrderStatusHomeDelivery.ORDER_CONFIRMED)
-            {
-                buttonSingle.setText(" Packed ");
-            }
-            else if(order.getStatusHomeDelivery()==OrderStatusHomeDelivery.RETURNED_ORDERS)
-            {
-                buttonSingle.setText(" Unpack Order ");
-            }
-            else if(order.getStatusHomeDelivery()==OrderStatusHomeDelivery.HANDOVER_REQUESTED)
-            {
-                if(isModeDelivery)
-                {
-                    buttonSingle.setText(" Accept Handover ");
-                }
-            }
+        buttonSingle.setText(buttonTitle);
 
-        }
+
+
+//
+//        if(order.isPickFromShop())
+//        {
+//            if(order.getStatusPickFromShop()== OrderStatusPickFromShop.ORDER_PLACED)
+//            {
+//                buttonSingle.setText(" Confirm ");
+//            }
+//            else if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_CONFIRMED)
+//            {
+//                buttonSingle.setText(" Packed ");
+//            }
+//            else if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_PACKED)
+//            {
+//                buttonSingle.setText(" Ready for Pickup ");
+//            }
+//            else if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_READY_FOR_PICKUP)
+//            {
+//                buttonSingle.setText(" Payment Received ");
+//            }
+//        }
+//        else
+//        {
+//
+//            if(order.getStatusHomeDelivery()== OrderStatusHomeDelivery.ORDER_PLACED)
+//            {
+//                buttonSingle.setText(" Confirm ");
+//            }
+//            else if(order.getStatusHomeDelivery()==OrderStatusHomeDelivery.ORDER_CONFIRMED)
+//            {
+//                buttonSingle.setText(" Packed ");
+//            }
+//            else if(order.getStatusHomeDelivery()==OrderStatusHomeDelivery.RETURNED_ORDERS)
+//            {
+//                buttonSingle.setText(" Unpack Order ");
+//            }
+//            else if(order.getStatusHomeDelivery()==OrderStatusHomeDelivery.HANDOVER_REQUESTED)
+//            {
+//                if(isModeDelivery)
+//                {
+//                    buttonSingle.setText(" Accept Handover ");
+//                }
+//            }
+//            else if(order.getStatusHomeDelivery()== OrderStatusHomeDelivery.ORDER_PACKED)
+//            {
+//                if(isModeDelivery)
+//                {
+//                    buttonSingle.setText(" Pickup Order ");
+//                }
+//            }
+//
+//
+//        }
 
 
     }
@@ -153,26 +167,31 @@ public class ViewHolderOrderButtonSingle extends ViewHolderOrder {
 
             if(order.isPickFromShop())
             {
-                if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_PLACED)
-                {
-                    ((ListItemClick) fragment).confirmOrderPFS(order,getAdapterPosition(),buttonSingle,progressBar);
 
-                }
-                else if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_CONFIRMED)
-                {
-                    ((ListItemClick) fragment).setOrderPackedPFS(order,getAdapterPosition(),buttonSingle,progressBar);
-                }
-                else if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_PACKED)
-                {
 
-                    ((ListItemClick) fragment).readyForPickupPFS(order,getAdapterPosition(),buttonSingle,progressBar);
+                ((ListItemClick) fragment).buttonClicked(order,getAdapterPosition(),buttonSingle,progressBar);
 
-                }
-                else if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_READY_FOR_PICKUP)
-                {
-                    ((ListItemClick) fragment).paymentReceivedPFS(order,getAdapterPosition(),buttonSingle,progressBar);
 
-                }
+//                if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_PLACED)
+//                {
+//                    ((ListItemClick) fragment).confirmOrderPFS(order,getAdapterPosition(),buttonSingle,progressBar);
+//
+//                }
+//                else if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_CONFIRMED)
+//                {
+//                    ((ListItemClick) fragment).setOrderPackedPFS(order,getAdapterPosition(),buttonSingle,progressBar);
+//                }
+//                else if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_PACKED)
+//                {
+//
+//                    ((ListItemClick) fragment).readyForPickupPFS(order,getAdapterPosition(),buttonSingle,progressBar);
+//
+//                }
+//                else if(order.getStatusPickFromShop()==OrderStatusPickFromShop.ORDER_READY_FOR_PICKUP)
+//                {
+//                    ((ListItemClick) fragment).paymentReceivedPFS(order,getAdapterPosition(),buttonSingle,progressBar);
+//                }
+
             }
             else
             {
@@ -193,6 +212,14 @@ public class ViewHolderOrderButtonSingle extends ViewHolderOrder {
                         ((ListItemClick) fragment).acceptHandover(order,getAdapterPosition(),buttonSingle,progressBar);
                     }
                 }
+                else if(order.getStatusHomeDelivery()==OrderStatusHomeDelivery.ORDER_PACKED)
+                {
+
+                    if(isModeDelivery)
+                    {
+                        ((ListItemClick) fragment).pickupOrder(order,getAdapterPosition(),buttonSingle,progressBar);
+                    }
+                }
 
 
             }
@@ -205,18 +232,19 @@ public class ViewHolderOrderButtonSingle extends ViewHolderOrder {
 
 
 
-
-
-
     public interface ListItemClick {
 
         void notifyOrderSelected(Order order);
         void notifyCancelOrder(Order order, int position);
 
-        void confirmOrderPFS(Order order, int position, TextView button, ProgressBar progressBar);
-        void setOrderPackedPFS(Order order, int position, TextView button, ProgressBar progressBar);
-        void readyForPickupPFS(Order order, int position, TextView button, ProgressBar progressBar);
-        void paymentReceivedPFS(Order order, int position, TextView button, ProgressBar progressBar);
+
+        void buttonClicked(Order order, int position, TextView button, ProgressBar progressBar);
+
+
+//        void confirmOrderPFS(Order order, int position, TextView button, ProgressBar progressBar);
+//        void setOrderPackedPFS(Order order, int position, TextView button, ProgressBar progressBar);
+//        void readyForPickupPFS(Order order, int position, TextView button, ProgressBar progressBar);
+//        void paymentReceivedPFS(Order order, int position, TextView button, ProgressBar progressBar);
 
 
         void confirmOrderHD(Order order, int position, TextView button, ProgressBar progressBar);
@@ -224,6 +252,7 @@ public class ViewHolderOrderButtonSingle extends ViewHolderOrder {
 
 
         void acceptHandover(Order order, int position, TextView button, ProgressBar progressBar);
+        void pickupOrder(Order order, int position, TextView button, ProgressBar progressBar);
 
     }
 

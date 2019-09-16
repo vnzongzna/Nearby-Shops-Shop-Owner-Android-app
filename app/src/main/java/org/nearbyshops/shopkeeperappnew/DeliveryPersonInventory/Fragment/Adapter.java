@@ -4,6 +4,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusPickFromShop;
 import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrderButtonDouble;
 import org.nearbyshops.shopkeeperappnew.Model.Order;
 import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery;
@@ -45,6 +47,10 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     }
 
 
+
+
+
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -79,6 +85,9 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
 
 
+
+
+
     @Override
     public int getItemViewType(int position) {
         super.getItemViewType(position);
@@ -94,7 +103,12 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             {
 
 
-                if(((Order) dataset.get(position)).getStatusHomeDelivery()==OrderStatusHomeDelivery.HANDOVER_REQUESTED)
+                if(((Order) dataset.get(position)).getStatusHomeDelivery()==OrderStatusHomeDelivery.ORDER_PACKED)
+                {
+
+                    return VIEW_TYPE_ORDER_WITH_BUTTON;
+                }
+                else if(((Order) dataset.get(position)).getStatusHomeDelivery()==OrderStatusHomeDelivery.HANDOVER_REQUESTED)
                 {
 
                     return VIEW_TYPE_ORDER_WITH_BUTTON;
@@ -140,10 +154,11 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
 
 
-
         if(holder instanceof ViewHolderOrderButtonSingle)
         {
-            ((ViewHolderOrderButtonSingle) holder).setItem((Order) dataset.get(position));
+            Order order = (Order) dataset.get(position);
+
+            ((ViewHolderOrderButtonSingle) holder).setItem(order,getButtonTitle(order));
         }
         else if(holder instanceof ViewHolderOrder)
         {
@@ -190,6 +205,30 @@ class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 //    Map<Integer, Order> getSelectedOrders() {
 //        return selectedOrders;
 //    }
+
+
+
+
+
+
+    private String getButtonTitle(Order order)
+    {
+
+        if(order.getStatusHomeDelivery()==OrderStatusHomeDelivery.HANDOVER_REQUESTED)
+        {
+            return " Accept Handover ";
+
+        }
+        else if(order.getStatusHomeDelivery()== OrderStatusHomeDelivery.ORDER_PACKED)
+        {
+
+            return " Pickup Order ";
+        }
+
+
+        return " - - - ";
+    }
+
 
 
 }

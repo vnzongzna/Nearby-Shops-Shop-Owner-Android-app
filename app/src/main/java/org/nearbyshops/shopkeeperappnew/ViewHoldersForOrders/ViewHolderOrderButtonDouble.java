@@ -213,9 +213,6 @@ public class ViewHolderOrderButtonDouble extends ViewHolderOrder {
 
 
 
-
-
-
     public interface ListItemClick {
 
         void notifyOrderSelected(Order order);

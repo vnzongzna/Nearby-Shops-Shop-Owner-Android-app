@@ -10,10 +10,19 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.RemoteMessage;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -92,7 +101,38 @@ public class Home extends AppCompatActivity implements NotifyAboutLogin, MarketS
             startService(new Intent(getApplicationContext(), UpdateOneSignalID.class));
         }
 
+
+
+        FirebaseApp.initializeApp(getApplicationContext());
+
+
+//        FirebaseApp.getInstance().delete();
+
+
+//        _192.168.43.73_5121_
+
+
+
+        String topic =   "_192.168.43.73_5121_weather" ;
+
+
+        FirebaseMessaging.getInstance().subscribeToTopic(topic)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = "Subscribed";
+                        if (!task.isSuccessful()) {
+                            msg = "Failed";
+                        }
+//                        Log.d(TAG, msg);
+                        Toast.makeText(Home.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
     }
+
+
+
 
 
 
@@ -250,6 +290,9 @@ public class Home extends AppCompatActivity implements NotifyAboutLogin, MarketS
 
             return;
         }
+
+
+
 
 
         if (user.getRole() == User.ROLE_SHOP_STAFF_CODE) {
