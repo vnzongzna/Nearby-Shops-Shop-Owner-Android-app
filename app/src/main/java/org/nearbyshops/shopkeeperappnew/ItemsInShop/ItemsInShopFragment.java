@@ -20,7 +20,7 @@ import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySearch;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySort;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyIndicatorChanged;
-import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.PrefSortItemsInShop;
+import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.Utility.PrefSortItemsInShop;
 import org.nearbyshops.shopkeeperappnew.Model.Item;
 import org.nearbyshops.shopkeeperappnew.Model.Shop;
 import org.nearbyshops.shopkeeperappnew.Model.ShopItem;
@@ -42,7 +42,10 @@ import java.util.ArrayList;
  * Created by sumeet on 2/12/16.
  */
 
-public class ItemsInShopFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, ViewHolderShopItem.ShopItemUpdates, NotifySort, NotifySearch {
+public class ItemsInShopFragment extends Fragment implements
+        SwipeRefreshLayout.OnRefreshListener, ViewHolderShopItem.ShopItemUpdates, NotifySort, NotifySearch {
+
+
 
 
 //    Map<Integer,ShopItem> shopItemMapTemp = new HashMap<>();
@@ -107,7 +110,12 @@ public class ItemsInShopFragment extends Fragment implements SwipeRefreshLayout.
 
 
 
-    void setupSwipeContainer()
+
+
+
+
+
+    private void setupSwipeContainer()
     {
 
         if(swipeContainer!=null) {
@@ -124,7 +132,9 @@ public class ItemsInShopFragment extends Fragment implements SwipeRefreshLayout.
 
 
 
-    void setupRecyclerView()
+
+
+    private void setupRecyclerView()
     {
 
 
@@ -249,7 +259,10 @@ public class ItemsInShopFragment extends Fragment implements SwipeRefreshLayout.
 
 
 
-    void makeRefreshNetworkCall()
+
+
+
+    private void makeRefreshNetworkCall()
     {
         swipeContainer.post(new Runnable() {
             @Override
@@ -336,7 +349,9 @@ public class ItemsInShopFragment extends Fragment implements SwipeRefreshLayout.
 
 
 
-    void makeRequestShopItem(final boolean clearDataset, boolean resetOffset)
+
+
+    private void makeRequestShopItem(final boolean clearDataset, boolean resetOffset)
     {
 
         if(resetOffset)
@@ -677,7 +692,9 @@ public class ItemsInShopFragment extends Fragment implements SwipeRefreshLayout.
 */
 
 
-    void notifyItemIndicatorChanged()
+
+
+    private void notifyItemIndicatorChanged()
     {
         if(getActivity() instanceof NotifyIndicatorChanged)
         {

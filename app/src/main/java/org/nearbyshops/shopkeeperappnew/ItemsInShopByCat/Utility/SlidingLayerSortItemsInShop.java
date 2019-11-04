@@ -1,4 +1,4 @@
-package org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.SlidingLayerSort;
+package org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.Utility;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySort;
-import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.PrefSortItemsInShop;
 import org.nearbyshops.shopkeeperappnew.Model.ShopItem;
 import org.nearbyshops.shopkeeperappnew.R;
 

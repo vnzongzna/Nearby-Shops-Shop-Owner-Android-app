@@ -1,9 +1,9 @@
-package org.nearbyshops.shopkeeperappnew.ItemsInShopByCat;
+package org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.Utility;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.SlidingLayerSort.SlidingLayerSortItemsInShop;
+import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.Utility.SlidingLayerSortItemsInShop;
 import org.nearbyshops.shopkeeperappnew.R;
 
 import static android.content.Context.MODE_PRIVATE;

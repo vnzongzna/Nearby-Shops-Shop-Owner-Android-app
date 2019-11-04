@@ -44,9 +44,6 @@ public class AdapterShopItem extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 
 
-
-
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
