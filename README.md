@@ -1,7 +1,3 @@
-
-Nearby Shops Shop-Owner android app
-====================================
-
 Nearby Shops 
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Nearby%20Shops%20Open%20Source%20Food%20Delivery%20and%20Hyperlocal%20app&url=https://github.com/SumeetMoray/Nearby-Shops-End-User-Android-app&via=moraysumeet&hashtags=opensource,androiddev,fooddelivery,android,ecommerce)
 =============
@@ -22,6 +18,25 @@ It is a first of its kind democratic, non-commercial, Open-Source and Nonprofit 
 Technically Nearby Shops is a distributed ecosystem of local markets. This project is conceptually similar to [Mastadon project](https://github.com/tootsuite/mastodon). Anyone can self-host their Local Market Instance and create their local market on Nearby Shops. The technology is fully open-source and funded by Donations. We dont charge any fee or comission in order to use the platform.
 
 Local Market's are generally self-hosted by independent Volunteers, Service Providers and local vendor cooperatives who seek the welfare of their local vendors.
+
+
+
+Volunteer and Help us
+-------------------------------------------------
+
+Our goal is to provide an e-commerce platform which is technologically advanced, free of cost, open, democratic and Non-Commercial. 
+
+If you like this Idea and this project Please volunteer and Help us ! 
+You can help us in various ways even if you do not know how to write code !
+
+1. Host an instance of Local market where other sellers could register. You will work as the administrator of your local market.
+2. Help us to Promote this project in your local community !
+
+
+This is an International Platform with support for multiple curriencies. Please help us making e-commerce truly free of cost for everyone. 
+
+To participate please contact us on support@nearbyshops.org or simply post your thoughts on our forum 
+https://forum.nearbyshops.org
 
 
 
@@ -174,6 +189,54 @@ Admin app : https://github.com/SumeetMoray/Nearby-Shops-Admin-App
 
 Source code for Server Side JSON Based REST API is available in this repository https://github.com/SumeetMoray/Nearby-Shops-API
 
+
+Contributions Welcome
+-----------------------------------------------
+
+https://forum.nearbyshops.org/t/project-roadmap-and-contributions-required/34/4
+
+Improved Search with Search Suggestions for android app
+
+Develop a PWA and Web app for Nearby Shops
+
+i18n Internationalization support
+
+Payment Gateway Integrations
+
+Performance Testing and Optimization
+
+Suggestions and Improvements in App Architecture
+
+Code Review and Architecture
+
+
+
+Contributor Compensation Program
+------------------------------------
+
+We believe developer's must be compensated for the work they do. 
+
+How many times you have made a contribution to a project you love but havent received any compensation for that. Unfortunately unpaid working hours is the sad reality for many open-source developers ...
+
+We want to change this ...Therefore we have launched contributor compensation scheme !
+When you make a contribution to this project you will be paid at the rate of 10-15 $ per hour we can make it upto 50 $ per hour for contributors from countries where cost of living is high. 
+
+Please note that we reserve the right to accept or reject your contribution. You will be paid only if your contribution is accepted. 
+
+Ability to pay for contributions depend on availibilty of funds ... we recommend you to [contact us and talk with us](https://forum.nearbyshops.org/t/contributor-compensation-program/93) before you plan to make any contribution to this project.
+
+
+
+Development Instructions
+-------------------------
+
+If you're a developer looking to work on the source code follow these instructions to start developing !
+
+```js
+git clone https://github.com/SumeetMoray/Nearby-Shops-End-User-Android-app.git
+```
+
+You should now open the project with the latest version of Android Studio.
 
 
 
