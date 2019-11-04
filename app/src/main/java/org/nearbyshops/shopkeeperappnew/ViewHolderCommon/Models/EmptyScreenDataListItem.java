@@ -3,7 +3,7 @@ package org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models;
 
 
 
-public class EmptyScreenData {
+public class EmptyScreenDataListItem {
 
 
     private String message;
@@ -13,9 +13,9 @@ public class EmptyScreenData {
 
 
 
-    public static EmptyScreenData getCreateMarketData()
+    public static EmptyScreenDataListItem getCreateMarketData()
     {
-        EmptyScreenData data = new EmptyScreenData();
+        EmptyScreenDataListItem data = new EmptyScreenDataListItem();
         data.setMessage("Create your own Market and help local Economy ... Its free !");
         data.setButtonText("Create Market !");
         data.setUrlForButtonClick("https://nearbyshops.org");

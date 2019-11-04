@@ -3,11 +3,10 @@ package org.nearbyshops.shopkeeperappnew.Markets;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
-import butterknife.ButterKnife;
+
 import com.google.gson.Gson;
 import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
 import org.nearbyshops.shopkeeperappnew.Markets.Interfaces.listItemMarketNotifications;
@@ -15,9 +14,11 @@ import org.nearbyshops.shopkeeperappnew.Markets.Model.*;
 import org.nearbyshops.shopkeeperappnew.Markets.ViewHolders.*;
 import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.R;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreen;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.LoadingViewHolder;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataListItem;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreenListItem;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderHeader;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -114,7 +115,7 @@ public class AdapterMarkets extends RecyclerView.Adapter<RecyclerView.ViewHolder
 //
 //            return new ViewHolderHeaderMarket(view);
 
-            return ViewHolderHeaderMarket.create(parent,fragment.getActivity());
+            return ViewHolderHeader.create(parent,fragment.getActivity());
 
         }
         else if (viewType == VIEW_TYPE_Market) {
@@ -133,11 +134,12 @@ public class AdapterMarkets extends RecyclerView.Adapter<RecyclerView.ViewHolder
             view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.list_item_progress_bar, parent, false);
 
+
             return new LoadingViewHolder(view);
         }
         else if(viewType==VIEW_TYPE_create_market)
         {
-            return ViewHolderEmptyScreen.create(parent,fragment.getActivity(),fragment);
+            return ViewHolderEmptyScreenListItem.create(parent,fragment.getActivity(),fragment);
         }
 
 
@@ -174,7 +176,7 @@ public class AdapterMarkets extends RecyclerView.Adapter<RecyclerView.ViewHolder
         {
             return view_type_sign_in;
         }
-        else if(dataset.get(position) instanceof HeaderTitle)
+        else if(dataset.get(position) instanceof HeaderData)
         {
             return view_type_markets_header;
         }
@@ -182,7 +184,7 @@ public class AdapterMarkets extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             return VIEW_TYPE_Market;
         }
-        else if(dataset.get(position) instanceof EmptyScreenData)
+        else if(dataset.get(position) instanceof EmptyScreenDataListItem)
         {
 
 
@@ -225,26 +227,37 @@ public class AdapterMarkets extends RecyclerView.Adapter<RecyclerView.ViewHolder
             ((ViewHolderMarket)holderVH).setItem((ServiceConfigurationGlobal) dataset.get(position));
 
         }
-        else if(holderVH instanceof ViewHolderEmptyScreen)
+        else if(holderVH instanceof ViewHolderEmptyScreenListItem)
         {
-            if(dataset.get(position) instanceof EmptyScreenData)
+            if(dataset.get(position) instanceof EmptyScreenDataListItem)
             {
-                ((ViewHolderEmptyScreen) holderVH).setItem((EmptyScreenData) dataset.get(position));
+                ((ViewHolderEmptyScreenListItem) holderVH).setItem((EmptyScreenDataListItem) dataset.get(position));
             }
         }
         else if (holderVH instanceof LoadingViewHolder) {
 
 
-            LoadingViewHolder viewHolder = (LoadingViewHolder) holderVH;
+//
+//            LoadingViewHolder viewHolder = (LoadingViewHolder) holderVH;
+//
+//
+//            if (loadMore) {
+//                viewHolder.progressBar.setVisibility(View.VISIBLE);
+//                viewHolder.progressBar.setIndeterminate(true);
+//            }
+//            else {
+//                viewHolder.progressBar.setVisibility(View.GONE);
+//            }
 
 
-            if (loadMore) {
-                viewHolder.progressBar.setVisibility(View.VISIBLE);
-                viewHolder.progressBar.setIndeterminate(true);
-            }
-            else {
-                viewHolder.progressBar.setVisibility(View.GONE);
-            }
+            ((LoadingViewHolder) holderVH).setLoading(loadMore);
+        }
+        else if(holderVH instanceof ViewHolderHeader)
+        {
+
+
+            ViewHolderHeader viewHolder = (ViewHolderHeader) holderVH;
+            viewHolder.setItem((HeaderData) dataset.get(position));
         }
     }
 
@@ -296,17 +309,17 @@ public class AdapterMarkets extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
 
-
-    public class LoadingViewHolder extends  RecyclerView.ViewHolder{
-
-        @BindView(R.id.progress_bar)
-        ProgressBar progressBar;
-
-        public LoadingViewHolder(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this,itemView);
-        }
-    }
+//
+//    public class LoadingViewHolder extends  RecyclerView.ViewHolder{
+//
+//        @BindView(R.id.progress_bar)
+//        ProgressBar progressBar;
+//
+//        public LoadingViewHolder(View itemView) {
+//            super(itemView);
+//            ButterKnife.bind(this,itemView);
+//        }
+//    }
 
 
 

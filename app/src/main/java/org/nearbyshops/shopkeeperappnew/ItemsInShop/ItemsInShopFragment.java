@@ -20,16 +20,17 @@ import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySearch;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySort;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyIndicatorChanged;
-import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.SlidingLayerSort.PrefSortItemsInShop;
+import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.PrefSortItemsInShop;
 import org.nearbyshops.shopkeeperappnew.Model.Item;
 import org.nearbyshops.shopkeeperappnew.Model.Shop;
 import org.nearbyshops.shopkeeperappnew.Model.ShopItem;
 import org.nearbyshops.shopkeeperappnew.ModelEndpoints.ShopItemEndPoint;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefShopHome;
-import org.nearbyshops.shopkeeperappnew.QuickStockEditor.ViewHolders.ViewHolderShopItem;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderShopItem;
 import org.nearbyshops.shopkeeperappnew.R;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -68,7 +69,7 @@ public class ItemsInShopFragment extends Fragment implements SwipeRefreshLayout.
 //    @Inject
 //    ItemCategoryService itemCategoryService;
     GridLayoutManager layoutManager;
-    AdapterItemsInShop listAdapter;
+    Adapter listAdapter;
 
     @Inject
     ShopItemService shopItemService;
@@ -127,7 +128,7 @@ public class ItemsInShopFragment extends Fragment implements SwipeRefreshLayout.
     {
 
 
-        listAdapter = new AdapterItemsInShop(dataset,getActivity(),this);
+        listAdapter = new Adapter(dataset,getActivity(),this);
         itemCategoriesList.setAdapter(listAdapter);
 
         layoutManager = new GridLayoutManager(getActivity(),6, LinearLayoutManager.VERTICAL,false);
@@ -167,7 +168,7 @@ public class ItemsInShopFragment extends Fragment implements SwipeRefreshLayout.
                 {
                     return 6;
                 }
-                else if(dataset.get(position) instanceof HeaderTitle)
+                else if(dataset.get(position) instanceof HeaderData)
                 {
                     return 6;
                 }
@@ -397,7 +398,7 @@ public class ItemsInShopFragment extends Fragment implements SwipeRefreshLayout.
                     if(clearDataset)
                     {
                         dataset.clear();
-                        HeaderTitle headerItem = new HeaderTitle();
+                        HeaderData headerItem = new HeaderData();
 
                         if(searchQuery==null)
                         {

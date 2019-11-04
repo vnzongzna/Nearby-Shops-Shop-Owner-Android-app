@@ -14,10 +14,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import org.nearbyshops.shopkeeperappnew.R;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataListItem;
 
 
-public class ViewHolderEmptyScreen extends RecyclerView.ViewHolder{
+public class ViewHolderEmptyScreenListItem extends RecyclerView.ViewHolder{
 
 
 
@@ -28,26 +28,26 @@ public class ViewHolderEmptyScreen extends RecyclerView.ViewHolder{
     @BindView(R.id.button) TextView button;
 
 
-    private EmptyScreenData data;
+    private EmptyScreenDataListItem data;
 
 //    Create your own Market and help local Economy ... Its free !
 
 
 
-    public static ViewHolderEmptyScreen create(ViewGroup parent, Context context, Fragment fragment)
+    public static ViewHolderEmptyScreenListItem create(ViewGroup parent, Context context, Fragment fragment)
     {
 
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item_empty_screen, parent, false);
 
-        return new ViewHolderEmptyScreen(view,parent,context, fragment);
+        return new ViewHolderEmptyScreenListItem(view,parent,context, fragment);
     }
 
 
 
 
 
-    public ViewHolderEmptyScreen(View itemView, ViewGroup parent, Context context, Fragment fragment)
+    public ViewHolderEmptyScreenListItem(View itemView, ViewGroup parent, Context context, Fragment fragment)
     {
         super(itemView);
         ButterKnife.bind(this,itemView);
@@ -74,7 +74,7 @@ public class ViewHolderEmptyScreen extends RecyclerView.ViewHolder{
 
 
 
-    public void setItem(EmptyScreenData data)
+    public void setItem(EmptyScreenDataListItem data)
     {
         this.data = data;
 

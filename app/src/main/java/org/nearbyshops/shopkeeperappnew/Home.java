@@ -39,8 +39,10 @@ import org.nearbyshops.shopkeeperappnew.OneSignal.UpdateOneSignalID;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefGeneral;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLocation;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
+import org.nearbyshops.shopkeeperappnew.Services.UpdateServiceConfiguration;
 import org.nearbyshops.shopkeeperappnew.ShopAdminHome.ShopAdminHomeFragment;
 import org.nearbyshops.shopkeeperappnew.ShopStaffHome.ShopStaffHomeFragment;
+import org.nearbyshops.shopkeeperappnew.Utility.UtilityFunctions;
 
 
 public class Home extends AppCompatActivity implements NotifyAboutLogin, MarketSelected {
@@ -90,6 +92,8 @@ public class Home extends AppCompatActivity implements NotifyAboutLogin, MarketS
         showDashboard();
 
 
+        startService(new Intent(this, UpdateServiceConfiguration.class));
+
 
         checkPermissions();
         fetchLocation();
@@ -105,6 +109,10 @@ public class Home extends AppCompatActivity implements NotifyAboutLogin, MarketS
 
         FirebaseApp.initializeApp(getApplicationContext());
 
+        UtilityFunctions.updateFirebaseSubscriptions();
+
+
+
 
 //        FirebaseApp.getInstance().delete();
 
@@ -113,21 +121,22 @@ public class Home extends AppCompatActivity implements NotifyAboutLogin, MarketS
 
 
 
-        String topic =   "_192.168.43.73_5121_weather" ;
 
-
-        FirebaseMessaging.getInstance().subscribeToTopic(topic)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "Subscribed";
-                        if (!task.isSuccessful()) {
-                            msg = "Failed";
-                        }
-//                        Log.d(TAG, msg);
-                        Toast.makeText(Home.this, msg, Toast.LENGTH_SHORT).show();
-                    }
-                });
+//        String topic =   "_192.168.43.73_5121_weather" ;
+//
+//
+//        FirebaseMessaging.getInstance().subscribeToTopic(topic)
+//                .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        String msg = "Subscribed";
+//                        if (!task.isSuccessful()) {
+//                            msg = "Failed";
+//                        }
+////                        Log.d(TAG, msg);
+//                        Toast.makeText(Home.this, msg, Toast.LENGTH_SHORT).show();
+//                    }
+//                });
 
     }
 

@@ -4,15 +4,18 @@ package org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models;
  * Created by sumeet on 4/12/16.
  */
 
-public class HeaderTitle {
+public class HeaderData {
 
-    public HeaderTitle(String heading) {
+    public HeaderData(String heading) {
         this.heading = heading;
     }
 
 
-    public HeaderTitle() {
+    public HeaderData() {
     }
+
+
+
 
     private String heading;
 

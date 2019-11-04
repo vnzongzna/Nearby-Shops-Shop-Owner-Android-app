@@ -22,7 +22,7 @@ import com.squareup.picasso.Picasso;
 import org.nearbyshops.shopkeeperappnew.Model.ShopImage;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefGeneral;
 import org.nearbyshops.shopkeeperappnew.R;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
 
 import java.util.HashMap;
 import java.util.List;
@@ -112,8 +112,8 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
         else if (holder instanceof ViewHolderHeader) {
 
-            if (dataset.get(position) instanceof HeaderTitle) {
-                HeaderTitle header = (HeaderTitle) dataset.get(position);
+            if (dataset.get(position) instanceof HeaderData) {
+                HeaderData header = (HeaderData) dataset.get(position);
 
                 ((ViewHolderHeader) holder).header.setText(header.getHeading());
             }
@@ -167,7 +167,7 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         if (position == dataset.size()) {
             return VIEW_TYPE_PROGRESS_BAR;
-        } else if (dataset.get(position) instanceof HeaderTitle) {
+        } else if (dataset.get(position) instanceof HeaderData) {
             return VIEW_TYPE_HEADER;
         } else if (dataset.get(position) instanceof ShopImage) {
             return VIEW_TYPE_TRIP_REQUEST;

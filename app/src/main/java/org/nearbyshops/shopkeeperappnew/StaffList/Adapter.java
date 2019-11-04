@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.LoadingViewHolder;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreenFullScreen;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderHeader;
 
@@ -94,9 +94,9 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
         else if (holder instanceof ViewHolderHeader) {
 
-            if (dataset.get(position) instanceof HeaderTitle) {
+            if (dataset.get(position) instanceof HeaderData) {
 
-                ((ViewHolderHeader) holder).setItem((HeaderTitle) dataset.get(position));
+                ((ViewHolderHeader) holder).setItem((HeaderData) dataset.get(position));
             }
 
         }
@@ -113,7 +113,7 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             return VIEW_TYPE_SCROLL_PROGRESS_BAR;
         }
-        else if (dataset.get(position) instanceof HeaderTitle) {
+        else if (dataset.get(position) instanceof HeaderData) {
 
             return VIEW_TYPE_HEADER;
         }

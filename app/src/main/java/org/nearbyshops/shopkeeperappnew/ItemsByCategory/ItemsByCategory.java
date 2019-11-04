@@ -35,7 +35,7 @@ import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Utility.SlidingLayerSort
 import org.nearbyshops.shopkeeperappnew.R;
 
 
-public class ItemsByCatSimple extends AppCompatActivity implements NotifyIndicatorChanged, NotifySort{
+public class ItemsByCategory extends AppCompatActivity implements NotifyIndicatorChanged, NotifySort{
 
     public static final String TAG_FRAGMENT = "item_categories_simple";
     public static final String TAG_SLIDING = "sort_items_sliding";
@@ -339,7 +339,7 @@ public class ItemsByCatSimple extends AppCompatActivity implements NotifyIndicat
                     ((NotifySearch) fragment).endSearchMode();
                 }
 
-//                Toast.makeText(ItemsByCatSimple.this, "onCollapsed Called ", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ItemsByCategory.this, "onCollapsed Called ", Toast.LENGTH_SHORT).show();
 
                 return true;
             }

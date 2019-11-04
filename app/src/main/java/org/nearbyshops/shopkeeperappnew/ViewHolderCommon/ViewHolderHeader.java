@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import org.nearbyshops.shopkeeperappnew.R;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
 
 
 public class ViewHolderHeader extends RecyclerView.ViewHolder{
@@ -20,7 +20,7 @@ public class ViewHolderHeader extends RecyclerView.ViewHolder{
 
 
     private Context context;
-    private HeaderTitle item;
+    private HeaderData item;
 
 
 
@@ -47,7 +47,7 @@ public class ViewHolderHeader extends RecyclerView.ViewHolder{
     }
 
 
-    public void setItem(HeaderTitle data)
+    public void setItem(HeaderData data)
     {
         header.setText(data.getHeading());
     }

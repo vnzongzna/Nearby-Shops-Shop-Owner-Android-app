@@ -10,7 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import org.nearbyshops.shopkeeperappnew.OrdersInventory.HomeDeliveryInventory.HomeDelivery;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ItemsByCatSimple;
+import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ItemsByCategory;
 import org.nearbyshops.shopkeeperappnew.ItemsInShop.ItemsInShop;
 import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.ItemsInShopByCat;
 import org.nearbyshops.shopkeeperappnew.Model.Shop;
@@ -131,7 +131,7 @@ public class ShopHome extends AppCompatActivity {
     @OnClick(R.id.option_add_items)
     void optionItemsByCategory()
     {
-        startActivity(new Intent(this, ItemsByCatSimple.class));
+        startActivity(new Intent(this, ItemsByCategory.class));
     }
 
 

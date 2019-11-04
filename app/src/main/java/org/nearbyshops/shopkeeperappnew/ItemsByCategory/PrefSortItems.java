@@ -1,7 +1,9 @@
-package org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.SlidingLayerSort;
+package org.nearbyshops.shopkeeperappnew.ItemsByCategory;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+
+import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Utility.SlidingLayerSortItems;
 import org.nearbyshops.shopkeeperappnew.R;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -10,11 +12,8 @@ import static android.content.Context.MODE_PRIVATE;
  * Created by sumeet on 29/9/16.
  */
 
-public class PrefSortItemsInShop {
+public class PrefSortItems {
 
-
-    public static final String TAG_SORT = "sort_items_in_stock";
-    public static final String TAG_SORT_ASCENDING = "sort_order_items_in_stock";
 
 
     public static void saveSort(Context context, String sort_by)
@@ -28,7 +27,7 @@ public class PrefSortItemsInShop {
 
         // write to the shared preference
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(TAG_SORT, sort_by);
+        editor.putString("sort_items_by_category_simple", sort_by);
         editor.apply();
     }
 
@@ -36,7 +35,7 @@ public class PrefSortItemsInShop {
     public static String getSort(Context context)
     {
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_name), MODE_PRIVATE);
-        String sort_by = sharedPref.getString(TAG_SORT, SlidingLayerSortItemsInShop.SORT_BY_ITEM_AVAILABLE);
+        String sort_by = sharedPref.getString("sort_items_by_category_simple", SlidingLayerSortItems.SORT_BY_ITEM_RATING);
 
         return sort_by;
     }
@@ -55,7 +54,7 @@ public class PrefSortItemsInShop {
 
         // write to the shared preference
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(TAG_SORT_ASCENDING,descending);
+        editor.putString("sort_descending_items_by_category_simple",descending);
         editor.apply();
     }
 
@@ -65,7 +64,7 @@ public class PrefSortItemsInShop {
     {
 
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_name), MODE_PRIVATE);
-        String descending = sharedPref.getString(TAG_SORT_ASCENDING, SlidingLayerSortItemsInShop.SORT_DESCENDING);
+        String descending = sharedPref.getString("sort_descending_items_by_category_simple", SlidingLayerSortItems.SORT_DESCENDING);
 
         return descending;
     }

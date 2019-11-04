@@ -28,7 +28,7 @@ import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.StaffListDelivery.EditProfileDelivery.EditProfileDelivery;
 import org.nearbyshops.shopkeeperappnew.StaffListDelivery.EditProfileDelivery.FragmentEditProfileDelivery;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -293,7 +293,7 @@ public class DeliveryGuyListFragment extends Fragment implements SwipeRefreshLay
 
                         if(item_count>0)
                         {
-                            dataset.add(new HeaderTitle("Delivery Staff"));
+                            dataset.add(new HeaderData("Delivery Staff"));
                         }
                     }
 

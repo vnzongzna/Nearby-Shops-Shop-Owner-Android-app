@@ -1,21 +1,19 @@
-package org.nearbyshops.shopkeeperappnew.ItemsInShopByCat;
+package org.nearbyshops.shopkeeperappnew.ItemsInShop;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
-import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ViewHolders.ViewHolderItemCategory;
-import org.nearbyshops.shopkeeperappnew.Model.ItemCategory;
+
 import org.nearbyshops.shopkeeperappnew.Model.ShopItem;
-import org.nearbyshops.shopkeeperappnew.QuickStockEditor.ViewHolders.ViewHolderShopItem;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderShopItem;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.LoadingViewHolder;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreenFullScreen;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderHeader;
-
 
 import java.util.List;
 
@@ -24,47 +22,33 @@ import java.util.List;
  */
 
 
-public class AdapterItemsInShopByCat extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
-//    Map<Integer,ShopItem> shopItemMap = new HashMap<>();
-//    Map<Integer,Item> selectedItems = new HashMap<>();
 
     private List<Object> dataset;
     private Context context;
 
-    public static final int VIEW_TYPE_ITEM_CATEGORY = 1;
+
     public static final int VIEW_TYPE_SHOP_ITEM = 2;
 
 
+    public static final int VIEW_TYPE_EMPTY_SCREEN = 5;
     public static final int VIEW_TYPE_HEADER = 3;
     public static final int VIEW_TYPE_SCROLL_PROGRESS_BAR = 4;
-    public static final int VIEW_TYPE_EMPTY_SCREEN = 5;
 
 
 
     private Fragment fragment;
-
-
     private boolean loadMore;
 
 
 
 
-    public AdapterItemsInShopByCat(List<Object> dataset,
-                                   Context context,
-                                   Fragment fragment
-    )
-    {
-
+    public Adapter(List<Object> dataset, Context context, Fragment fragment) {
 
         this.dataset = dataset;
         this.context = context;
         this.fragment = fragment;
-
-
-        DaggerComponentBuilder.getInstance()
-                .getNetComponent()
-                .Inject(this);
     }
 
     @Override
@@ -72,12 +56,7 @@ public class AdapterItemsInShopByCat extends RecyclerView.Adapter<RecyclerView.V
 
         View view = null;
 
-
-        if(viewType == VIEW_TYPE_ITEM_CATEGORY)
-        {
-            return ViewHolderItemCategory.create(parent,context,fragment,this,null,null);
-        }
-        else if(viewType == VIEW_TYPE_SHOP_ITEM)
+        if(viewType == VIEW_TYPE_SHOP_ITEM)
         {
             return ViewHolderShopItem.create(parent,context,fragment,this,dataset);
         }
@@ -95,30 +74,27 @@ public class AdapterItemsInShopByCat extends RecyclerView.Adapter<RecyclerView.V
         }
 
 
-
         return null;
     }
+
+
+
+
 
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
-
-
-        if(holder instanceof ViewHolderItemCategory)
-        {
-            ((ViewHolderItemCategory) holder).bindItemCategory((ItemCategory) dataset.get(position));
-        }
-        else if(holder instanceof ViewHolderShopItem)
+        if(holder instanceof ViewHolderShopItem)
         {
             ((ViewHolderShopItem) holder).bindShopItem((ShopItem) dataset.get(position));
 
         }
         else if (holder instanceof ViewHolderHeader) {
 
-            if (dataset.get(position) instanceof HeaderTitle) {
+            if (dataset.get(position) instanceof HeaderData) {
 
-                ((ViewHolderHeader) holder).setItem((HeaderTitle) dataset.get(position));
+                ((ViewHolderHeader) holder).setItem((HeaderData) dataset.get(position));
             }
 
         }
@@ -134,6 +110,13 @@ public class AdapterItemsInShopByCat extends RecyclerView.Adapter<RecyclerView.V
     }
 
 
+
+
+
+
+
+
+
     @Override
     public int getItemViewType(int position) {
 
@@ -143,15 +126,11 @@ public class AdapterItemsInShopByCat extends RecyclerView.Adapter<RecyclerView.V
         {
             return VIEW_TYPE_SCROLL_PROGRESS_BAR;
         }
-        else if(dataset.get(position) instanceof ItemCategory)
-        {
-            return VIEW_TYPE_ITEM_CATEGORY;
-        }
-        else if (dataset.get(position) instanceof ShopItem)
+        if (dataset.get(position) instanceof ShopItem)
         {
             return VIEW_TYPE_SHOP_ITEM;
         }
-        else if(dataset.get(position) instanceof HeaderTitle)
+        else if(dataset.get(position) instanceof HeaderData)
         {
             return VIEW_TYPE_HEADER;
         }
@@ -159,7 +138,6 @@ public class AdapterItemsInShopByCat extends RecyclerView.Adapter<RecyclerView.V
         {
             return VIEW_TYPE_EMPTY_SCREEN;
         }
-
 
         return -1;
     }
@@ -173,12 +151,10 @@ public class AdapterItemsInShopByCat extends RecyclerView.Adapter<RecyclerView.V
 
 
 
-
     public void setLoadMore(boolean loadMore)
     {
         this.loadMore = loadMore;
     }
-
 
 
 }

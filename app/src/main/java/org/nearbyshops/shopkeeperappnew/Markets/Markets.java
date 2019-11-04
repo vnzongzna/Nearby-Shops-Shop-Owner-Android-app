@@ -12,14 +12,14 @@ import org.nearbyshops.shopkeeperappnew.Interfaces.NotifyAboutLogin;
 import org.nearbyshops.shopkeeperappnew.Interfaces.RefreshFragment;
 import org.nearbyshops.shopkeeperappnew.Login.Login;
 import org.nearbyshops.shopkeeperappnew.Markets.Interfaces.MarketSelected;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreen;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreenListItem;
 import org.nearbyshops.shopkeeperappnew.Markets.ViewHolders.ViewHolderSignIn;
 import org.nearbyshops.shopkeeperappnew.R;
 
 
 public class Markets extends AppCompatActivity implements MarketSelected, NotifyAboutLogin,
         ViewHolderSignIn.VHSignIn,
-        ViewHolderEmptyScreen.VHEmptyScreen {
+        ViewHolderEmptyScreenListItem.VHEmptyScreen {
 
 
 //    public static final String SHOP_DETAIL_INTENT_KEY = "shop_detail";

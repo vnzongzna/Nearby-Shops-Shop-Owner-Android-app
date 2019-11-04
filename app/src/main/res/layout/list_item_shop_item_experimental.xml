@@ -36,13 +36,14 @@
             app:layout_constraintLeft_toLeftOf="parent"
             android:textSize="17sp"
             android:id="@+id/itemName"
-            android:text="Item Name in long format"
+            android:text="Item Name"
             android:layout_height="wrap_content"
             android:layout_width="0dp" />
 
 
 
         <TextView
+            android:visibility="gone"
             android:textColor="@color/white"
             android:padding="5dp"
             android:background="@color/gplus_color_1"
@@ -56,6 +57,7 @@
 
 
         <LinearLayout
+            android:visibility="gone"
             android:layout_marginTop="5dp"
             android:id="@+id/quantities"
             app:layout_constraintEnd_toEndOf="parent"

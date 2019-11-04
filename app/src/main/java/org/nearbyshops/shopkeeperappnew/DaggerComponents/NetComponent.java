@@ -16,9 +16,8 @@ import org.nearbyshops.shopkeeperappnew.EditShop.EditShopFragment;
 import org.nearbyshops.shopkeeperappnew.EditShopImage.EditShopImageFragment;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ItemsByCatFragment;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ItemsByCatFragmentDeprecated;
-import org.nearbyshops.shopkeeperappnew.ItemsInShop.AdapterItemsInShop;
 import org.nearbyshops.shopkeeperappnew.ItemsInShop.ItemsInShopFragment;
-import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.AdapterItemsInShopByCat;
+import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.Adapter;
 import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.ItemsInShopByCatFragment;
 import org.nearbyshops.shopkeeperappnew.Login.LoginFragment;
 import org.nearbyshops.shopkeeperappnew.Login.LoginGlobalFragment;
@@ -37,8 +36,9 @@ import org.nearbyshops.shopkeeperappnew.OrderDetail.FragmentOrderDetail;
 import org.nearbyshops.shopkeeperappnew.OrderHistory.OrderHistoryFragment;
 import org.nearbyshops.shopkeeperappnew.OrdersInventory.Fragment.OrdersInventoryFragment;
 import org.nearbyshops.shopkeeperappnew.QuickStockEditor.FragmentShopItem;
-import org.nearbyshops.shopkeeperappnew.QuickStockEditor.ViewHolders.ViewHolderShopItem;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderShopItem;
 import org.nearbyshops.shopkeeperappnew.SelectDeliveryGuy.SelectDeliveryFragment;
+import org.nearbyshops.shopkeeperappnew.Services.UpdateServiceConfiguration;
 import org.nearbyshops.shopkeeperappnew.ShopAdminHome.ShopAdminHomeFragment;
 import org.nearbyshops.shopkeeperappnew.ShopImageList.ShopImageListFragment;
 import org.nearbyshops.shopkeeperappnew.ShopStaffHome.ShopStaffHomeFragment;
@@ -122,11 +122,11 @@ public interface NetComponent {
 
     void Inject(ItemsByCatFragmentDeprecated itemsByCatFragmentDeprecated);
 
-    void Inject(AdapterItemsInShopByCat adapterItemsInShopByCat);
+    void Inject(Adapter adapter);
 
     void Inject(ItemsInShopByCatFragment itemsInShopByCatFragment);
 
-    void Inject(AdapterItemsInShop adapterItemsInShop);
+    void Inject(org.nearbyshops.shopkeeperappnew.ItemsInShop.Adapter adapter);
 
     void Inject(ItemsInShopFragment itemsInShopFragment);
 
@@ -167,4 +167,6 @@ public interface NetComponent {
     void Inject(EditItemImageFragment editItemImageFragment);
 
     void Inject(EditItemFragmentNew editItemFragmentNew);
+
+    void Inject(UpdateServiceConfiguration updateServiceConfiguration);
 }

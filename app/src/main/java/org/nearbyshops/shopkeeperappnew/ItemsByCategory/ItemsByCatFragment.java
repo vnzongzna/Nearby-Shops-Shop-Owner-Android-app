@@ -28,11 +28,11 @@ import org.nearbyshops.shopkeeperappnew.Interfaces.ToggleFab;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyBackPressed;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyFABClick;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyIndicatorChanged;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Model.ItemCategoriesList;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Utility.PrefSortItems;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ViewHolders.ViewHolderItemCategory;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ViewHolders.ViewHolderItemCategoryHorizontal;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ViewHolders.ViewHolderItemSimple;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.Model.ItemCategoriesList;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderItem;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderItemCategory;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderItemCategoryHorizontal;
 import org.nearbyshops.shopkeeperappnew.Model.Item;
 import org.nearbyshops.shopkeeperappnew.Model.ItemCategory;
 import org.nearbyshops.shopkeeperappnew.Model.ShopItem;
@@ -42,7 +42,6 @@ import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefShopHome;
 import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -65,7 +64,7 @@ import retrofit2.Response;
 
 public class ItemsByCatFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener,
         ViewHolderItemCategory.ListItemClick,
-        ViewHolderItemSimple.ListItemClick,
+        ViewHolderItem.ListItemClick,
         ViewHolderItemCategoryHorizontal.ListItemClick,
         NotifyBackPressed, NotifySort, NotifyFABClick, NotifySearch {
 
@@ -97,7 +96,7 @@ public class ItemsByCatFragment extends Fragment implements SwipeRefreshLayout.O
 
 
     private GridLayoutManager layoutManager;
-    private AdapterSimple listAdapter;
+    private Adapter listAdapter;
 
 
     @BindView(R.id.add_remove_buttons) LinearLayout addRemoveButtons;
@@ -186,7 +185,7 @@ public class ItemsByCatFragment extends Fragment implements SwipeRefreshLayout.O
     {
 
 
-        listAdapter = new AdapterSimple(dataset,getActivity(),this);
+        listAdapter = new Adapter(dataset,getActivity(),this);
         itemCategoriesList.setAdapter(listAdapter);
 
         layoutManager = new GridLayoutManager(getActivity(),6, RecyclerView.VERTICAL,false);
@@ -226,7 +225,7 @@ public class ItemsByCatFragment extends Fragment implements SwipeRefreshLayout.O
 
                     return 6;
                 }
-                else if(dataset.get(position) instanceof HeaderTitle)
+                else if(dataset.get(position) instanceof HeaderData)
                 {
                     return 6;
                 }
@@ -476,7 +475,7 @@ public class ItemsByCatFragment extends Fragment implements SwipeRefreshLayout.O
 
                             if (searchQuery == null) {
 
-                                HeaderTitle headerItemCategory = new HeaderTitle();
+                                HeaderData headerItemCategory = new HeaderData();
 
                                 if (currentCategory.getParentCategoryID() == -1) {
                                     headerItemCategory.setHeading("Item Categories");
@@ -512,7 +511,7 @@ public class ItemsByCatFragment extends Fragment implements SwipeRefreshLayout.O
 
 
 
-                        HeaderTitle headerItem = new HeaderTitle();
+                        HeaderData headerItem = new HeaderData();
 
 
 
@@ -643,6 +642,10 @@ public class ItemsByCatFragment extends Fragment implements SwipeRefreshLayout.O
     }
 
 
+
+
+
+
     @Override
     public void notifyItemSelected() {
 
@@ -660,6 +663,9 @@ public class ItemsByCatFragment extends Fragment implements SwipeRefreshLayout.O
             addRemoveButtons.setVisibility(View.VISIBLE);
         }
     }
+
+
+
 
 
 

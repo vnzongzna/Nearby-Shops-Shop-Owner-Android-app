@@ -28,7 +28,8 @@ import org.nearbyshops.shopkeeperappnew.ModelEndpoints.ShopImageEndPoint;
 import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.R;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -274,9 +275,9 @@ public class ShopImageListFragment extends Fragment implements SwipeRefreshLayou
 
                         listAdapter.setItemCount(item_count_vehicle);
 
-//                            dataset.add(new HeaderTitle("Type of Data"));
+//                            dataset.add(new HeaderData("Type of Data"));
 
-                        dataset.add(new HeaderTitle("Shop Images"));
+                        dataset.add(new HeaderData("Shop Images"));
                     }
 
 

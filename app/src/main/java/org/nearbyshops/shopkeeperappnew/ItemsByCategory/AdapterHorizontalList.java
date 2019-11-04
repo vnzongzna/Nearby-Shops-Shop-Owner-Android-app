@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ViewHolders.ViewHolderItemCategoryHorizontal;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderItemCategoryHorizontal;
 import org.nearbyshops.shopkeeperappnew.Model.ItemCategory;
 
 import java.util.List;
 
 
-public class AdapterItemCatHorizontalList extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class AdapterHorizontalList extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
 
@@ -25,7 +25,7 @@ public class AdapterItemCatHorizontalList extends RecyclerView.Adapter<RecyclerV
 
 
 
-    public AdapterItemCatHorizontalList(List<ItemCategory> dataset, Context context, Fragment fragment) {
+    public AdapterHorizontalList(List<ItemCategory> dataset, Context context, Fragment fragment) {
         this.dataset = dataset;
         this.context = context;
         this.fragment = fragment;

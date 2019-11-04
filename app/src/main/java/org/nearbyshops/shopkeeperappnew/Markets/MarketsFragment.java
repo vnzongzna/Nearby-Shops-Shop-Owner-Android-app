@@ -29,7 +29,7 @@ import org.nearbyshops.shopkeeperappnew.MarketDetail.MarketDetailFragment;
 import org.nearbyshops.shopkeeperappnew.Markets.Interfaces.MarketSelected;
 import org.nearbyshops.shopkeeperappnew.Markets.Interfaces.listItemMarketNotifications;
 import org.nearbyshops.shopkeeperappnew.Markets.Model.ServiceConfigurationGlobal;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreen;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreenListItem;
 import org.nearbyshops.shopkeeperappnew.Markets.ViewHolders.ViewHolderSignIn;
 import org.nearbyshops.shopkeeperappnew.Markets.ViewModels.MarketViewModel;
 import org.nearbyshops.shopkeeperappnew.Utility.UtilityFunctions;
@@ -43,7 +43,7 @@ import java.util.List;
 public class MarketsFragment extends Fragment implements listItemMarketNotifications,
         SwipeRefreshLayout.OnRefreshListener,
         NotifySort, NotifySearch, LocationUpdated, NotifyAboutLogin, RefreshFragment ,
-        ViewHolderSignIn.VHSignIn , ViewHolderEmptyScreen.VHEmptyScreen {
+        ViewHolderSignIn.VHSignIn , ViewHolderEmptyScreenListItem.VHEmptyScreen {
 
 
 
@@ -174,11 +174,6 @@ public class MarketsFragment extends Fragment implements listItemMarketNotificat
 
 
 
-
-
-
-
-
     private void setupSwipeContainer()
     {
         if(swipeContainer!=null) {
@@ -275,7 +270,10 @@ public class MarketsFragment extends Fragment implements listItemMarketNotificat
 
 
 
-    void showToastMessage(String message)
+
+
+
+    private void showToastMessage(String message)
     {
         if(getActivity()!=null)
         {
@@ -445,6 +443,10 @@ public class MarketsFragment extends Fragment implements listItemMarketNotificat
         intent.putExtra(Login.TAG_LOGIN_GLOBAL,true);
         startActivityForResult(intent,123);
     }
+
+
+
+
 
 
     @Override

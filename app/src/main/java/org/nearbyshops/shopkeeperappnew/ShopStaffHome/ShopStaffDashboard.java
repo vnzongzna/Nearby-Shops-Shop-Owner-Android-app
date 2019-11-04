@@ -10,7 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ItemsByCatSimple;
+import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ItemsByCategory;
 import org.nearbyshops.shopkeeperappnew.ItemsInShop.ItemsInShop;
 import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.ItemsInShopByCat;
 import org.nearbyshops.shopkeeperappnew.Model.Shop;
@@ -223,7 +223,7 @@ public class ShopStaffDashboard extends AppCompatActivity {
     @OnClick(R.id.items_by_category)
     void optionItemCatApprovals()
     {
-        startActivity(new Intent(this, ItemsByCatSimple.class));
+        startActivity(new Intent(this, ItemsByCategory.class));
     }
 
 

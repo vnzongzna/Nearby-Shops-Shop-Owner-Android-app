@@ -11,6 +11,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import org.nearbyshops.shopkeeperappnew.Home;
+import org.nearbyshops.shopkeeperappnew.Markets.Model.ServiceConfigurationLocal;
+import org.nearbyshops.shopkeeperappnew.Model.Shop;
+import org.nearbyshops.shopkeeperappnew.Prefrences.PrefServiceConfig;
+import org.nearbyshops.shopkeeperappnew.Prefrences.PrefShopHome;
 
 import static com.mapbox.mapboxsdk.Mapbox.getApplicationContext;
 
@@ -37,14 +41,24 @@ public class UtilityFunctions {
 
 
 
-
-
-    public static void updateFirebaseSubscriptions(int shop_id)
+    public static void updateFirebaseSubscriptions()
     {
 //        FirebaseApp.getInstance().delete();
 //        FirebaseApp.initializeApp(getApplicationContext());
 
-        String topic_name = "shop_" + shop_id;
+
+        Shop shop = PrefShopHome.getShop(getApplicationContext());
+        ServiceConfigurationLocal localConfig = PrefServiceConfig.getServiceConfigLocal(getApplicationContext());
+
+
+        if(shop==null || localConfig==null || localConfig.getRt_market_id_for_fcm()==null)
+        {
+            return;
+        }
+
+
+        String topic_name = localConfig.getRt_market_id_for_fcm() + "shop_" + shop.getShopID();
+
 
         FirebaseMessaging.getInstance().subscribeToTopic(topic_name)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -57,9 +71,5 @@ public class UtilityFunctions {
                 });
 
     }
-
-
-
-
 
 }

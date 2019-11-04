@@ -129,7 +129,21 @@ public class ServiceConfigurationLocal {
 
     // real time variables : the values of these variables are generated in real time.
     private double rt_distance;
+    private String rt_market_id_for_fcm;
 
+
+
+
+
+
+    // getter and setter
+    public String getRt_market_id_for_fcm() {
+        return rt_market_id_for_fcm;
+    }
+
+    public void setRt_market_id_for_fcm(String rt_market_id_for_fcm) {
+        this.rt_market_id_for_fcm = rt_market_id_for_fcm;
+    }
 
     public String getDescriptionShort() {
         return descriptionShort;

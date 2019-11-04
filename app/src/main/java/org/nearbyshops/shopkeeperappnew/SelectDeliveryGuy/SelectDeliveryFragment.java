@@ -23,7 +23,8 @@ import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.ModelRoles.UserEndpoint;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.R;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -293,9 +294,9 @@ public class SelectDeliveryFragment extends Fragment implements SwipeRefreshLayo
                         item_count_vehicle = response.body().getItemCount();
                         getRowCountVehicle = false;
 
-//                            dataset.add(new HeaderTitle("Type of Data"));
+//                            dataset.add(new HeaderData("Type of Data"));
 
-                        dataset.add(new HeaderTitle("Delivery Staff"));
+                        dataset.add(new HeaderData("Delivery Staff"));
                     }
 
 

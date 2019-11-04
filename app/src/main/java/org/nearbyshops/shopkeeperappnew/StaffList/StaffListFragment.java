@@ -28,7 +28,7 @@ import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.StaffList.EditProfileStaff.EditProfileStaff;
 import org.nearbyshops.shopkeeperappnew.StaffList.EditProfileStaff.FragmentEditProfileStaff;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -296,7 +296,7 @@ public class StaffListFragment extends Fragment implements SwipeRefreshLayout.On
 
                         if(item_count>0)
                         {
-                            dataset.add(new HeaderTitle("Staff Members"));
+                            dataset.add(new HeaderData("Staff Members"));
                         }
                     }
 

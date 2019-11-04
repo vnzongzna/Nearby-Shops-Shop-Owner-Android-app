@@ -16,8 +16,9 @@ import org.nearbyshops.shopkeeperappnew.MyApplication;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLocation;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLoginGlobal;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefServiceConfig;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenData;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataListItem;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -213,18 +214,6 @@ public class MarketViewModel extends AndroidViewModel {
 
 
 
-                            User user = PrefLoginGlobal.getUser(getApplication());
-
-                            if(user!=null)
-                            {
-                                dataset.add(user);
-                            }
-                            else
-                            {
-                                dataset.add(new SignInMarker());
-                            }
-
-
 
 //                            if(item_count>0)
 //                            {
@@ -233,7 +222,7 @@ public class MarketViewModel extends AndroidViewModel {
 
 
 
-                            dataset.add(new HeaderTitle());
+                            dataset.add(new HeaderData("Please Select a Market"));
 
                         }
 
@@ -243,7 +232,6 @@ public class MarketViewModel extends AndroidViewModel {
                         {
                             dataset.addAll(response.body().getResults());
 
-                            dataset.add(EmptyScreenData.getCreateMarketData());
 
 
 //                            if(response.body().getResults().size()==0)
@@ -261,9 +249,24 @@ public class MarketViewModel extends AndroidViewModel {
 //                                dataset.add(new ConnectWithURLMarker());
 //                            }
 
-
                         }
 
+
+
+
+                        dataset.add(EmptyScreenDataListItem.getCreateMarketData());
+
+
+                        User user = PrefLoginGlobal.getUser(getApplication());
+
+                        if(user!=null)
+                        {
+                            dataset.add(user);
+                        }
+                        else
+                        {
+                            dataset.add(new SignInMarker());
+                        }
 
 
 

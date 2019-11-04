@@ -6,15 +6,15 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Model.ItemCategoriesList;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ViewHolders.ViewHolderItemCategory;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ViewHolders.ViewHolderItemSimple;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.Model.ItemCategoriesList;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderItem;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderItemCategory;
 import org.nearbyshops.shopkeeperappnew.Model.Item;
 import org.nearbyshops.shopkeeperappnew.Model.ItemCategory;
 import org.nearbyshops.shopkeeperappnew.Model.ShopItem;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.LoadingViewHolder;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreenFullScreen;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderHeader;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderHorizontalList;
@@ -28,7 +28,10 @@ import java.util.Map;
  */
 
 
-public class AdapterSimple extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+
+
+
+public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     Map<Integer, ShopItem> shopItemMap = new HashMap<>();
     Map<Integer, Item> selectedItems = new HashMap<>();
@@ -58,13 +61,16 @@ public class AdapterSimple extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
 
 
-    public AdapterSimple(List<Object> dataset, Context context, Fragment fragment) {
 
 
+    public Adapter(List<Object> dataset, Context context, Fragment fragment) {
         this.dataset = dataset;
         this.context = context;
         this.fragment = fragment;
     }
+
+
+
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -82,7 +88,7 @@ public class AdapterSimple extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
         else if(viewType == VIEW_TYPE_ITEM)
         {
-            return ViewHolderItemSimple.create(parent,context,fragment,this,shopItemMap,selectedItems);
+            return ViewHolderItem.create(parent,context,fragment,this,shopItemMap,selectedItems);
         }
         else if (viewType == VIEW_TYPE_HEADER) {
 
@@ -113,10 +119,10 @@ public class AdapterSimple extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         {
             ((ViewHolderItemCategory) holder).bindItemCategory((ItemCategory) dataset.get(position));
         }
-        else if(holder instanceof ViewHolderItemSimple)
+        else if(holder instanceof ViewHolderItem)
         {
 
-            ((ViewHolderItemSimple) holder).bindItem((Item) dataset.get(position));
+            ((ViewHolderItem) holder).bindItem((Item) dataset.get(position));
 
         }
         else if(holder instanceof ViewHolderHorizontalList)
@@ -124,14 +130,14 @@ public class AdapterSimple extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
             List<ItemCategory> list = ((ItemCategoriesList)dataset.get(position)).getItemCategories();
 
-            ((ViewHolderHorizontalList) holder).setItem(new AdapterItemCatHorizontalList(list,context,fragment));
+            ((ViewHolderHorizontalList) holder).setItem(new AdapterHorizontalList(list,context,fragment));
 
         }
         else if (holder instanceof ViewHolderHeader) {
 
-            if (dataset.get(position) instanceof HeaderTitle) {
+            if (dataset.get(position) instanceof HeaderData) {
 
-                ((ViewHolderHeader) holder).setItem((HeaderTitle) dataset.get(position));
+                ((ViewHolderHeader) holder).setItem((HeaderData) dataset.get(position));
             }
 
         }
@@ -174,7 +180,7 @@ public class AdapterSimple extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         {
             return VIEW_TYPE_ITEM;
         }
-        else if(dataset.get(position) instanceof HeaderTitle)
+        else if(dataset.get(position) instanceof HeaderData)
         {
             return VIEW_TYPE_HEADER;
         }
@@ -186,6 +192,9 @@ public class AdapterSimple extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         return -1;
     }
+
+
+
 
     @Override
     public int getItemCount() {

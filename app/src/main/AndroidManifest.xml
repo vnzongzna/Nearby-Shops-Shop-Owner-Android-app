@@ -61,6 +61,15 @@
 
 
 
+
+
+        <service
+            android:name=".Services.UpdateServiceConfiguration"
+            android:exported="false" />
+
+
+
+
         <activity
             android:launchMode="singleTop"
             android:name=".DeliveryPersonInventory.DeliveryGuyDashboard"
@@ -204,7 +213,7 @@
 
 
         <activity
-            android:name="org.nearbyshops.shopkeeperappnew.ItemsByCategory.ItemsByCatSimple"
+            android:name="org.nearbyshops.shopkeeperappnew.ItemsByCategory.ItemsByCategory"
             android:label="Items by Category"
             android:launchMode="singleTop"
             android:parentActivityName="org.nearbyshops.shopkeeperappnew.ShopHome.ShopHome">

@@ -23,7 +23,7 @@ import org.nearbyshops.shopkeeperappnew.ModelBilling.TransactionEndpoint;
 import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.R;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -287,7 +287,7 @@ public class TransactionFragment extends Fragment implements SwipeRefreshLayout.
                         item_count_vehicle = response.body().getItemCount();
                         getRowCountVehicle = false;
 
-                        dataset.add(new HeaderTitle("Transactions"));
+                        dataset.add(new HeaderData("Transactions"));
                     }
 
 

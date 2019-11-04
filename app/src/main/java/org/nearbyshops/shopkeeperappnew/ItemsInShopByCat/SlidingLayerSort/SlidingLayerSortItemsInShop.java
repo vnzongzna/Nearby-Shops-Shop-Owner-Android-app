@@ -12,6 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySort;
+import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.PrefSortItemsInShop;
 import org.nearbyshops.shopkeeperappnew.Model.ShopItem;
 import org.nearbyshops.shopkeeperappnew.R;
 

@@ -22,8 +22,8 @@ import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySearch;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySort;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyBackPressed;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyIndicatorChanged;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ViewHolders.ViewHolderItemCategory;
-import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.SlidingLayerSort.PrefSortItemsInShop;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderItemCategory;
 import org.nearbyshops.shopkeeperappnew.Model.Item;
 import org.nearbyshops.shopkeeperappnew.Model.ItemCategory;
 import org.nearbyshops.shopkeeperappnew.Model.Shop;
@@ -32,9 +32,9 @@ import org.nearbyshops.shopkeeperappnew.ModelEndpoints.ItemCategoryEndPoint;
 import org.nearbyshops.shopkeeperappnew.ModelEndpoints.ShopItemEndPoint;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefShopHome;
-import org.nearbyshops.shopkeeperappnew.QuickStockEditor.ViewHolders.ViewHolderShopItem;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderShopItem;
 import org.nearbyshops.shopkeeperappnew.R;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -76,7 +76,7 @@ public class ItemsInShopByCatFragment extends Fragment implements SwipeRefreshLa
 
 
     private GridLayoutManager layoutManager;
-    private AdapterItemsInShopByCat listAdapter;
+    private Adapter listAdapter;
 
 
     @Inject
@@ -160,7 +160,7 @@ public class ItemsInShopByCatFragment extends Fragment implements SwipeRefreshLa
     {
 
 
-        listAdapter = new AdapterItemsInShopByCat(dataset,getActivity(),this);
+        listAdapter = new Adapter(dataset,getActivity(),this);
         itemCategoriesList.setAdapter(listAdapter);
 
         layoutManager = new GridLayoutManager(getActivity(),6, LinearLayoutManager.VERTICAL,false);
@@ -198,7 +198,7 @@ public class ItemsInShopByCatFragment extends Fragment implements SwipeRefreshLa
 
                     return 6;
                 }
-                else if(dataset.get(position) instanceof HeaderTitle)
+                else if(dataset.get(position) instanceof HeaderData)
                 {
                     return 6;
                 }
@@ -436,7 +436,7 @@ public class ItemsInShopByCatFragment extends Fragment implements SwipeRefreshLa
     {
         dataset.clear();
 
-        HeaderTitle headerItemCategory = new HeaderTitle();
+        HeaderData headerItemCategory = new HeaderData();
 
         if(searchQuery==null)
         {
@@ -451,7 +451,7 @@ public class ItemsInShopByCatFragment extends Fragment implements SwipeRefreshLa
 
         dataset.addAll(datasetCategory);
 
-        HeaderTitle headerItem = new HeaderTitle();
+        HeaderData headerItem = new HeaderData();
 
         if(searchQuery==null)
         {

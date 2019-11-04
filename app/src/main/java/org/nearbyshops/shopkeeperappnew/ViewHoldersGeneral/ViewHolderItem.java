@@ -1,4 +1,4 @@
-package org.nearbyshops.shopkeeperappnew.ItemsByCategory.ViewHolders;
+package org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral;
 
 
 import android.content.Context;
@@ -25,7 +25,7 @@ import org.nearbyshops.shopkeeperappnew.R;
 import java.util.Map;
 
 
-public class ViewHolderItemSimple extends RecyclerView.ViewHolder implements PopupMenu.OnMenuItemClickListener{
+public class ViewHolderItem extends RecyclerView.ViewHolder implements PopupMenu.OnMenuItemClickListener{
 
 
     @BindView(R.id.in_shop_color) ImageView inShopColor;
@@ -60,24 +60,24 @@ public class ViewHolderItemSimple extends RecyclerView.ViewHolder implements Pop
 
 
 
-    public static ViewHolderItemSimple create(ViewGroup parent, Context context, Fragment fragment,
-                                              RecyclerView.Adapter adapter,
-                                              Map<Integer, ShopItem> shopItemMap,
-                                              Map<Integer, Item> selectedItems
+    public static ViewHolderItem create(ViewGroup parent, Context context, Fragment fragment,
+                                        RecyclerView.Adapter adapter,
+                                        Map<Integer, ShopItem> shopItemMap,
+                                        Map<Integer, Item> selectedItems
 
     )
     {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_item_guide,parent,false);
-        return new ViewHolderItemSimple(view,context,fragment,adapter,shopItemMap,selectedItems);
+        return new ViewHolderItem(view,context,fragment,adapter,shopItemMap,selectedItems);
     }
 
 
 
 
-    public ViewHolderItemSimple(View itemView, Context context, Fragment fragment, RecyclerView.Adapter adapter,
-                                Map<Integer, ShopItem> shopItemMap,
-                                Map<Integer, Item> selectedItems
+    public ViewHolderItem(View itemView, Context context, Fragment fragment, RecyclerView.Adapter adapter,
+                          Map<Integer, ShopItem> shopItemMap,
+                          Map<Integer, Item> selectedItems
     ) {
         super(itemView);
         ButterKnife.bind(this,itemView);

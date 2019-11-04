@@ -25,9 +25,9 @@ import org.nearbyshops.shopkeeperappnew.Interfaces.ToggleFab;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyBackPressed;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyFABClick;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyIndicatorChanged;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Utility.PrefSortItems;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ViewHolders.ViewHolderItemCategory;
-import org.nearbyshops.shopkeeperappnew.ItemsByCategory.ViewHolders.ViewHolderItemSimple;
+import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderItem;
+import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderItemCategory;
 import org.nearbyshops.shopkeeperappnew.Model.Item;
 import org.nearbyshops.shopkeeperappnew.Model.ItemCategory;
 import org.nearbyshops.shopkeeperappnew.Model.ShopItem;
@@ -38,7 +38,7 @@ import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefShopHome;
 import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
-import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderTitle;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -54,7 +54,7 @@ import java.util.Map;
  */
 
 public class ItemsByCatFragmentDeprecated extends Fragment implements SwipeRefreshLayout.OnRefreshListener,
-        ViewHolderItemCategory.ListItemClick, ViewHolderItemSimple.ListItemClick,
+        ViewHolderItemCategory.ListItemClick, ViewHolderItem.ListItemClick,
         NotifyBackPressed, NotifySort, NotifyFABClick, NotifySearch {
 
 
@@ -86,7 +86,7 @@ public class ItemsByCatFragmentDeprecated extends Fragment implements SwipeRefre
 
     GridLayoutManager layoutManager;
 
-    AdapterSimple listAdapter;
+    Adapter listAdapter;
 
 
     @Inject
@@ -175,7 +175,7 @@ public class ItemsByCatFragmentDeprecated extends Fragment implements SwipeRefre
     {
 
 
-        listAdapter = new AdapterSimple(dataset,getActivity(),this);
+        listAdapter = new Adapter(dataset,getActivity(),this);
         itemCategoriesList.setAdapter(listAdapter);
 
         layoutManager = new GridLayoutManager(getActivity(),6, RecyclerView.VERTICAL,false);
@@ -215,7 +215,7 @@ public class ItemsByCatFragmentDeprecated extends Fragment implements SwipeRefre
 
                     return 6;
                 }
-                else if(dataset.get(position) instanceof HeaderTitle)
+                else if(dataset.get(position) instanceof HeaderData)
                 {
                     return 6;
                 }
@@ -561,7 +561,7 @@ public class ItemsByCatFragmentDeprecated extends Fragment implements SwipeRefre
     {
         dataset.clear();
 
-        HeaderTitle headerItemCategory = new HeaderTitle();
+        HeaderData headerItemCategory = new HeaderData();
 
         if(searchQuery==null)
         {
@@ -575,7 +575,7 @@ public class ItemsByCatFragmentDeprecated extends Fragment implements SwipeRefre
 
 
 
-        HeaderTitle headerItem = new HeaderTitle();
+        HeaderData headerItem = new HeaderData();
 
         if(searchQuery==null)
         {

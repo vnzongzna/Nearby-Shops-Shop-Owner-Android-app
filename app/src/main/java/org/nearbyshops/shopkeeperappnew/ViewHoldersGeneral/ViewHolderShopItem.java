@@ -1,4 +1,4 @@
-package org.nearbyshops.shopkeeperappnew.QuickStockEditor.ViewHolders;
+package org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral;
 
 import android.content.Context;
 import android.content.DialogInterface;

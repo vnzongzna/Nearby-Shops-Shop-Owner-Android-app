@@ -108,6 +108,9 @@ public class PagerAdapter extends FragmentPagerAdapter {
 //    }
 
 
+
+
+
     @Override
     public CharSequence getPageTitle(int position) {
         switch (position) {
@@ -140,19 +143,29 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
 
 
+    private String titlePlaced = "Placed";
+    private String titleConfirmed = "Confirmed";
+    private String titlePacked = "Packed";
+
+    private String titlePendingHandover = "Handover Requested";
+    private String titleOutForDelivery = "Out For Delivery";
+    private String titleReturnRequested = "Return Requested";
+    private String titleReturnedOrders = "Returned Orders";
+    private String titleDelivered = "Delivered";
+    private String titlePaymentReceived = "Payment Received";
 
 
 
-    private String titlePlaced = "Placed (0/0)";
-    private String titleConfirmed = "Confirmed (0/0)";
-    private String titlePacked = "Packed (0/0)";
-
-    private String titlePendingHandover = "Handover Requested (0/0)";
-    private String titleOutForDelivery = "Out For Delivery (0/0)";
-    private String titleReturnRequested = "Return Requested (0/0)";
-    private String titleReturnedOrders = "Returned Orders (0/0)";
-    private String titleDelivered = "Delivered (0/0)";
-    private String titlePaymentReceived = "Payment Received (0/0)";
+//    private String titlePlaced = "Placed (0/0)";
+//    private String titleConfirmed = "Confirmed (0/0)";
+//    private String titlePacked = "Packed (0/0)";
+//
+//    private String titlePendingHandover = "Handover Requested (0/0)";
+//    private String titleOutForDelivery = "Out For Delivery (0/0)";
+//    private String titleReturnRequested = "Return Requested (0/0)";
+//    private String titleReturnedOrders = "Returned Orders (0/0)";
+//    private String titleDelivered = "Delivered (0/0)";
+//    private String titlePaymentReceived = "Payment Received (0/0)";
 
 
 
