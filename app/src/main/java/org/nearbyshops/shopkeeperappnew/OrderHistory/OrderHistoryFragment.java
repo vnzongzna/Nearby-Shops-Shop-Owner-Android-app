@@ -32,8 +32,8 @@ import org.nearbyshops.shopkeeperappnew.ModelEndpoints.OrderEndPoint;
 import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.OrderDetail.OrderDetail;
 import org.nearbyshops.shopkeeperappnew.OrderDetail.PrefOrderDetail;
-import org.nearbyshops.shopkeeperappnew.OrderHistory.SlidingLayerSort.PrefSortOrders;
-import org.nearbyshops.shopkeeperappnew.OrderHistory.SlidingLayerSort.SlidingLayerSortOrders;
+import org.nearbyshops.shopkeeperappnew.OrderHistory.Utility.PrefSortOrders;
+import org.nearbyshops.shopkeeperappnew.OrderHistory.Utility.SlidingLayerSortOrders;
 import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrder;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.R;
@@ -60,7 +60,7 @@ public class OrderHistoryFragment extends Fragment implements SwipeRefreshLayout
 
 
     private RecyclerView recyclerView;
-    private AdapterOrders adapter;
+    private Adapter adapter;
 
     public List<Object> dataset = new ArrayList<>();
 
@@ -209,7 +209,7 @@ public class OrderHistoryFragment extends Fragment implements SwipeRefreshLayout
     void setupRecyclerView()
     {
 
-        adapter = new AdapterOrders(dataset,this,getActivity());
+        adapter = new Adapter(dataset,this,getActivity());
 
         recyclerView.setAdapter(adapter);
 

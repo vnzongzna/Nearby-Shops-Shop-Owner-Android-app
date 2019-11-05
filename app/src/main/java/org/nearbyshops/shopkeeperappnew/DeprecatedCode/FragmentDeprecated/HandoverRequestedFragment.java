@@ -23,7 +23,7 @@
 //import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery;
 //import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 //import org.nearbyshops.shopkeeperappnew.R;
-//import org.nearbyshops.shopkeeperappnew.SlidingLayerSort.UtilitySortOrdersHD;
+//import org.nearbyshops.shopkeeperappnew.SlidingLayerSort.PrefSortOrdersHD;
 //import retrofit2.Call;
 //import retrofit2.Callback;
 //import retrofit2.Response;
@@ -259,7 +259,7 @@
 //
 //
 //        String current_sort = "";
-//        current_sort = UtilitySortOrdersHD.getSort(getContext()) + " " + UtilitySortOrdersHD.getAscending(getContext());
+//        current_sort = PrefSortOrdersHD.getSort(getContext()) + " " + PrefSortOrdersHD.getAscending(getContext());
 //
 //
 //        Call<OrderEndPoint> call = orderServiceDelivery

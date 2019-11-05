@@ -24,7 +24,7 @@ import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyBackPre
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyIndicatorChanged;
 import org.nearbyshops.shopkeeperappnew.ItemsInShopByCat.Utility.PrefSortItemsInShop;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
-import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderItemCategory;
+import org.nearbyshops.shopkeeperappnew.ViewHolderItems.ViewHolderItemCategory;
 import org.nearbyshops.shopkeeperappnew.Model.Item;
 import org.nearbyshops.shopkeeperappnew.Model.ItemCategory;
 import org.nearbyshops.shopkeeperappnew.Model.Shop;
@@ -33,7 +33,7 @@ import org.nearbyshops.shopkeeperappnew.ModelEndpoints.ItemCategoryEndPoint;
 import org.nearbyshops.shopkeeperappnew.ModelEndpoints.ShopItemEndPoint;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefShopHome;
-import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderShopItem;
+import org.nearbyshops.shopkeeperappnew.ViewHolderItems.ViewHolderShopItem;
 import org.nearbyshops.shopkeeperappnew.R;
 
 import retrofit2.Call;

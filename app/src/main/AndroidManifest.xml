@@ -345,7 +345,7 @@
 
 
         <activity
-            android:name="org.nearbyshops.shopkeeperappnew.StaffList.EditProfileStaff.EditProfileStaff"
+            android:name="org.nearbyshops.shopkeeperappnew.EditProfileStaff.EditProfileStaff"
             android:label="Edit Profile"
             android:parentActivityName="org.nearbyshops.shopkeeperappnew.Home">
             <meta-data
@@ -369,7 +369,7 @@
 
 
         <activity
-            android:name="org.nearbyshops.shopkeeperappnew.StaffListDelivery.EditProfileDelivery.EditProfileDelivery"
+            android:name="org.nearbyshops.shopkeeperappnew.EditProfileDelivery.EditProfileDelivery"
             android:label="Edit Profile Delivery"
             android:parentActivityName="org.nearbyshops.shopkeeperappnew.Home">
             <meta-data

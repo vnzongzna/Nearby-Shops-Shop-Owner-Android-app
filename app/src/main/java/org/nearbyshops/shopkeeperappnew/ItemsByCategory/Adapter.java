@@ -6,9 +6,9 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.Model.ItemCategoriesList;
-import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderItem;
-import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderItemCategory;
+import org.nearbyshops.shopkeeperappnew.ViewHolderItems.Model.ItemCategoriesList;
+import org.nearbyshops.shopkeeperappnew.ViewHolderItems.ViewHolderItem;
+import org.nearbyshops.shopkeeperappnew.ViewHolderItems.ViewHolderItemCategory;
 import org.nearbyshops.shopkeeperappnew.Model.Item;
 import org.nearbyshops.shopkeeperappnew.Model.ItemCategory;
 import org.nearbyshops.shopkeeperappnew.Model.ShopItem;

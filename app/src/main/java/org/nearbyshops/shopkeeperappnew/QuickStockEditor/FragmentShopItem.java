@@ -20,7 +20,7 @@ import org.nearbyshops.shopkeeperappnew.Model.ShopItem;
 import org.nearbyshops.shopkeeperappnew.ModelEndpoints.ShopItemEndPoint;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefShopHome;
-import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderShopItem;
+import org.nearbyshops.shopkeeperappnew.ViewHolderItems.ViewHolderShopItem;
 import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
 import retrofit2.Call;

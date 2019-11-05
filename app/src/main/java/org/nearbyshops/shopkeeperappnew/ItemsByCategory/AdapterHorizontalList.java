@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderItemCategoryHorizontal;
+import org.nearbyshops.shopkeeperappnew.ViewHolderItems.ViewHolderItemCategoryHorizontal;
 import org.nearbyshops.shopkeeperappnew.Model.ItemCategory;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package org.nearbyshops.shopkeeperappnew.StaffListDelivery;
+package org.nearbyshops.shopkeeperappnew.ViewHolders;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,16 +16,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
 import com.squareup.picasso.Picasso;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.DeliveryGuyData;
+import org.nearbyshops.shopkeeperappnew.ModelRoles.ShopStaffPermissions;
 import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefGeneral;
 import org.nearbyshops.shopkeeperappnew.R;
-import org.nearbyshops.shopkeeperappnew.StaffList.ViewHolderShopStaff;
 
 
-public class ViewHolderDeliveryProfile extends RecyclerView.ViewHolder{
-
+public class ViewHolderShopStaff extends RecyclerView.ViewHolder{
 
 
 
@@ -46,38 +45,74 @@ public class ViewHolderDeliveryProfile extends RecyclerView.ViewHolder{
 
 
 
-
-
-    public static ViewHolderDeliveryProfile create(ViewGroup parent, Context context, Fragment fragment)
+    public static ViewHolderShopStaff create(ViewGroup parent, Context context, Fragment fragment, RecyclerView.Adapter adapter)
     {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_staff_new, parent, false);
-        return new ViewHolderDeliveryProfile(view,context,fragment);
+        return new ViewHolderShopStaff(view,context,fragment,adapter);
     }
 
 
 
 
 
-    public ViewHolderDeliveryProfile(View itemView, Context context, Fragment fragment) {
+
+    public ViewHolderShopStaff(View itemView, Context context, Fragment fragment,RecyclerView.Adapter adapter) {
         super(itemView);
+
         ButterKnife.bind(this,itemView);
 
 
         this.context = context;
         this.fragment = fragment;
+        this.adapter = adapter;
     }
 
 
 
 
 
-    @OnClick(R.id.list_item)
-    void listItemClick()
+
+//    @OnLongClick(R.id.list_item)
+//    boolean listItemLongClick(View v) {
+//
+//        notificationReceiver.notifyTripRequestSelected();
+//        notifyItemChanged(getLayoutPosition());
+//
+//
+//        return notificationReceiver.listItemLongClick(v,
+//                (User) dataset.get(getLayoutPosition()),
+//                getLayoutPosition()
+//        );
+//    }
+
+
+
+    public void setItem(User user)
     {
-        if(fragment instanceof ListItemClick)
-        {
-            ((ListItemClick) fragment).listItemLongClick(user,getAdapterPosition());
-        }
+
+
+
+            ShopStaffPermissions permissions = user.getRt_shop_staff_permissions();
+
+            staffUserID.setText("Staff User ID : " + String.valueOf(user.getUserID()));
+            staffName.setText(user.getName());
+            designation.setText(permissions.getDesignation());
+            distance.setText("Distance : " + String.format("%.2f Km",permissions.getRt_distance()));
+            phone.setText(user.getPhone());
+
+
+
+
+            Drawable drawable = ContextCompat.getDrawable(context, R.drawable.ic_nature_people_white_48px);
+
+            String imagePath = PrefGeneral.getServiceURL(context) + "/api/v1/User/Image/" + "five_hundred_"+ user.getProfileImagePath() + ".jpg";
+            String image_url = PrefGeneral.getServiceURL(context) + "/api/v1/User/Image/" + user.getProfileImagePath();
+
+
+            Picasso.get()
+                    .load(imagePath)
+                    .placeholder(drawable)
+                    .into(profileImage);
 
     }
 
@@ -116,46 +151,24 @@ public class ViewHolderDeliveryProfile extends RecyclerView.ViewHolder{
 
 
 
-    public void setItem(User user)
-    {
-        this.user = user;
-
-
-        DeliveryGuyData permissions = user.getRt_delivery_guy_data();
-
-        staffUserID.setText("Staff User ID : " + String.valueOf(user.getUserID()));
-        staffName.setText(user.getName());
-        designation.setText("Delivery Guy Self");
-        distance.setText("Distance : " + String.format("%.2f Km",permissions.getRt_distance()));
-        phone.setText(user.getPhone());
-
-
-        Drawable drawable = ContextCompat.getDrawable(context, R.drawable.ic_nature_people_white_48px);
-
-        String imagePath = PrefGeneral.getServiceURL(context) + "/api/v1/User/Image/" + "five_hundred_"+ user.getProfileImagePath() + ".jpg";
-        String image_url = PrefGeneral.getServiceURL(context) + "/api/v1/User/Image/" + user.getProfileImagePath();
-
-
-        Picasso.get()
-                .load(imagePath)
-                .placeholder(drawable)
-                .into(profileImage);
-    }
-
-
-
-
 
 
 
     public interface ListItemClick
     {
+        // method for notifying the list object to request sub category
+
+    //        void currentItemClick(Item item, int position);
+    //        void itemUpdateClick(ItemSubmission itemSubmission, int position);
+    //        void imageUpdatedClick(ItemImage itemImage, int position);
+
+        void notifyTripRequestSelected();
         void listItemClick(User user, int position);
-        boolean listItemLongClick(User user, int position);
+        boolean listItemLongClick(View view, User user, int position);
     }
 
 
-
 }// ViewHolder Class declaration ends
+
 
 

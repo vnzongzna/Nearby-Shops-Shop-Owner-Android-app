@@ -21,7 +21,7 @@ import com.wunderlist.slidinglayer.SlidingLayer;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySearch;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySort;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifyTitleChanged;
-import org.nearbyshops.shopkeeperappnew.OrderHistory.SlidingLayerSort.SlidingLayerSortOrders;
+import org.nearbyshops.shopkeeperappnew.OrderHistory.Utility.SlidingLayerSortOrders;
 import org.nearbyshops.shopkeeperappnew.R;
 
 public class HomeDelivery extends AppCompatActivity implements NotifyTitleChanged, ViewPager.OnPageChangeListener, NotifySort {

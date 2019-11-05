@@ -65,8 +65,8 @@ public class SlidingLayerSortOrdersHD extends Fragment {
     void loadDefaultSort() {
 //        String[] sort_options = UtilitySortShops.getSort(getActivity());
 
-        currentSort = UtilitySortOrdersHD.getSort(getActivity());
-        currentAscending = UtilitySortOrdersHD.getAscending(getActivity());
+        currentSort = PrefSortOrdersHD.getSort(getActivity());
+        currentAscending = PrefSortOrdersHD.getAscending(getActivity());
 
         clearSelectionSort();
         clearSelectionAscending();
@@ -117,7 +117,7 @@ public class SlidingLayerSortOrdersHD extends Fragment {
         sort_by_distance.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
         sort_by_distance.setBackgroundColor(ContextCompat.getColor(getActivity(),colorSelected));
 
-        UtilitySortOrdersHD.saveSort(getActivity(), SORT_BY_DISTANCE);
+        PrefSortOrdersHD.saveSort(getActivity(), SORT_BY_DISTANCE);
 
         if(getActivity() instanceof NotifySort)
         {
@@ -135,7 +135,7 @@ public class SlidingLayerSortOrdersHD extends Fragment {
         sort_by_date_time.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
         sort_by_date_time.setBackgroundColor(ContextCompat.getColor(getActivity(),colorSelected));
 
-        UtilitySortOrdersHD.saveSort(getActivity(), SORT_BY_DATE_TIME);
+        PrefSortOrdersHD.saveSort(getActivity(), SORT_BY_DATE_TIME);
 
         if(getActivity() instanceof NotifySort)
         {
@@ -153,7 +153,7 @@ public class SlidingLayerSortOrdersHD extends Fragment {
         sort_by_status.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
         sort_by_status.setBackgroundColor(ContextCompat.getColor(getActivity(),colorSelected));
 
-        UtilitySortOrdersHD.saveSort(getActivity(), SORT_BY_STATUS);
+        PrefSortOrdersHD.saveSort(getActivity(), SORT_BY_STATUS);
 
         if(getActivity() instanceof NotifySort)
         {
@@ -170,7 +170,7 @@ public class SlidingLayerSortOrdersHD extends Fragment {
         sort_by_pincode.setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
         sort_by_pincode.setBackgroundColor(ContextCompat.getColor(getActivity(),colorSelected));
 
-        UtilitySortOrdersHD.saveSort(getActivity(), SORT_BY_PINCODE);
+        PrefSortOrdersHD.saveSort(getActivity(), SORT_BY_PINCODE);
 
         if(getActivity() instanceof NotifySort)
         {
@@ -191,7 +191,7 @@ public class SlidingLayerSortOrdersHD extends Fragment {
         sort_ascending.setBackgroundColor(ContextCompat.getColor(getActivity(),colorSelectedAscending));
 
 
-        UtilitySortOrdersHD.saveAscending(getActivity(),SORT_ASCENDING);
+        PrefSortOrdersHD.saveAscending(getActivity(),SORT_ASCENDING);
 
         if(getActivity() instanceof NotifySort)
         {
@@ -209,7 +209,7 @@ public class SlidingLayerSortOrdersHD extends Fragment {
         sort_descending.setBackgroundColor(ContextCompat.getColor(getActivity(),colorSelectedAscending));
 
 
-        UtilitySortOrdersHD.saveAscending(getActivity(),SORT_DESCENDING);
+        PrefSortOrdersHD.saveAscending(getActivity(),SORT_DESCENDING);
 
         if(getActivity() instanceof NotifySort)
         {

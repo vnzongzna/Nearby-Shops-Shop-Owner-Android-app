@@ -26,8 +26,8 @@ import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyBackPre
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyFABClick;
 import org.nearbyshops.shopkeeperappnew.ItemsByCategory.Interfaces.NotifyIndicatorChanged;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
-import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderItem;
-import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderItemCategory;
+import org.nearbyshops.shopkeeperappnew.ViewHolderItems.ViewHolderItem;
+import org.nearbyshops.shopkeeperappnew.ViewHolderItems.ViewHolderItemCategory;
 import org.nearbyshops.shopkeeperappnew.Model.Item;
 import org.nearbyshops.shopkeeperappnew.Model.ItemCategory;
 import org.nearbyshops.shopkeeperappnew.Model.ShopItem;

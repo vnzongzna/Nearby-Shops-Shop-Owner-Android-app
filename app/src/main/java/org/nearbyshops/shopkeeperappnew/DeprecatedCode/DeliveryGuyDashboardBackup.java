@@ -1,4 +1,4 @@
-package org.nearbyshops.shopkeeperappnew.DeliveryPersonInventory.DeprecatedCode;
+package org.nearbyshops.shopkeeperappnew.DeprecatedCode;
 
 import android.Manifest;
 import android.app.SearchManager;
@@ -28,7 +28,7 @@ import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySearch;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySort;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifyTitleChanged;
 import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
-import org.nearbyshops.shopkeeperappnew.OrderHistory.SlidingLayerSort.SlidingLayerSortOrders;
+import org.nearbyshops.shopkeeperappnew.OrderHistory.Utility.SlidingLayerSortOrders;
 import org.nearbyshops.shopkeeperappnew.R;
 
 import butterknife.BindView;

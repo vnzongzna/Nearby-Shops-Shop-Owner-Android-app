@@ -1,4 +1,4 @@
-package org.nearbyshops.shopkeeperappnew.OrderHistory.SlidingLayerSort;
+package org.nearbyshops.shopkeeperappnew.OrderHistory.Utility;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

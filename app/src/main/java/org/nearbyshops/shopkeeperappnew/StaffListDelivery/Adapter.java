@@ -13,6 +13,7 @@ import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataF
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderEmptyScreenFullScreen;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.ViewHolderHeader;
+import org.nearbyshops.shopkeeperappnew.ViewHolders.ViewHolderDeliveryProfile;
 
 import java.util.List;
 

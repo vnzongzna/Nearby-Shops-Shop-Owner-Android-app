@@ -1,4 +1,4 @@
-package org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.Model;
+package org.nearbyshops.shopkeeperappnew.ViewHolderItems.Model;
 
 
 import org.nearbyshops.shopkeeperappnew.Model.ItemCategory;

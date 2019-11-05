@@ -27,7 +27,7 @@ import org.nearbyshops.shopkeeperappnew.ModelEndpoints.OrderEndPoint;
 import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery;
 import org.nearbyshops.shopkeeperappnew.OrderDetail.OrderDetail;
 import org.nearbyshops.shopkeeperappnew.OrderDetail.PrefOrderDetail;
-import org.nearbyshops.shopkeeperappnew.OrderHistory.SlidingLayerSort.PrefSortOrders;
+import org.nearbyshops.shopkeeperappnew.OrderHistory.Utility.PrefSortOrders;
 import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrder;
 import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrderButtonSingle;
 import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrderSelectable;

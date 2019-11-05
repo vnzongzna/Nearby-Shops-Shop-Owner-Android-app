@@ -1,4 +1,4 @@
-package org.nearbyshops.shopkeeperappnew.StaffListDelivery.EditProfileDelivery;
+package org.nearbyshops.shopkeeperappnew.EditProfileStaff;
 
 
 import android.Manifest;
@@ -31,11 +31,11 @@ import com.yalantis.ucrop.UCropActivity;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import org.nearbyshops.shopkeeperappnew.API.DeliveryGuyLoginService;
+import org.nearbyshops.shopkeeperappnew.API.ShopStaffLoginService;
 import org.nearbyshops.shopkeeperappnew.API.UserService;
 import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
 import org.nearbyshops.shopkeeperappnew.Model.Image;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.DeliveryGuyData;
+import org.nearbyshops.shopkeeperappnew.ModelRoles.ShopStaffPermissions;
 import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefGeneral;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
@@ -52,7 +52,7 @@ import java.io.InputStream;
 import static android.app.Activity.RESULT_OK;
 
 
-public class FragmentEditProfileDelivery extends Fragment {
+public class FragmentEditProfileStaff extends Fragment {
 
 
 
@@ -88,12 +88,12 @@ public class FragmentEditProfileDelivery extends Fragment {
     UserService userService;
 
     @Inject
-    DeliveryGuyLoginService staffLoginService;
+    ShopStaffLoginService staffLoginService;
 
 
     // flag for knowing whether the image is changed or not
-    boolean isImageChanged = false;
-    boolean isImageRemoved = false;
+    private boolean isImageChanged = false;
+    private boolean isImageRemoved = false;
 
 
     // bind views
@@ -121,19 +121,19 @@ public class FragmentEditProfileDelivery extends Fragment {
     @BindView(R.id.about)
     EditText about;
 
-//    @BindView(R.id.designation) EditText designation;
+    @BindView(R.id.designation) EditText designation;
 
-//    @BindView(R.id.permit_add_remove_items) CheckBox permitAddRemoveItems;
-//    @BindView(R.id.permit_update_items_in_shop) CheckBox permitUpdateItemsInShop;
-//    @BindView(R.id.permit_cancel_orders) CheckBox permitCancelOrders;
-//
-//    @BindView(R.id.permit_confirm_orders) CheckBox permitConfirmOrders;
-//    @BindView(R.id.permit_set_orders_packed) CheckBox permitSetOrdersPacked;
-//    @BindView(R.id.permit_handover_to_delivery) CheckBox permitHandoverToDelivery;
-//    @BindView(R.id.permit_mark_orders_delivered) CheckBox permitMarkOrdersDelivered;
-//    @BindView(R.id.permit_accept_payments) CheckBox permitAcceptPayments;
-//    @BindView(R.id.permit_accept_returns) CheckBox permitAcceptReturns;
-//
+    @BindView(R.id.permit_add_remove_items) CheckBox permitAddRemoveItems;
+    @BindView(R.id.permit_update_items_in_shop) CheckBox permitUpdateItemsInShop;
+    @BindView(R.id.permit_cancel_orders) CheckBox permitCancelOrders;
+
+    @BindView(R.id.permit_confirm_orders) CheckBox permitConfirmOrders;
+    @BindView(R.id.permit_set_orders_packed) CheckBox permitSetOrdersPacked;
+    @BindView(R.id.permit_handover_to_delivery) CheckBox permitHandoverToDelivery;
+    @BindView(R.id.permit_mark_orders_delivered) CheckBox permitMarkOrdersDelivered;
+    @BindView(R.id.permit_accept_payments) CheckBox permitAcceptPayments;
+    @BindView(R.id.permit_accept_returns) CheckBox permitAcceptReturns;
+
 
 
 
@@ -182,7 +182,7 @@ public class FragmentEditProfileDelivery extends Fragment {
 
 
 
-    public FragmentEditProfileDelivery() {
+    public FragmentEditProfileStaff() {
 
         DaggerComponentBuilder.getInstance()
                 .getNetComponent().Inject(this);
@@ -197,7 +197,7 @@ public class FragmentEditProfileDelivery extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
 
         setRetainInstance(true);
-        View rootView = inflater.inflate(R.layout.content_edit_profile_delivery, container, false);
+        View rootView = inflater.inflate(R.layout.content_edit_profile_staff, container, false);
 
         ButterKnife.bind(this,rootView);
 
@@ -618,12 +618,40 @@ public class FragmentEditProfileDelivery extends Fragment {
             }
 
 
-            DeliveryGuyData deliveryGuyData = driver.getRt_delivery_guy_data();
+            ShopStaffPermissions permissions = driver.getRt_shop_staff_permissions();
 
-            if(deliveryGuyData!=null)
+            if(permissions!=null)
             {
+                designation.setText(permissions.getDesignation());
 
+
+
+                permitAddRemoveItems.setChecked(permissions.isPermitAddRemoveItems());
+                permitUpdateItemsInShop.setChecked(permissions.isPermitUpdateItemsInShop());
+                permitCancelOrders.setChecked(permissions.isPermitCancelOrders());
+
+                permitConfirmOrders.setChecked(permissions.isPermitConfirmOrders());
+                permitSetOrdersPacked.setChecked(permissions.isPermitSetOrdersPacked());
+                permitHandoverToDelivery.setChecked(permissions.isPermitHandoverToDelivery());
+
+                permitMarkOrdersDelivered.setChecked(permissions.isPermitMarkOrdersDelivered());
+                permitAcceptPayments.setChecked(permissions.isPermitAcceptPaymentsFromDelivery());
+                permitAcceptReturns.setChecked(permissions.isPermitAcceptReturns());
+
+
+//                permitApproveShops.setChecked(permissions.isPermitApproveShops());
+//                permitAddEditImages.setChecked(permissions.isPermitAddEditTaxiImages());
+//
+//
+//                totalEarnings.setText(String.format("Total Earnings : %.2f",permissions.getStaffEarnings()));
+//                maxEarnings.setText(String.format("%.2f",permissions.getMaxEarnings()));
             }
+
+
+
+
+
+
 
         }
     }
@@ -668,6 +696,36 @@ public class FragmentEditProfileDelivery extends Fragment {
         }
 
 
+        ShopStaffPermissions permissions = new ShopStaffPermissions();
+        permissions.setDesignation(designation.getText().toString());
+//        permissions.setPermitCreateUpdateItemCat(permitCreateUpdateItemCat.isChecked());
+//        permissions.setPermitCreateUpdateItems(permitCreateItems.isChecked());
+//        permissions.setPermitApproveShops(permitApproveShops.isChecked());
+
+        permissions.setPermitAddRemoveItems(permitAddRemoveItems.isChecked());
+        permissions.setPermitUpdateItemsInShop(permitUpdateItemsInShop.isChecked());
+        permissions.setPermitCancelOrders(permitCancelOrders.isChecked());
+
+        permissions.setPermitConfirmOrders(permitConfirmOrders.isChecked());
+        permissions.setPermitSetOrdersPacked(permitSetOrdersPacked.isChecked());
+        permissions.setPermitHandoverToDelivery(permitHandoverToDelivery.isChecked());
+
+        permissions.setPermitMarkOrdersDelivered(permitMarkOrdersDelivered.isChecked());
+        permissions.setPermitAcceptPaymentsFromDelivery(permitAcceptPayments.isChecked());
+        permissions.setPermitAcceptReturns(permitAcceptReturns.isChecked());
+
+
+//        permitAddRemoveItems.setChecked(permissions.isPermitAddRemoveItems());
+//        permitUpdateItemsInShop.setChecked(permissions.isPermitUpdateItemsInShop());
+//        permitCancelOrders.setChecked(permissions.isPermitCancelOrders());
+
+//        permitConfirmOrders.setChecked(permissions.isPermitConfirmOrders());
+//        permitSetOrdersPacked.setChecked(permissions.isPermitSetOrdersPacked());
+//        permitHandoverToDelivery.setChecked(permissions.isPermitHandoverToDelivery());
+
+//        permitMarkOrdersDelivered.setChecked(permissions.isPermitMarkOrdersDelivered());
+//        permitAcceptPayments.setChecked(permissions.isPermitAcceptPaymentsFromDelivery());
+//        permitAcceptReturns.setChecked(permissions.isPermitAcceptReturns());
 
 
         if(maxEarnings.getText().toString().length()!=0)
@@ -677,7 +735,7 @@ public class FragmentEditProfileDelivery extends Fragment {
 
 
 
-//        driver.setRt_shop_staff_permissions(permissions);
+        driver.setRt_shop_staff_permissions(permissions);
     }
 
 
@@ -699,7 +757,7 @@ public class FragmentEditProfileDelivery extends Fragment {
 
 
         // update Item Call
-        Call<ResponseBody> call = staffLoginService.updateDeliveryGuyByAdmin(
+        Call<ResponseBody> call = staffLoginService.updateStaffByAdmin(
                 PrefLogin.getAuthorizationHeaders(getActivity()),
                 driver, driver.getUserID()
         );
@@ -1171,6 +1229,10 @@ public class FragmentEditProfileDelivery extends Fragment {
 
 
 
+
+
+
+
     void deleteImage(String filename)
     {
 
@@ -1195,12 +1257,6 @@ public class FragmentEditProfileDelivery extends Fragment {
 //                        showToastMessage("Image Delete failed");
                     }
 
-
-
-//                saveButton.setVisibility(View.VISIBLE);
-//                progressBar.setVisibility(View.INVISIBLE);
-
-
             }
 
             @Override
@@ -1208,9 +1264,6 @@ public class FragmentEditProfileDelivery extends Fragment {
 
 //                showToastMessage("Image Delete failed");
 
-
-//                saveButton.setVisibility(View.VISIBLE);
-//                progressBar.setVisibility(View.INVISIBLE);
 
             }
         });

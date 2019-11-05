@@ -31,7 +31,7 @@ import java.util.List;
  * Created by sumeet on 15/11/16.
  */
 
-public class FragmentOrderDetail extends Fragment implements SwipeRefreshLayout.OnRefreshListener, AdapterOrderDetailNew.NotifyItemClick {
+public class FragmentOrderDetail extends Fragment implements SwipeRefreshLayout.OnRefreshListener, Adapter.NotifyItemClick {
 
 
     Order order;
@@ -40,7 +40,7 @@ public class FragmentOrderDetail extends Fragment implements SwipeRefreshLayout.
     OrderItemService orderItemService;
 
     RecyclerView recyclerView;
-    AdapterOrderDetailNew adapter;
+    Adapter adapter;
 
     public List<Object> dataset = new ArrayList<>();
 
@@ -113,7 +113,7 @@ public class FragmentOrderDetail extends Fragment implements SwipeRefreshLayout.
     void setupRecyclerView()
     {
 
-        adapter = new AdapterOrderDetailNew(dataset,getActivity(),this);
+        adapter = new Adapter(dataset,getActivity(),this);
 
         layoutManager = new GridLayoutManager(getActivity(),1);
 

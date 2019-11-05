@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * Created by sumeet on 13/6/16.
  */
-class AdapterOrderDetailNew extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private List<Object> dataset = null;
 //    private NotifyConfirmOrder confirmOrderPFS;
@@ -39,7 +39,7 @@ class AdapterOrderDetailNew extends RecyclerView.Adapter<RecyclerView.ViewHolder
     NotifyItemClick notifyItemClick;
 
 
-    AdapterOrderDetailNew(List<Object> dataset, Context context, NotifyItemClick notifyItemClick) {
+    Adapter(List<Object> dataset, Context context, NotifyItemClick notifyItemClick) {
         this.dataset = dataset;
         this.context = context;
         this.notifyItemClick = notifyItemClick;

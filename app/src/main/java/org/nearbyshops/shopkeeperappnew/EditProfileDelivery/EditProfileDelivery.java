@@ -1,4 +1,4 @@
-package org.nearbyshops.shopkeeperappnew.StaffListDelivery.EditProfileDelivery;
+package org.nearbyshops.shopkeeperappnew.EditProfileDelivery;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;

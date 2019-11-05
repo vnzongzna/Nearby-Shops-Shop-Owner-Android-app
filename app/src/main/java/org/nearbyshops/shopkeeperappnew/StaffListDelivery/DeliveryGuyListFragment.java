@@ -25,10 +25,12 @@ import org.nearbyshops.shopkeeperappnew.ModelRoles.UserEndpoint;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLocation;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.R;
-import org.nearbyshops.shopkeeperappnew.StaffListDelivery.EditProfileDelivery.EditProfileDelivery;
-import org.nearbyshops.shopkeeperappnew.StaffListDelivery.EditProfileDelivery.FragmentEditProfileDelivery;
+import org.nearbyshops.shopkeeperappnew.EditProfileDelivery.EditProfileDelivery;
+import org.nearbyshops.shopkeeperappnew.EditProfileDelivery.FragmentEditProfileDelivery;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataFullScreen;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
+import org.nearbyshops.shopkeeperappnew.ViewHolders.ViewHolderDeliveryProfile;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

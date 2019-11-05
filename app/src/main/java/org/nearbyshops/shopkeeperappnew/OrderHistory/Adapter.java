@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by sumeet on 13/6/16.
  */
-class AdapterOrders extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private List<Object> dataset = null;
 
@@ -36,7 +36,7 @@ class AdapterOrders extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
 
 
-    AdapterOrders(List<Object> dataset, Fragment fragment, Context context) {
+    Adapter(List<Object> dataset, Fragment fragment, Context context) {
         this.dataset = dataset;
         this.fragment = fragment;
         this.context = context;

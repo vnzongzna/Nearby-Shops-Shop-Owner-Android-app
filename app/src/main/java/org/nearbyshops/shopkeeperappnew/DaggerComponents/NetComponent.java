@@ -36,7 +36,7 @@ import org.nearbyshops.shopkeeperappnew.OrderDetail.FragmentOrderDetail;
 import org.nearbyshops.shopkeeperappnew.OrderHistory.OrderHistoryFragment;
 import org.nearbyshops.shopkeeperappnew.OrdersInventory.Fragment.OrdersInventoryFragment;
 import org.nearbyshops.shopkeeperappnew.QuickStockEditor.FragmentShopItem;
-import org.nearbyshops.shopkeeperappnew.ViewHoldersGeneral.ViewHolderShopItem;
+import org.nearbyshops.shopkeeperappnew.ViewHolderItems.ViewHolderShopItem;
 import org.nearbyshops.shopkeeperappnew.SelectDeliveryGuy.SelectDeliveryFragment;
 import org.nearbyshops.shopkeeperappnew.Services.UpdateServiceConfiguration;
 import org.nearbyshops.shopkeeperappnew.ShopAdminHome.ShopAdminHomeFragment;
@@ -48,10 +48,10 @@ import org.nearbyshops.shopkeeperappnew.SignUp.ForgotPassword.FragmentResetPassw
 import org.nearbyshops.shopkeeperappnew.SignUp.FragmentEmailOrPhone;
 import org.nearbyshops.shopkeeperappnew.SignUp.FragmentEnterPassword;
 import org.nearbyshops.shopkeeperappnew.SignUp.FragmentVerify;
-import org.nearbyshops.shopkeeperappnew.StaffList.EditProfileStaff.FragmentEditProfileStaff;
+import org.nearbyshops.shopkeeperappnew.EditProfileStaff.FragmentEditProfileStaff;
 import org.nearbyshops.shopkeeperappnew.StaffList.StaffListFragment;
 import org.nearbyshops.shopkeeperappnew.StaffListDelivery.DeliveryGuyListFragment;
-import org.nearbyshops.shopkeeperappnew.StaffListDelivery.EditProfileDelivery.FragmentEditProfileDelivery;
+import org.nearbyshops.shopkeeperappnew.EditProfileDelivery.FragmentEditProfileDelivery;
 import org.nearbyshops.shopkeeperappnew.Transactions.TransactionFragment;
 
 
