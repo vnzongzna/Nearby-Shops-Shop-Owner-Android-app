@@ -40,7 +40,7 @@ Your Shop is Ready to Accept Orders from customers. To check whether your shop i
 If you are facing any difficulty feel free to ask for help and support at our forum https://forum.nearbyshops.org
 
 
-Tips for Troubleshooting
+#### Tips for Troubleshooting
 
 Your shop will not be visible until and unless you have set prices for the items you added into your shop. So please check that you have set the prices and availibility. 
 
