@@ -16,24 +16,23 @@ Anyone can get listed as seller and sell (deliver orders) for free  without any 
 
 Setup your shop in Just 30 Minutes and Start Selling
 
-Step 1 : Download Shop Owner app from Download link given above
+#### Step 1 : Download Shop Owner app from Download link given above
 
-Step 2 : Select a Market of your choice and Register your shop
+#### Step 2 : Select a Market of your choice and Register your shop
 
 There could be many local markets in your area. Just select anyone which you feel appropriate. You need to register seperately for each market. After selecting the market please Sign-Up create your new account from the Login Screen. 
 
-Step 3 : Update your Shop Profile and Add Photos
+#### Step 3 : Update your Shop Profile and Add Photos
 
 Add a name, description and add Photos for your Shop. 
 
-Step 4 : Add Items to Shop
+#### Step 4 : Add Items to Shop
 
 In the Shop Dashboard you will see Items Database. Add Items to your shop that you want to sell. 
 
-Step 5 : Set Prices and Availibility
+#### Step 5 : Set Prices and Availibility
 
 After you have added items to the shop. Go to quick stock editor and set prices and availibility for each item. When you set the prices and availibity your shop will be visible in the customer app. 
-
 
 
 Your Shop is Ready to Accept Orders from customers. To check whether your shop is visible and able to receive orders please download the End-User app and check if your shop is visible. Send a fake order and see if you get any push notification.
