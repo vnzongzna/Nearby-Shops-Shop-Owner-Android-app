@@ -7,6 +7,38 @@ Nearby Shops
 <img src="https://github.com/SumeetMoray/Nearby-Shops-End-User-Android-app/blob/master/media/nearby-shops-logo-small.png" width="140">    <a href="https://play.google.com/store/apps/details?id=org.nearbyshops.shopkeeperappnew"><img class="alignnone" src="https://goldtonemusicgroup.com/img/goldtone/main-page/news/playstore-badge.png" alt="Get it on Google Play" width="120" height="40" /></a> 
 
 
+
+Sell Nearby for Free ? 
+-----------------
+
+Nearby Shops is worlds first free and Open-Source mobile E-Commerce Platform.
+Anyone can get listed as seller and sell (deliver orders) for free  without any need to pay any commission.
+
+Setup your shop in Just 30 Minutes and Start Selling
+
+Step 1 : Download Shop Owner app from Download link given above
+
+Step 2 : Select a Market of your choice and Register your shop
+
+Step 3 : Update your Shop Profile and Add Photos
+
+Step 4 : Add Items to Shop
+
+Step 5 : Set Prices and Availibility
+
+Your Shop is Ready to Accept Orders from customers. 
+
+
+
+
+
+It is a first of its kind democratic, non-commercial, Open-Source and Nonprofit E-commerce platform. We aim to provide world class free of cost e-commerce platform to the sellers. 
+
+Technically Nearby Shops is a distributed ecosystem of local markets. This project is conceptually similar to [Mastadon project](https://github.com/tootsuite/mastodon). Anyone can self-host their Local Market Instance and create their local market on Nearby Shops. The technology is fully open-source and funded by Donations. We dont charge any fee or comission in order to use the platform.
+
+Local Market's are generally self-hosted by independent Volunteers, Service Providers and local vendor cooperatives who seek the welfare of their local vendors.
+
+
 How it works ? 
 -----------------
 
