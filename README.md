@@ -20,23 +20,31 @@ Step 1 : Download Shop Owner app from Download link given above
 
 Step 2 : Select a Market of your choice and Register your shop
 
+There could be many local markets in your area. Just select anyone which you feel appropriate. You need to register seperately for each market. After selecting the market please Sign-Up create your new account from the Login Screen. 
+
 Step 3 : Update your Shop Profile and Add Photos
+
+Add a name, description and add Photos for your Shop. 
 
 Step 4 : Add Items to Shop
 
+In the Shop Dashboard you will see Items Database. Add Items to your shop that you want to sell. 
+
 Step 5 : Set Prices and Availibility
 
-Your Shop is Ready to Accept Orders from customers. 
+After you have added items to the shop. Go to quick stock editor and set prices and availibility for each item. When you set the prices and availibity your shop will be visible in the customer app. 
 
 
 
+Your Shop is Ready to Accept Orders from customers. To check whether your shop is visible and able to receive orders please download the End-User app and check if your shop is visible. Send a fake order and see if you get any push notification.
+
+If you are facing any difficulty feel free to ask for help and support at our forum https://forum.nearbyshops.org
 
 
-It is a first of its kind democratic, non-commercial, Open-Source and Nonprofit E-commerce platform. We aim to provide world class free of cost e-commerce platform to the sellers. 
+Tips for Troubleshooting
 
-Technically Nearby Shops is a distributed ecosystem of local markets. This project is conceptually similar to [Mastadon project](https://github.com/tootsuite/mastodon). Anyone can self-host their Local Market Instance and create their local market on Nearby Shops. The technology is fully open-source and funded by Donations. We dont charge any fee or comission in order to use the platform.
+Your shop will not be visible until and unless you have set prices for the items you added into your shop. So please check that you have set the prices and availibility. 
 
-Local Market's are generally self-hosted by independent Volunteers, Service Providers and local vendor cooperatives who seek the welfare of their local vendors.
 
 
 How it works ? 
