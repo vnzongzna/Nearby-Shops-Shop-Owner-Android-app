@@ -8,8 +8,8 @@ Nearby Shops
 
 
 
-Sell Nearby for Free ? 
------------------
+Sell Nearby for Free !
+------------------------
 
 Nearby Shops is worlds first free and Open-Source mobile E-Commerce Platform.
 Anyone can get listed as seller and sell (deliver orders) for free  without any need to pay any commission.
