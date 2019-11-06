@@ -1,14 +1,5 @@
-Nearby Shops 
+Sell Nearby at Zero Commission !
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Nearby%20Shops%20Open%20Source%20Food%20Delivery%20and%20Hyperlocal%20app&url=https://github.com/SumeetMoray/Nearby-Shops-End-User-Android-app&via=moraysumeet&hashtags=opensource,androiddev,fooddelivery,android,ecommerce)
-=============
-
-> Self-Hosted Mobile First Hyperlocal and Food Delivery Platform	
-
-<img src="https://github.com/SumeetMoray/Nearby-Shops-End-User-Android-app/blob/master/media/nearby-shops-logo-small.png" width="140">    <a href="https://play.google.com/store/apps/details?id=org.nearbyshops.shopkeeperappnew"><img class="alignnone" src="https://goldtonemusicgroup.com/img/goldtone/main-page/news/playstore-badge.png" alt="Get it on Google Play" width="120" height="40" /></a> 
-
-
-
-Sell Nearby for Free !
 ------------------------
 
 Nearby Shops is worlds first free and Open-Source mobile E-Commerce Platform.
@@ -17,6 +8,8 @@ Anyone can get listed as seller and sell (deliver orders) for free  without any 
 Setup your shop in Just 30 Minutes and Start Selling
 
 #### Step 1 : Download Shop Owner app from Download link given above
+
+<a href="https://play.google.com/store/apps/details?id=org.nearbyshops.shopkeeperappnew"><img class="alignnone" src="https://goldtonemusicgroup.com/img/goldtone/main-page/news/playstore-badge.png" alt="Get it on Google Play" width="120" height="40" /></a> 
 
 #### Step 2 : Select a Market of your choice and Register your shop
 
