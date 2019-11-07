@@ -1,10 +1,42 @@
-Nearby Shops 
+Sell Nearby at Zero Commission ! 
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Nearby%20Shops%20Open%20Source%20Food%20Delivery%20and%20Hyperlocal%20app&url=https://github.com/SumeetMoray/Nearby-Shops-End-User-Android-app&via=moraysumeet&hashtags=opensource,androiddev,fooddelivery,android,ecommerce)
-=============
+------------------------
 
-> Self-Hosted Mobile First Hyperlocal and Food Delivery Platform	
+Nearby Shops is first of its kind Nonprofit, free and Open-Source mobile E-Commerce Platform.
+Anyone can get listed as seller and sell (deliver orders) for free  without any need to pay any commission.
 
-<img src="https://github.com/SumeetMoray/Nearby-Shops-End-User-Android-app/blob/master/media/nearby-shops-logo-small.png" width="140">    <a href="https://play.google.com/store/apps/details?id=org.nearbyshops.shopkeeperappnew"><img class="alignnone" src="https://goldtonemusicgroup.com/img/goldtone/main-page/news/playstore-badge.png" alt="Get it on Google Play" width="120" height="40" /></a> 
+Setup your shop in Just 30 Minutes and Start Selling
+
+#### Step 1 : Download Shop Owner app from Download link given above
+
+<a href="https://play.google.com/store/apps/details?id=org.nearbyshops.shopkeeperappnew"><img class="alignnone" src="https://goldtonemusicgroup.com/img/goldtone/main-page/news/playstore-badge.png" alt="Get it on Google Play" width="120" height="40" /></a> 
+
+#### Step 2 : Select a Market of your choice and Register your shop
+
+There could be many local markets in your area. Just select anyone which you feel appropriate. You need to register seperately for each market. After selecting the market please Sign-Up create your new account from the Login Screen. 
+
+#### Step 3 : Update your Shop Profile and Add Photos
+
+Add a name, description and add Photos for your Shop. 
+
+#### Step 4 : Add Items to Shop
+
+In the Shop Dashboard you will see Items Database. Add Items to your shop that you want to sell. 
+
+#### Step 5 : Set Prices and Availibility
+
+After you have added items to the shop. Go to quick stock editor and set prices and availibility for each item. When you set the prices and availibity your shop will be visible in the customer app. 
+
+
+Your Shop is Ready to Accept Orders from customers. To check whether your shop is visible and able to receive orders please download the End-User app and check if your shop is visible. Send a fake order and see if you get any push notification.
+
+If you are facing any difficulty feel free to ask for help and support at our forum https://forum.nearbyshops.org
+
+
+#### Tips for Troubleshooting
+
+Your shop will not be visible until and unless you have set prices for the items you added into your shop. So please check that you have set the prices and availibility. 
+
 
 
 How it works ? 
