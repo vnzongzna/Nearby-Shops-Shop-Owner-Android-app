@@ -19,7 +19,7 @@ import okhttp3.OkHttpClient;
 import org.nearbyshops.shopkeeperappnew.API_SDS.UserServiceGlobal;
 import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifyAboutLogin;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.MyApplication;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLoginGlobal;

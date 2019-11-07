@@ -11,17 +11,12 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.RemoteMessage;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -30,10 +25,10 @@ import org.nearbyshops.shopkeeperappnew.DeliveryGuyHome.DeliveryGuyHomeFragment;
 import org.nearbyshops.shopkeeperappnew.LoginPlaceholders.FragmentSignInMessage;
 import org.nearbyshops.shopkeeperappnew.Markets.Interfaces.MarketSelected;
 import org.nearbyshops.shopkeeperappnew.Markets.MarketsFragment;
-import org.nearbyshops.shopkeeperappnew.ModelEventBus.NotificationEvent;
+import org.nearbyshops.shopkeeperappnew.Model.ModelEventBus.NotificationEvent;
 import org.nearbyshops.shopkeeperappnew.Interfaces.LocationUpdated;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifyAboutLogin;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.OneSignal.PrefOneSignal;
 import org.nearbyshops.shopkeeperappnew.OneSignal.UpdateOneSignalID;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefGeneral;

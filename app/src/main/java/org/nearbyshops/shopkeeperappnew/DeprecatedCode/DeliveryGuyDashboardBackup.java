@@ -27,7 +27,7 @@ import org.nearbyshops.shopkeeperappnew.Interfaces.NotifyLocation;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySearch;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySort;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifyTitleChanged;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.OrderHistory.Utility.SlidingLayerSortOrders;
 import org.nearbyshops.shopkeeperappnew.R;
 

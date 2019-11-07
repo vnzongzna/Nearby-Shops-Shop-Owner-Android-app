@@ -1,9 +1,7 @@
 package org.nearbyshops.shopkeeperappnew.Model;
 
 
-import android.os.Parcel;
-import android.os.Parcelable;
-import org.nearbyshops.shopkeeperappnew.ModelStats.ItemStats;
+import org.nearbyshops.shopkeeperappnew.Model.ModelStats.ItemStats;
 
 import java.sql.Timestamp;
 

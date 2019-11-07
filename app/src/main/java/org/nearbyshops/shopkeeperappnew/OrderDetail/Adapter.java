@@ -17,8 +17,8 @@ import org.nearbyshops.shopkeeperappnew.Model.DeliveryAddress;
 import org.nearbyshops.shopkeeperappnew.Model.Item;
 import org.nearbyshops.shopkeeperappnew.Model.Order;
 import org.nearbyshops.shopkeeperappnew.Model.OrderItem;
-import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery;
-import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusPickFromShop;
+import org.nearbyshops.shopkeeperappnew.Model.ModelStatusCodes.OrderStatusHomeDelivery;
+import org.nearbyshops.shopkeeperappnew.Model.ModelStatusCodes.OrderStatusPickFromShop;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefGeneral;
 import org.nearbyshops.shopkeeperappnew.R;
 

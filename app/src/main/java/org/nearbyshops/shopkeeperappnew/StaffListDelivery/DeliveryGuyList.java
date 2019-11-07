@@ -8,7 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.SignUp.PrefSignUp.PrefrenceSignUp;
 import org.nearbyshops.shopkeeperappnew.SignUp.SignUp;

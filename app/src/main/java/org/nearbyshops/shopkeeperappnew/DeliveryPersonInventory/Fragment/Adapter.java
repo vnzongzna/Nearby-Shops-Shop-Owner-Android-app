@@ -5,10 +5,9 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusPickFromShop;
 import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrderButtonDouble;
 import org.nearbyshops.shopkeeperappnew.Model.Order;
-import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery;
+import org.nearbyshops.shopkeeperappnew.Model.ModelStatusCodes.OrderStatusHomeDelivery;
 import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrder;
 import org.nearbyshops.shopkeeperappnew.ViewHoldersForOrders.ViewHolderOrderButtonSingle;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.LoadingViewHolder;

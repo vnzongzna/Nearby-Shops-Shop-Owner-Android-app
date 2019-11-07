@@ -5,7 +5,7 @@ import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import org.nearbyshops.shopkeeperappnew.Model.Image;
 import org.nearbyshops.shopkeeperappnew.Model.Item;
-import org.nearbyshops.shopkeeperappnew.ModelEndpoints.ItemEndPoint;
+import org.nearbyshops.shopkeeperappnew.Model.ModelEndpoints.ItemEndPoint;
 import retrofit2.Call;
 import retrofit2.http.*;
 

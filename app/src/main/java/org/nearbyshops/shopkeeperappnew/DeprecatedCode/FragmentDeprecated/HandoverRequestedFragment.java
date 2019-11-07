@@ -19,8 +19,8 @@
 //import org.nearbyshops.shopkeeperappnew.Interfaces.NotifySort;
 //import org.nearbyshops.shopkeeperappnew.Interfaces.NotifyTitleChanged;
 //import org.nearbyshops.shopkeeperappnew.Model.Order;
-//import org.nearbyshops.shopkeeperappnew.ModelEndpoints.OrderEndPoint;
-//import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery;
+//import OrderEndPoint;
+//import OrderStatusHomeDelivery;
 //import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 //import org.nearbyshops.shopkeeperappnew.R;
 //import org.nearbyshops.shopkeeperappnew.SlidingLayerSort.PrefSortOrdersHD;

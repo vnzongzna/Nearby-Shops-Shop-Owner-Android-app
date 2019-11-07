@@ -3,7 +3,7 @@ package org.nearbyshops.shopkeeperappnew.EditProfile.ChangeEmail;
 import android.content.Context;
 import android.content.SharedPreferences;
 import com.google.gson.Gson;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.Utility.UtilityFunctions;
 import org.nearbyshops.shopkeeperappnew.R;
 

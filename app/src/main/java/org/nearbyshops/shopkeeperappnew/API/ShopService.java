@@ -4,7 +4,7 @@ import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import org.nearbyshops.shopkeeperappnew.Model.Image;
 import org.nearbyshops.shopkeeperappnew.Model.Shop;
-import org.nearbyshops.shopkeeperappnew.ModelEndpoints.ShopEndPoint;
+import org.nearbyshops.shopkeeperappnew.Model.ModelEndpoints.ShopEndPoint;
 import retrofit2.Call;
 import retrofit2.http.*;
 

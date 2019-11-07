@@ -25,7 +25,7 @@ import com.hbb20.CountryCodePicker;
 import okhttp3.ResponseBody;
 import org.nearbyshops.shopkeeperappnew.API.UserService;
 import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefServiceConfig;
 import org.nearbyshops.shopkeeperappnew.R;
 import retrofit2.Call;

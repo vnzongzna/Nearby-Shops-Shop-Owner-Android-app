@@ -23,7 +23,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import okhttp3.ResponseBody;
 import org.nearbyshops.shopkeeperappnew.API.UserService;
 import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.R;
 import retrofit2.Call;
 import retrofit2.Callback;

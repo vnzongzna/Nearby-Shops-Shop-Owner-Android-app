@@ -18,7 +18,7 @@ import com.google.gson.Gson;
 import okhttp3.ResponseBody;
 import org.nearbyshops.shopkeeperappnew.API.UserService;
 import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.SignUp.Interfaces.ShowFragmentForgotPassword;
 import org.nearbyshops.shopkeeperappnew.SignUp.PrefSignUp.PrefrenceForgotPassword;

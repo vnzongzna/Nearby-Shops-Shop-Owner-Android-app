@@ -18,7 +18,7 @@ import butterknife.OnClick;
 import com.squareup.picasso.Picasso;
 import org.nearbyshops.shopkeeperappnew.Model.Item;
 import org.nearbyshops.shopkeeperappnew.Model.ShopItem;
-import org.nearbyshops.shopkeeperappnew.ModelStats.ItemStats;
+import org.nearbyshops.shopkeeperappnew.Model.ModelStats.ItemStats;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefGeneral;
 import org.nearbyshops.shopkeeperappnew.R;
 

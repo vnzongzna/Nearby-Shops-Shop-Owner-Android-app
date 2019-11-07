@@ -2,8 +2,8 @@ package org.nearbyshops.shopkeeperappnew.MarketDetail.API;
 
 
 import okhttp3.ResponseBody;
-import org.nearbyshops.shopkeeperappnew.ModelReviewMarket.FavouriteMarket;
-import org.nearbyshops.shopkeeperappnew.ModelReviewMarket.FavouriteMarketEndpoint;
+import org.nearbyshops.shopkeeperappnew.Model.ModelReviewMarket.FavouriteMarket;
+import org.nearbyshops.shopkeeperappnew.Model.ModelReviewMarket.FavouriteMarketEndpoint;
 import retrofit2.Call;
 import retrofit2.http.*;
 

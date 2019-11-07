@@ -37,7 +37,7 @@ import org.nearbyshops.shopkeeperappnew.EditProfile.ChangePhone.ChangePhone;
 import org.nearbyshops.shopkeeperappnew.EditProfile.ChangePhone.PrefChangePhone;
 import org.nearbyshops.shopkeeperappnew.EditProfile.Interfaces.NotifyChangePassword;
 import org.nearbyshops.shopkeeperappnew.Model.Image;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefGeneral;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.R;

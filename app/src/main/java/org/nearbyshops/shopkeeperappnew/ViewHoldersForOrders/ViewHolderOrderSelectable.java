@@ -14,7 +14,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnLongClick;
 import org.nearbyshops.shopkeeperappnew.Model.Order;
-import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery;
+import org.nearbyshops.shopkeeperappnew.Model.ModelStatusCodes.OrderStatusHomeDelivery;
 import org.nearbyshops.shopkeeperappnew.R;
 
 import java.util.Map;

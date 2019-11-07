@@ -3,7 +3,7 @@ package org.nearbyshops.shopkeeperappnew.SignUp.PrefSignUp;
 import android.content.Context;
 import android.content.SharedPreferences;
 import com.google.gson.Gson;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.R;
 
 import static android.content.Context.MODE_PRIVATE;

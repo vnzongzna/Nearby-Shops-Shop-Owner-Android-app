@@ -1,6 +1,6 @@
 package org.nearbyshops.shopkeeperappnew.API;
 
-import org.nearbyshops.shopkeeperappnew.ModelEndpoints.OrderItemEndPoint;
+import org.nearbyshops.shopkeeperappnew.Model.ModelEndpoints.OrderItemEndPoint;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;

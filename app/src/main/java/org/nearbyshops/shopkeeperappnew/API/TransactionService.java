@@ -1,7 +1,7 @@
 package org.nearbyshops.shopkeeperappnew.API;
 
 
-import org.nearbyshops.shopkeeperappnew.ModelBilling.TransactionEndpoint;
+import org.nearbyshops.shopkeeperappnew.Model.ModelBilling.TransactionEndpoint;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;

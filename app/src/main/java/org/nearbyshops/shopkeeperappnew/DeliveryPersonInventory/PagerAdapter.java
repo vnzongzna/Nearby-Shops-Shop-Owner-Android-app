@@ -4,8 +4,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import org.nearbyshops.shopkeeperappnew.DeliveryPersonInventory.Fragment.DeliveryInventoryFragment;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
-import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.User;
+import org.nearbyshops.shopkeeperappnew.Model.ModelStatusCodes.OrderStatusHomeDelivery;
 
 /**
  * Created by sumeet on 15/6/16.

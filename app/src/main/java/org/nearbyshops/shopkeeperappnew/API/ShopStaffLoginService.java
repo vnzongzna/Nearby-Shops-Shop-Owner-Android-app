@@ -2,9 +2,9 @@ package org.nearbyshops.shopkeeperappnew.API;
 
 
 import okhttp3.ResponseBody;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.ShopStaffPermissions;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.UserEndpoint;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.ShopStaffPermissions;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.User;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.UserEndpoint;
 import retrofit2.Call;
 import retrofit2.http.*;
 

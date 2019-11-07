@@ -1,8 +1,8 @@
 package org.nearbyshops.shopkeeperappnew.Model;
 
 
-import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
-import org.nearbyshops.shopkeeperappnew.ModelStats.OrderStats;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.User;
+import org.nearbyshops.shopkeeperappnew.Model.ModelStats.OrderStats;
 
 import java.sql.Timestamp;
 

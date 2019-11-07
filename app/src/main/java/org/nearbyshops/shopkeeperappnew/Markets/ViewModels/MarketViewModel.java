@@ -11,7 +11,7 @@ import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
 import org.nearbyshops.shopkeeperappnew.Markets.Model.Endpoints.ServiceConfigurationEndPoint;
 import org.nearbyshops.shopkeeperappnew.Markets.Model.SignInMarker;
 import org.nearbyshops.shopkeeperappnew.Markets.api.ServiceConfigService;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.MyApplication;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLocation;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLoginGlobal;

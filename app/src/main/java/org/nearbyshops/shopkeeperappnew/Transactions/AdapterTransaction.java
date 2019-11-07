@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import org.nearbyshops.shopkeeperappnew.ModelBilling.Transaction;
+import org.nearbyshops.shopkeeperappnew.Model.ModelBilling.Transaction;
 import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.HeaderData;
 

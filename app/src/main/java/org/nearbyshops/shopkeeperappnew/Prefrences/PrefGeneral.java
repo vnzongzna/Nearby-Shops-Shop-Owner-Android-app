@@ -29,7 +29,7 @@ public class PrefGeneral {
 
 
     // put service_url = null to show users the option to select markets
-    public static final String SERVICE_URL = SERVICE_URL_LOCAL_HOTSPOT;
+    public static final String SERVICE_URL = null;
 
 
 

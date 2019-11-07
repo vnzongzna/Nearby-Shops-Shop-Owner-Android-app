@@ -17,7 +17,7 @@ import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifyTitleChanged;
 import org.nearbyshops.shopkeeperappnew.Model.Shop;
 import org.nearbyshops.shopkeeperappnew.Model.ShopItem;
-import org.nearbyshops.shopkeeperappnew.ModelEndpoints.ShopItemEndPoint;
+import org.nearbyshops.shopkeeperappnew.Model.ModelEndpoints.ShopItemEndPoint;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefShopHome;
 import org.nearbyshops.shopkeeperappnew.ViewHolderItems.ViewHolderShopItem;

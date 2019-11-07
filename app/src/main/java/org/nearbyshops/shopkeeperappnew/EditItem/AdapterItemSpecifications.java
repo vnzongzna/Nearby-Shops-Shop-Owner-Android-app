@@ -12,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import org.nearbyshops.shopkeeperappnew.ModelItemSpecification.ItemSpecificationName;
-import org.nearbyshops.shopkeeperappnew.ModelItemSpecification.ItemSpecificationValue;
+import org.nearbyshops.shopkeeperappnew.Model.ModelItemSpecification.ItemSpecificationName;
+import org.nearbyshops.shopkeeperappnew.Model.ModelItemSpecification.ItemSpecificationValue;
 import org.nearbyshops.shopkeeperappnew.R;
 
 import java.util.List;

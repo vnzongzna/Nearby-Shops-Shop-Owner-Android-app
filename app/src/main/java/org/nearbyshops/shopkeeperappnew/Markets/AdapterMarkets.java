@@ -12,7 +12,7 @@ import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
 import org.nearbyshops.shopkeeperappnew.Markets.Interfaces.listItemMarketNotifications;
 import org.nearbyshops.shopkeeperappnew.Markets.Model.*;
 import org.nearbyshops.shopkeeperappnew.Markets.ViewHolders.*;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.R;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.LoadingViewHolder;
 import org.nearbyshops.shopkeeperappnew.ViewHolderCommon.Models.EmptyScreenDataListItem;

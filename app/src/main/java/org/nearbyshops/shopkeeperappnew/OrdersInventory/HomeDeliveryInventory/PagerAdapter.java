@@ -3,7 +3,7 @@ package org.nearbyshops.shopkeeperappnew.OrdersInventory.HomeDeliveryInventory;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusHomeDelivery;
+import org.nearbyshops.shopkeeperappnew.Model.ModelStatusCodes.OrderStatusHomeDelivery;
 import org.nearbyshops.shopkeeperappnew.OrdersInventory.Fragment.OrdersInventoryFragment;
 
 /**

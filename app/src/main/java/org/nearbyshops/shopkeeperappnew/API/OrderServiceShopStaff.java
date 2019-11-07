@@ -2,8 +2,8 @@ package org.nearbyshops.shopkeeperappnew.API;
 
 import okhttp3.ResponseBody;
 import org.nearbyshops.shopkeeperappnew.Model.Order;
-import org.nearbyshops.shopkeeperappnew.ModelEndpoints.OrderEndPoint;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.UserEndpoint;
+import org.nearbyshops.shopkeeperappnew.Model.ModelEndpoints.OrderEndPoint;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.UserEndpoint;
 import retrofit2.Call;
 import retrofit2.http.*;
 

@@ -36,8 +36,8 @@ import org.nearbyshops.shopkeeperappnew.ViewHolderItems.ViewHolderItemCategoryHo
 import org.nearbyshops.shopkeeperappnew.Model.Item;
 import org.nearbyshops.shopkeeperappnew.Model.ItemCategory;
 import org.nearbyshops.shopkeeperappnew.Model.ShopItem;
-import org.nearbyshops.shopkeeperappnew.ModelEndpoints.ItemEndPoint;
-import org.nearbyshops.shopkeeperappnew.ModelEndpoints.ShopItemEndPoint;
+import org.nearbyshops.shopkeeperappnew.Model.ModelEndpoints.ItemEndPoint;
+import org.nearbyshops.shopkeeperappnew.Model.ModelEndpoints.ShopItemEndPoint;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefShopHome;
 import org.nearbyshops.shopkeeperappnew.R;

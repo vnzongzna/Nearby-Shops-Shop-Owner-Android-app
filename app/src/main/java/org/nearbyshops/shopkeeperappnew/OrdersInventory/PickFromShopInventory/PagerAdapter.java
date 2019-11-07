@@ -3,7 +3,7 @@ package org.nearbyshops.shopkeeperappnew.OrdersInventory.PickFromShopInventory;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import org.nearbyshops.shopkeeperappnew.ModelStatusCodes.OrderStatusPickFromShop;
+import org.nearbyshops.shopkeeperappnew.Model.ModelStatusCodes.OrderStatusPickFromShop;
 import org.nearbyshops.shopkeeperappnew.OrdersInventory.Fragment.OrdersInventoryFragment;
 
 /**

@@ -60,15 +60,28 @@ public class UtilityFunctions {
         String topic_name = localConfig.getRt_market_id_for_fcm() + "shop_" + shop.getShopID();
 
 
-        FirebaseMessaging.getInstance().subscribeToTopic(topic_name)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
 
-                        System.out.println("Subscribed to : " + topic_name);
+        try {
 
-                    }
-                });
+
+            FirebaseMessaging.getInstance().subscribeToTopic(topic_name)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+
+                            System.out.println("Subscribed to : " + topic_name);
+
+                        }
+                    });
+
+
+        }
+        catch (Exception ignored)
+        {
+
+
+        }
+
 
     }
 

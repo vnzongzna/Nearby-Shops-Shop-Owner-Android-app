@@ -4,7 +4,7 @@ package org.nearbyshops.shopkeeperappnew.API_SDS;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import org.nearbyshops.shopkeeperappnew.Model.Image;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.User;
 import retrofit2.Call;
 import retrofit2.http.*;
 

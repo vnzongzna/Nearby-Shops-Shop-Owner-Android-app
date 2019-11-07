@@ -22,7 +22,7 @@ import org.nearbyshops.shopkeeperappnew.API.UserService;
 import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifyAboutLogin;
 import org.nearbyshops.shopkeeperappnew.Markets.Markets;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.MyApplication;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefGeneral;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;

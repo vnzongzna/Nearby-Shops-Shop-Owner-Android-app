@@ -4,7 +4,7 @@ package org.nearbyshops.shopkeeperappnew.API;
 
 import org.nearbyshops.shopkeeperappnew.Model.Image;
 import org.nearbyshops.shopkeeperappnew.Model.ItemImage;
-import org.nearbyshops.shopkeeperappnew.ModelEndpoints.ItemImageEndPoint;
+import org.nearbyshops.shopkeeperappnew.Model.ModelEndpoints.ItemImageEndPoint;
 
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;

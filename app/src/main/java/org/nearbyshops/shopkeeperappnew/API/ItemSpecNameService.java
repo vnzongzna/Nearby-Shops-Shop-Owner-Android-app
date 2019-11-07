@@ -2,8 +2,8 @@ package org.nearbyshops.shopkeeperappnew.API;
 
 
 import org.nearbyshops.shopkeeperappnew.Model.Image;
-import org.nearbyshops.shopkeeperappnew.ModelItemSpecification.EndPoints.ItemSpecNameEndPoint;
-import org.nearbyshops.shopkeeperappnew.ModelItemSpecification.ItemSpecificationName;
+import org.nearbyshops.shopkeeperappnew.Model.ModelItemSpecification.EndPoints.ItemSpecNameEndPoint;
+import org.nearbyshops.shopkeeperappnew.Model.ModelItemSpecification.ItemSpecificationName;
 
 import java.util.List;
 

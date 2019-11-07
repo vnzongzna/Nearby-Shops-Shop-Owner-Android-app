@@ -15,7 +15,7 @@ import org.nearbyshops.shopkeeperappnew.DaggerComponentBuilder;
 import org.nearbyshops.shopkeeperappnew.Model.Item;
 import org.nearbyshops.shopkeeperappnew.Model.Order;
 import org.nearbyshops.shopkeeperappnew.Model.Shop;
-import org.nearbyshops.shopkeeperappnew.ModelEndpoints.OrderItemEndPoint;
+import org.nearbyshops.shopkeeperappnew.Model.ModelEndpoints.OrderItemEndPoint;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefShopHome;
 import org.nearbyshops.shopkeeperappnew.R;

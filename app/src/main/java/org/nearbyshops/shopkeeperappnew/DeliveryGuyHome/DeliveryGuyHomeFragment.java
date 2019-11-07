@@ -16,7 +16,7 @@ import org.nearbyshops.shopkeeperappnew.DeliveryPersonInventory.DeliveryGuyDashb
 import org.nearbyshops.shopkeeperappnew.EditProfile.EditProfile;
 import org.nearbyshops.shopkeeperappnew.EditProfile.FragmentEditProfile;
 import org.nearbyshops.shopkeeperappnew.Interfaces.NotifyAboutLogin;
-import org.nearbyshops.shopkeeperappnew.ModelRoles.User;
+import org.nearbyshops.shopkeeperappnew.Model.ModelRoles.User;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefLogin;
 import org.nearbyshops.shopkeeperappnew.Prefrences.PrefShopHome;
 import org.nearbyshops.shopkeeperappnew.R;
