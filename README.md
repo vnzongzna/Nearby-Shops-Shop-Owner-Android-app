@@ -2,7 +2,7 @@ Sell Nearby at Zero Commission !
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Nearby%20Shops%20Open%20Source%20Food%20Delivery%20and%20Hyperlocal%20app&url=https://github.com/SumeetMoray/Nearby-Shops-End-User-Android-app&via=moraysumeet&hashtags=opensource,androiddev,fooddelivery,android,ecommerce)
 ------------------------
 
-Nearby Shops is first of its kind Nonprofit, free and Open-Source mobile E-Commerce Platform.
+Nearby Shops is first of its kind Nonprofit, free of cost and Open-Source E-Commerce Platform designed for Local Vendors.
 Anyone can get listed as seller and sell (deliver orders) for free  without any need to pay any commission.
 
 Setup your shop in Just 30 Minutes and Start Selling
