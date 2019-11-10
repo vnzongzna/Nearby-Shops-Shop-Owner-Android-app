@@ -51,6 +51,11 @@ Your Shop is Ready to Accept Orders from customers. To check whether your shop i
 If you are facing any difficulty feel free to ask for help and support at our forum https://forum.nearbyshops.org
 
 
+#### Step 6 : Promote your Shop to your friends, family and Potential Customers
+
+To invite more customers into your shop ... please share our shop to all the potential customers. Share it on facebook, reddit and social media. You can also place a banner in front of your shops.
+
+
 #### Tips for Troubleshooting
 
 Your shop will not be visible until and unless you have set prices for the items you added into your shop. So please check that you have set the prices and availibility. 
