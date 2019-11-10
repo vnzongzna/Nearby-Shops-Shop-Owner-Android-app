@@ -46,7 +46,7 @@ Nearby Shops is a free of cost nonprofit e-commerce platform for local vendors. 
 
 It is a first of its kind democratic, non-commercial, Open-Source and Nonprofit E-commerce platform. We aim to provide world class free of cost e-commerce platform to the sellers. 
 
-Technically Nearby Shops is a distributed ecosystem of local markets. This project is conceptually similar to [Mastadon project](https://github.com/tootsuite/mastodon). Anyone can self-host their Local Market Instance and create their local market on Nearby Shops. The technology is fully open-source and funded by Donations. We dont charge any fee or comission in order to use the platform.
+Technically Nearby Shops is a distributed ecosystem of local markets. This project is conceptually similar to [Mastodon project](https://github.com/tootsuite/mastodon). Anyone can self-host their Local Market Instance and create their local market on Nearby Shops. The technology is fully open-source and funded by Donations. We dont charge any fee or comission in order to use the platform.
 
 Local Market's are generally self-hosted by independent Volunteers, Service Providers and local vendor cooperatives who seek the welfare of their local vendors.
 
