@@ -53,7 +53,7 @@ If you are facing any difficulty feel free to ask for help and support at our fo
 
 #### Step 6 : Promote your Shop to your friends, family and Potential Customers
 
-To invite more customers into your shop ... please share our shop to all the potential customers. Share it on facebook, reddit and social media. You can also place a banner in front of your shops.
+To invite more customers into your shop ... please share your shop to all the potential customers. Share it on facebook, reddit and social media. You can also place a banner in front of your shops.
 
 
 #### Tips for Troubleshooting
